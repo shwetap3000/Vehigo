@@ -313,6 +313,7 @@ color: white;
 }
 
 
+
 .btn {
   position: relative;
   background: var(--background, var(--carolina-blue));
@@ -489,6 +490,8 @@ a {
   transform: scaleX(1);
   background: var(--carolina-blue);
 }
+
+
 
 .navbar {
   background: var(--alice-blue-1);
@@ -822,6 +825,9 @@ font-weight: bolder;
 .featured-car-card .card-item-text {
   color: var(--text-secondary-dark);
   font-size: var(--fs-6);
+}
+.car_name{
+  color: var(--text-secondary-dark);
 }
 
 .featured-car-card .card-price-wrapper {
