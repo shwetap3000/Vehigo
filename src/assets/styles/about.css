@@ -11,6 +11,9 @@ body {
   margin: 0;
 }
 
+.container{
+  padding-right:40px;
+}
 /* Style user-btn to match the "Explore cars" button from index page */
 .user-btn {
   --color: var(--white); /* White icon */
@@ -18,6 +21,7 @@ body {
   --shadow-2: var(--shadow-1);
   box-shadow: var(--shadow-1);
 }
+
 
 body.dark-mode header{
   background-color: black;
@@ -28,8 +32,19 @@ body.dark-mode .container{
   color: white;
 }
 
-body.dark-mode .contact-link{
+body.dark-mode .contact-link ,.contact-time{
   color: white;
+}
+
+.contact-link{
+  color: var(--carolina-blue);
+  text-decoration: none;
+  font-weight: bold;
+  white-space: nowrap;
+}
+.contact-time{
+  color: black;
+  white-space: nowrap;
 }
 
 body.dark-mode h2.section-title1 {
@@ -555,6 +570,7 @@ input:checked + .slider:before {
   color: #f5f5f5;
 }
 
+
 /* Ensure theme switch doesn't interfere with navbar */
 .header-actions {
   position: relative;
@@ -562,6 +578,7 @@ input:checked + .slider:before {
   display: flex;
   align-items: center;
   gap: 10px;
+  padding: 5px;
 }
 
 .theme-switch {
@@ -571,9 +588,9 @@ input:checked + .slider:before {
 }
 
 
-.header-actions .btn {
+/* .header-actions .btn {
   margin-left: 10px;
-}
+} */
 
 
 .header-actions > *:not(.theme-switch) {
@@ -583,27 +600,28 @@ input:checked + .slider:before {
 
 
 
-.btn {
+/* .btn {
   position: relative;
   background: var(--background, var(--carolina-blue));
   color: var(--color, var(--white));
   min-width: var(--width, 40px);
   min-height: var(--height, 40px);
-  padding: 5px;
-  display: grid;
-  place-items: center;
+  padding: 15px;
+  width: fit-content;
+  display: inline-grid;
+  
   border-radius: var(--radius-14);
   font-family: var(--ff-nunito);
   font-size: var(--fs-6);
   font-weight: var(--fw-600);
-  overflow: hidden;
-}
+  
+} */
 
 .btn ion-icon {
   font-size: 22px;
   --ionicon-stroke-width: 40px;
 }
-
+/* 
 .btn::before {
   content: "";
   position: absolute;
@@ -620,7 +638,7 @@ input:checked + .slider:before {
 
 .btn:is(:hover, :focus)::before {
   opacity: 1;
-}
+} */
 
 
 ::-webkit-scrollbar {
@@ -741,9 +759,6 @@ input:checked + .slider:before {
 }
 
 
-.header-actions .btn {
-  margin-left: 10px;
-}
 
 
 .header-actions > *:not(.theme-switch) {
@@ -838,9 +853,7 @@ input:checked + .slider:before {
 }
 
 
-.header-actions .btn {
-  margin-left: 10px;
-}
+
 
 
 .header-actions > *:not(.theme-switch) {
@@ -850,7 +863,7 @@ input:checked + .slider:before {
 
 
 
-.btn {
+/* .btn {
   position: relative;
   background: var(--background, var(--carolina-blue));
   color: var(--color, var(--white));
@@ -864,6 +877,25 @@ input:checked + .slider:before {
   font-size: var(--fs-6);
   font-weight: var(--fw-600);
   overflow: hidden;
+} */
+
+.btn_explore{
+  position: relative;
+  background: var(--background, var(--carolina-blue));
+  color: var(--color, var(--white));
+  /* min-width: var(--width, 40px); */
+  min-height: var(--height, 40px);
+  padding: 5px;
+  /* width:100px; */
+  display: grid;
+  place-items: center;
+  border-radius: var(--radius-14);
+  font-family: var(--ff-nunito);
+  font-size: var(--fs-6);
+  font-weight: var(--fw-600);
+  /* overflow: hidden; */
+  text-decoration: none;
+  white-space: nowrap;
 }
 
 .btn ion-icon {
@@ -871,7 +903,7 @@ input:checked + .slider:before {
   --ionicon-stroke-width: 40px;
 }
 
-.btn::before {
+/* .btn::before {
   content: "";
   position: absolute;
   inset: 0;
@@ -887,7 +919,7 @@ input:checked + .slider:before {
 
 .btn:is(:hover, :focus)::before {
   opacity: 1;
-}
+} */
 
 
 
