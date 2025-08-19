@@ -562,6 +562,7 @@ input:checked + .slider:before {
   display: flex;
   align-items: center;
   gap: 10px;
+  padding: 5px;
 }
 
 .theme-switch {
