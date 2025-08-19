@@ -28,8 +28,18 @@ body.dark-mode .container{
   color: white;
 }
 
-body.dark-mode .contact-link{
+body.dark-mode .contact-link .contact-time{
   color: white;
+}
+.contact-link{
+  color: var(--carolina-blue);
+  text-decoration: none;
+  font-weight: bold;
+  white-space: nowrap;
+}
+.contact-time{
+  color: black;
+  white-space: nowrap;
 }
 
 body.dark-mode h2.section-title1 {
@@ -554,6 +564,7 @@ input:checked + .slider:before {
 .slider .icon.moon {
   color: #f5f5f5;
 }
+
 
 /* Ensure theme switch doesn't interfere with navbar */
 .header-actions {
