@@ -11,6 +11,9 @@ body {
   margin: 0;
 }
 
+.container{
+  padding-right:40px;
+}
 /* Style user-btn to match the "Explore cars" button from index page */
 .user-btn {
   --color: var(--white); /* White icon */
@@ -18,6 +21,7 @@ body {
   --shadow-2: var(--shadow-1);
   box-shadow: var(--shadow-1);
 }
+
 
 body.dark-mode header{
   background-color: black;
@@ -28,9 +32,10 @@ body.dark-mode .container{
   color: white;
 }
 
-body.dark-mode .contact-link .contact-time{
+body.dark-mode .contact-link ,.contact-time{
   color: white;
 }
+
 .contact-link{
   color: var(--carolina-blue);
   text-decoration: none;
