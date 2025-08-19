@@ -32,10 +32,12 @@ body.dark-mode .container{
   color: white;
 }
 
-body.dark-mode .contact-link ,.contact-time{
+body.dark-mode .contact-time{
   color: white;
 }
-
+body.dark-mode .contact-link{
+  color: white;
+}
 .contact-link{
   color: var(--carolina-blue);
   text-decoration: none;
