@@ -169,12 +169,10 @@ body {
 }
 
 .slider {
-  position: absolute;
+  position: relative;
   cursor: pointer;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
+  width: 60px;
+  height: 30px;
   background-color: #ccc;
   transition: .4s;
   border-radius: 30px;
@@ -300,6 +298,11 @@ body.dark-mode .user-btn ion-icon {
   color: #200f0f;
 }
 
+.title-wrapper.dark-mode{
+  
+ color: #fff;
+}
+
 body.dark-mode .footer-bottom,
 body.dark-mode .footer-bottom p,
 body.dark-mode .footer-bottom a,
@@ -308,6 +311,7 @@ body.dark-mode .footer-bottom ion-icon {
 color: #121212;
 color: white;
 }
+
 
 
 .btn {
@@ -486,6 +490,8 @@ a {
   transform: scaleX(1);
   background: var(--carolina-blue);
 }
+
+
 
 .navbar {
   background: var(--alice-blue-1);
@@ -819,6 +825,9 @@ font-weight: bolder;
 .featured-car-card .card-item-text {
   color: var(--text-secondary-dark);
   font-size: var(--fs-6);
+}
+.car_name{
+  color: var(--text-secondary-dark);
 }
 
 .featured-car-card .card-price-wrapper {
