@@ -9,6 +9,7 @@
     href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
   />
   <link rel="icon" href="favicon.svg">
+  <link rel="stylesheet" href="preloader.css"/>
   <title>Vehigo Offline Centers</title>
   
   <!-- custom css links -->
@@ -29,6 +30,10 @@
   />
 </head>
 <body> 
+  <div id="preloader">
+    <div class="spinner"></div>
+  </div>
+  <div id="app">
   <header class="header" data-header>
     <div class="container">
       <div class="overlay" data-overlay></div>
@@ -298,5 +303,7 @@
       </div>
     </div>
   </footer>
+</div>
+   <script src="preloader.js"></script>
 </body>
 </html>

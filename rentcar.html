@@ -7,6 +7,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
   <link rel="icon" href="favicon.svg">
+  <link rel="stylesheet" href="preloader.css"/>
+
   <title>Add Your Car for Rent - Vehigo</title>
 
 
@@ -28,6 +30,10 @@
 </head>
 
 <body>
+    <div id="preloader">
+    <div class="spinner"></div>
+  </div>
+  <div id="app">
   <header class="header" data-header>
     <div class="container">
       <div class="overlay" data-overlay></div>
@@ -166,6 +172,7 @@
       <ion-icon name="chevron-up-outline" style="font-size: 24px;"></ion-icon>
     </a>
   </main>
+  </div>
 
   <style>
     .rentcar-main-content {
@@ -376,6 +383,7 @@
   </script>
   <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
   <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+  <script src="preloader.js"></script>
 </body>
 
 </html>
