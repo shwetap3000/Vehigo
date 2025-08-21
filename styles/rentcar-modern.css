@@ -191,7 +191,7 @@
 
 #carForm button[type="submit"]:hover {
   transform: translateY(-3px);
-  box-shadow: 0 12px 35px rgba(79, 172, 254, 0.4);
+  box-shadow: 0 12px 35px rgba(13, 37, 57, 0.4);
 }
 
 #carForm button[type="submit"]::before {
@@ -218,7 +218,7 @@
 }
 
 .car-card {
-  background: rgba(255, 255, 255, 0.95);
+  background: rgba(255, 218, 218, 0.95);
   backdrop-filter: blur(20px);
   border-radius: var(--border-radius);
   padding: 1.5rem;
