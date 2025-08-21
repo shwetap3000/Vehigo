@@ -16,7 +16,8 @@ jobs:
         with:
           script: |
             const issueNumber = context.issue.number;
-            const commentBody = `### Thank you for raising this issue!\n We'll review it as soon as possible. We truly appreciate your contributions! ✨\n\n> Meanwhile make sure you've visited the README.md, CONTRIBUTING.md, and CODE_OF_CONDUCT.md before creating a PR for this. Also, please do NOT create a PR until this issue has been assigned to you. 😊`;
+
+            const commentBody = `### 🙏 Thank you for opening this issue!\n\nWe appreciate your effort in contributing to this project. Our team will review the details shortly. \n\n🔎 Meanwhile, please ensure that you have:\n- Reviewed the **README.md** for project setup and guidelines.\n- Gone through the **CONTRIBUTING.md** to follow contribution standards.\n- Read the **CODE_OF_CONDUCT.md** to maintain a respectful community.\n\n⚠️ Kindly note: Please do **not** create a Pull Request until this issue has been properly **assigned to you**. This helps us keep contributions well-organized. 🚀\n\nThanks again for your contribution! ✨`;
 
             await github.rest.issues.createComment({
               owner: context.repo.owner,

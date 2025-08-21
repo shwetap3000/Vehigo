@@ -40,12 +40,14 @@
 .rentcar-main-content h1 {
   text-align: center;
   font-size: 2.5rem;
-  background: var(--primary-gradient);
+  /* background: var(--primary-gradient);
   -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+  -webkit-text-fill-color: transparent; */
+  color: white;
   background-clip: text;
   margin-bottom: 2rem;
   animation: titleGlow 2s ease-in-out infinite alternate;
+  
 }
 
 @keyframes titleGlow {

@@ -18,7 +18,7 @@ jobs:
           script: |
             const prNumber = context.issue.number;
 
-            const commentBody = `### Thanks for creating a PR for your Issue! ☺️\n\nWe'll review it as soon as possible.\nIn the meantime, please double-check the **file changes** and ensure that **all commits** are accurate.\n\nIf there are any **unresolved review comments**, feel free to resolve them. 🙌🏼`;
+            const commentBody = `### 👋 Thank you for opening this Pull Request!\n\nYour contribution is much appreciated. Our team will review it shortly.\n\n🔎 In the meantime, please:\n- Ensure all **file changes** are correct.\n- Verify that your **commits are clean and meaningful**.\n- Address any **pending review comments** if applicable.\n\nWe look forward to collaborating with you. 🚀`;
 
             await github.rest.issues.createComment({
               owner: context.repo.owner,

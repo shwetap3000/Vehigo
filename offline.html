@@ -9,6 +9,7 @@
     href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
   />
   <link rel="icon" href="favicon.svg">
+  <link rel="stylesheet" href="preloader.css"/>
   <title>Vehigo Offline Centers</title>
   
   <!-- custom css links -->
@@ -29,6 +30,10 @@
   />
 </head>
 <body> 
+  <div id="preloader">
+    <div class="spinner"></div>
+  </div>
+  <div id="app">
   <header class="header" data-header>
     <div class="container">
       <div class="overlay" data-overlay></div>
@@ -131,9 +136,9 @@
         card.className = 'card animate-card';
         card.style.animationDelay = `${0.2 + index * 0.1}s`;
         card.innerHTML = `
-          <h3>📍 ${center.city}</h3>
+          <h3>${center.city}</h3>
           <p><strong>${center.name}</strong></p>
-          <p>🌍 Located in ${center.city}</p>
+          <p>Located in ${center.city}</p>
           <p>📞 ${center.contact}</p>
         `;
         
@@ -298,5 +303,7 @@
       </div>
     </div>
   </footer>
+</div>
+   <script src="preloader.js"></script>
 </body>
 </html>
