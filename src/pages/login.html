@@ -1,396 +1,311 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" href="../assets/images/favicon.svg" type="image/svg+xml">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" href="../assets/images/favicon.svg" type="image/svg+xml" />
 
     <title>Vehigo - Rent your favourite car</title>
 
-    <!-- CSS -->
-    <link rel="stylesheet" href="../assets/styles/loginstyle.css">
-    <link rel="stylesheet" href="../assets/styles/style.css">
+    <link rel="stylesheet" href="../assets/styles/loginstyle.css" />
+    <link rel="stylesheet" href="../assets/styles/style.css" />
 
-    <!-- Boxicons CSS -->
-    <link href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css' rel='stylesheet'>
+    <link
+      href="https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css"
+      rel="stylesheet"
+    />
+  </head>
 
-</head>
-
-<body>
+  <body>
     <header class="header" data-header>
-        <div class="container">
+      <div class="container">
+        <div class="overlay" data-overlay></div>
 
-            <div class="overlay" data-overlay></div>
+        <a href="../index.html" class="logo">
+          <img src="../assets/images/vehigologo.png" alt="VehiGo logo" />
+        </a>
 
-            <a href="../index.html" class="logo">
-                <img src="../assets/images/vehigologo.png" alt="VehiGo logo" />
-            </a>
+        <nav class="navbar" data-navbar>
+          <ul class="navbar-list">
+            <li>
+              <a href="/index.html" class="navbar-link" data-nav-link>Home</a>
+            </li>
 
-            <nav class="navbar" data-navbar>
-                <ul class="navbar-list">
+            <li>
+              <a
+                href="/index.html#featured-car"
+                class="navbar-link"
+                data-nav-link
+                >Explore cars</a
+              >
+            </li>
 
-                    <li>
-                        <a href="/index.html" class="navbar-link" data-nav-link>Home</a>
-                    </li>
+            <li>
+              <a href="./about.html" class="navbar-link" data-nav-link
+                >About us</a
+              >
+            </li>
 
-                    <li>
-                        <a href="/index.html#featured-car" class="navbar-link" data-nav-link>Explore cars</a>
-                    </li>
+            <li>
+              <a href="/index.html#blog" class="navbar-link" data-nav-link
+                >Blog</a
+              >
+            </li>
+          </ul>
+        </nav>
 
-                    <li>
-                        <a href="/pages/about.html" class="navbar-link" data-nav-link>About us</a>
-                    </li>
+        <div class="header-actions">
+          <div class="header-contact">
+            <a href="tel:1800100100" class="contact-link">1800-100-100</a>
 
-                    <li>
-                        <a href="/index.html#blog" class="navbar-link" data-nav-link>Blog</a>
-                    </li>
-
-                </ul>
-            </nav>
-
-            <div class="header-actions">
-
-                <div class="header-contact">
-                    <a href="tel:1800100100" class="contact-link">1800-100-100</a>
-
-                    <span class="contact-time">Mon - Sat: 9:00 am - 6:00 pm</span>
-                </div>
-
-                <!-- <a href="#featured-car" class="btn" aria-labelledby="aria-label-txt">
-                    <ion-icon name="car-outline"></ion-icon>
-
-                    <span id="aria-label-txt">Explore cars</span>
-                </a>
-
-                <a href="./login.html" class="btn user-btn" aria-label="Profile">
-                    <ion-icon name="person-outline"></ion-icon>
-                </a>
-
-                <button class="nav-toggle-btn" data-nav-toggle-btn aria-label="Toggle Menu">
-                    <span class="one"></span>
-                    <span class="two"></span>
-                    <span class="three"></span>
-                </button> -->
-
-            </div>
-
+            <span class="contact-time">Mon - Sat: 9:00 am - 6:00 pm</span>
+          </div>
         </div>
+      </div>
     </header>
     <div class="body_tag">
-        <section class="container forms">
-            <div class="form login" id="loginForm">
-                <div class="form-content">
-                    <header>Login</header>
-                    <form action="/login" method="POST" id="loginForm">
-                        <div class="field input-field">
-                            <input id="email" name="email" type="email" placeholder="Email" class="input" required>
-                        </div>
+      <section class="container forms">
+        <div class="form login">
+          <div class="form-content">
+            <header>Login</header>
+            <form id="loginForm" action="/login" method="POST">
+              <div class="field input-field">
+                <input
+                  id="email"
+                  name="email"
+                  type="email"
+                  placeholder="Email"
+                  class="input"
+                  required
+                />
+              </div>
 
-                        <div class="field input-field">
-                            <input id="password" name="password" type="password" placeholder="Password" class="password"
-                                required>
-                            <i class='bx bx-hide eye-icon'></i>
-                        </div>
-                        <!-- <div class="form-link">
-                        <a href="#" class="forgot-pass">Forgot password?</a>
-                    </div> -->
+              <div class="field input-field">
+                <input
+                  id="password"
+                  name="password"
+                  type="password"
+                  placeholder="Password"
+                  class="password"
+                  required
+                />
+                <i class="bx bx-hide eye-icon"></i>
+              </div>
+              <div class="form-link">
+                <a href="./forgot-password.html" class="forgot-pass"
+                  >Forgot password?</a
+                >
+              </div>
 
-                        <div class="field button-field">
-                            <button type="submit">Login</button>
-                        </div>
-                    </form>
+              <div class="field button-field">
+                <button type="submit">Login</button>
+              </div>
+            </form>
 
-                    <div class="form-link">
-                        <span>Don't have an account? <a href="#" class="link signup-link">Signup</a></span>
-                    </div>
-                </div>
+            <div class="form-link">
+              <span
+                >Don't have an account?
+                <a href="#" class="link signup-link">Signup</a></span
+              >
+            </div>
+          </div>
 
-                <div id="loginMessage"></div>
+          <div id="loginMessage"></div>
+        </div>
 
-                <!-- <div class="line"></div>
+        <div class="form signup">
+          <div class="form-content">
+            <header>Signup</header>
+            <form id="signupForm" action="/signup" method="POST">
+              <div class="field input-field">
+                <input
+                  id="name"
+                  name="name"
+                  type="text"
+                  placeholder="Your Name"
+                  class="name"
+                  required
+                />
+              </div>
 
-            <div class="media-options">
-                <a href="#" class="field facebook">
-                    <i class='bx bxl-facebook-circle'></i>
-                    <span>Login with Facebook</span>
-                </a>
-                <a href="#" class="field google">
-                    <i class='bx bxl-google google-icon'></i>
-                    <span>Login with Google</span>
-                </a>
-            </div> -->
+              <div class="field input-field">
+                <input
+                  id="signupEmail"
+                  name="email"
+                  type="email"
+                  placeholder="Email"
+                  class="email"
+                  required
+                  autocomplete="off"
+                />
+              </div>
+
+              <div class="field input-field">
+                <input
+                  id="signupPassword"
+                  name="password"
+                  type="password"
+                  placeholder="Create password"
+                  class="password"
+                  required
+                />
+                <i class="bx bx-hide eye-icon"></i>
+              </div>
+
+              <div class="field input-field">
+                <input
+                  id="phone_number"
+                  name="number"
+                  type="text"
+                  placeholder="Your Phone Number"
+                  class="ph-number"
+                  required
+                />
+              </div>
+
+              <div class="field input-field">
+                <input
+                  id="address"
+                  name="address"
+                  type="text"
+                  placeholder="Your Address"
+                  class="address"
+                  required
+                />
+              </div>
+
+              <div class="field button-field">
+                <button type="submit">Signup</button>
+              </div>
+            </form>
+
+            <div id="errorMessage"></div>
+
+            <div class="form-link">
+              <span
+                >Already have an account ?
+                <a href="#" class="link login-link">Login</a></span
+              >
             </div>
 
-            <!-- Signup Form -->
-
-            <div class="form signup">
-                <div class="form-content">
-                    <header>Signup</header>
-                    <form id="signupForm" action="/signup" method="POST">
-
-                        <div class="field input-field">
-                            <input id="name" name="username" type="text" placeholder="Your Name" class="name" required>
-                        </div>
-
-                        <div class="field input-field">
-                            <input id="signupEmail" name="email" type="email" placeholder="Email" class="email" required
-                                autocomplete="off">
-                        </div>
-
-                        <div class="field input-field">
-                            <input id="signupPassword" name="password" type="password" placeholder="Create password"
-                                class="password" required>
-                            <i class='bx bx-hide eye-icon'></i>
-                        </div>
-
-                        <div class="field input-field">
-                            <input id="phone_number" name="number" type="number" placeholder="Your Phone Number"
-                                class="ph-number" required>
-                        </div>
-
-                        <div class="field input-field">
-                            <input id="address" name="address" type="text" placeholder="Your Address" class="address"
-                                required>
-                        </div>
-
-                        <div class="field button-field">
-                            <button type="submit">Signup</button>
-                        </div>
-                    </form>
-
-                    <div id="errorMessage"></div>
-                    <!-- <div id="successMessage"></div> -->
-
-                    <div class="form-link">
-                        <span>Already have an account ? <a href="#" class="link login-link">Login</a></span>
-                        <!-- <span>Already have an account? <a href="#" class="link login-link">Login</a></span> -->
-                    </div>
-
-                    <div id="signinMessage"></div>
-
-
-                </div>
-            </div>
-        </section>
+            <div id="signinMessage"></div>
+          </div>
+        </div>
+      </section>
     </div>
 
-
-    <!-- JavaScript -->
-    <!-- <script src="../assets/js/login.js"></script> -->
-    <!-- <script src="./scripts/loginscipts.js"></script>
-    <script src="./scripts/signupscript.js"></script> -->
     <script>
-        // Toggle between login and signup forms
-        const container = document.querySelector(".forms"),
-            pwShowHide = document.querySelectorAll(".eye-icon"),
-            pwFields = document.querySelectorAll(".password"),
-            signUp = document.querySelector(".signup-link"),
-            logIn = document.querySelector(".login-link");
+      document.addEventListener("DOMContentLoaded", () => {
+        const container = document.querySelector(".forms");
+        const signUpLink = document.querySelector(".signup-link");
+        const logInLink = document.querySelector(".login-link");
+        const eyeIcons = document.querySelectorAll(".eye-icon");
+        const signupForm = document.getElementById("signupForm");
+        const loginForm = document.getElementById("loginForm");
+        const signupErrorMessage = document.getElementById("errorMessage");
+        const loginMessage = document.getElementById("loginMessage");
 
         // Show/Hide password functionality
-        pwShowHide.forEach(eyeIcon => {
-            eyeIcon.addEventListener("click", () => {
-                let pwField = eyeIcon.previousElementSibling;
-
-                if (pwField.type === "password") {
-                    pwField.type = "text";
-                    eyeIcon.classList.replace("bx-hide", "bx-show");
-                } else {
-                    pwField.type = "password";
-                    eyeIcon.classList.replace("bx-show", "bx-hide");
-                }
-            });
-        });
-
-        // Switch to signup form
-        signUp.addEventListener("click", (e) => {
-            e.preventDefault();
-            container.classList.add("show-signup");
-        });
-
-        // Switch to login form  
-        logIn.addEventListener("click", (e) => {
-            e.preventDefault();
-            container.classList.remove("show-signup");
-        });
-
-        // Handle signup form submission
-        const signupForm = document.getElementById('signupForm');
-        signupForm.addEventListener('submit', async function (e) {
-            e.preventDefault();
-
-            if (!signupForm.checkValidity()) {
-                signupForm.reportValidity();
-                return;
+        eyeIcons.forEach((eyeIcon) => {
+          eyeIcon.addEventListener("click", () => {
+            const passwordField = eyeIcon.previousElementSibling;
+            if (passwordField.type === "password") {
+              passwordField.type = "text";
+              eyeIcon.classList.replace("bx-hide", "bx-show");
+            } else {
+              passwordField.type = "password";
+              eyeIcon.classList.replace("bx-show", "bx-hide");
             }
+          });
+        });
 
-            // Collect form data with explicit string conversion
-            const formData = {
-                username: String(document.getElementById('name').value.trim()),
-                email: String(document.getElementById('signupEmail').value.trim()),
-                password: String(document.getElementById('signupPassword').value),
-                number: String(document.getElementById('phone_number').value.trim()),
-                address: String(document.getElementById('address').value.trim() || '')
-            };
+        // Toggle between login and signup forms
+        signUpLink.addEventListener("click", (e) => {
+          e.preventDefault();
+          container.classList.add("show-signup");
+        });
 
-            // Debug log to see what we're sending
-            console.log('Sending data:', formData);
+        logInLink.addEventListener("click", (e) => {
+          e.preventDefault();
+          container.classList.remove("show-signup");
+        });
+
+        // Handle Signup Form Submission
+        if (signupForm) {
+          signupForm.addEventListener("submit", async (e) => {
+            e.preventDefault();
+            signupErrorMessage.textContent = "";
+
+            const name = document.getElementById("name").value.trim();
+            const email = document.getElementById("signupEmail").value.trim();
+            const password = document.getElementById("signupPassword").value.trim();
+            const phone_number = document.getElementById("phone_number").value.trim();
+            const address = document.getElementById("address").value.trim();
+
+            if (!name || !email || !password || !phone_number || !address) {
+              signupErrorMessage.textContent = "Please fill in all required fields.";
+              return;
+            }
 
             try {
-                const res = await fetch('http://localhost:4000/register', {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify(formData)
-                });
-                const result = await res.json();
-
-                if (res.ok && result.success) {
-                    // Store user information after successful registration
-                    localStorage.setItem('userToken', 'logged-in');
-                    localStorage.setItem('userInfo', JSON.stringify({
-                        username: result.user.username || formData.username,
-                        email: result.user.email || formData.email,
-                        id: result.user._id
-                    }));
-
-                    window.location.href = `./about.html?message=${encodeURIComponent(result.message || 'Signup successful! Welcome to VehiGo!')}&type=success`;
-                } else {
-                    document.getElementById('errorMessage').textContent = result.message || 'Signup failed';
-                    document.getElementById('errorMessage').className = 'error';
-                }
+              const res = await fetch("http://localhost:4000/api/auth/signup", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ name, email, password, phone_number, address, auth_provider: "email" }),
+              });
+              const result = await res.json();
+              
+              if (res.ok) {
+                localStorage.setItem("userToken", result.token);
+                localStorage.setItem("userInfo", JSON.stringify(result.user));
+                window.location.href = `./about.html?message=Signup successful! Welcome to VehiGo!&type=success`;
+              } else {
+                signupErrorMessage.textContent = result.message || "Signup failed. Please try again.";
+              }
             } catch (err) {
-                console.error('Frontend error:', err);
-                document.getElementById('errorMessage').textContent = 'Server error';
-                document.getElementById('errorMessage').className = 'error';
+              console.error("Frontend error:", err);
+              signupErrorMessage.textContent = "Error connecting to the server.";
             }
-        });
+          });
+        }
 
-        // Handle login form submission
-        const loginForm = document.getElementById('loginForm');
-        loginForm.addEventListener('submit', async function (e) {
+        // Handle Login Form Submission
+        if (loginForm) {
+          loginForm.addEventListener("submit", async (e) => {
             e.preventDefault();
+            loginMessage.textContent = "";
 
-            // Collect form data
-            const email = document.getElementById('email').value;
-            const password = document.getElementById('password').value;
+            const email = document.getElementById("email").value.trim();
+            const password = document.getElementById("password").value.trim();
+
+            if (!email || !password) {
+              loginMessage.textContent = "Please fill in all fields.";
+              return;
+            }
 
             try {
-                const res = await fetch('http://localhost:4000/login', {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    credentials: 'include',
-                    body: JSON.stringify({ email, password })
-                });
-                const result = await res.json();
+              const res = await fetch("http://localhost:4000/api/auth/login", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ email, password, auth_provider: "email" }),
+              });
+              const result = await res.json();
 
-                if (res.ok && result.success) {
-                    // Store user information for session management
-                    localStorage.setItem('userToken', 'logged-in');
-                    localStorage.setItem('userInfo', JSON.stringify({
-                        username: result.user.username || result.user.email,
-                        email: result.user.email,
-                        id: result.user._id
-                    }));
-
-                    window.location.href = `./about.html?message=${encodeURIComponent(result.message || 'Login successful')}&type=success`;
-                } else {
-                    document.getElementById('loginMessage').textContent = result.message || 'Invalid credentials';
-                    document.getElementById('loginMessage').className = 'error';
-                }
+              if (res.ok) {
+                localStorage.setItem("userToken", result.token);
+                localStorage.setItem("userInfo", JSON.stringify(result.user));
+                window.location.href = `./about.html?message=Login successful&type=success`;
+              } else {
+                loginMessage.textContent = result.message || "Invalid credentials";
+              }
             } catch (err) {
-                document.getElementById('loginMessage').textContent = 'Server error';
-                document.getElementById('loginMessage').className = 'error';
+              console.error("Frontend error:", err);
+              loginMessage.textContent = "Error connecting to server.";
             }
-        });
-
-        // Logout function
-        async function logout() {
-            try {
-                // Call backend logout endpoint
-                const res = await fetch('http://localhost:4000/logout', {
-                    method: 'GET',
-                    credentials: 'include'
-                });
-
-                const result = await res.json();
-
-                // Clear all stored user data
-                localStorage.removeItem('userToken');
-                localStorage.removeItem('userInfo');
-                sessionStorage.removeItem('userToken');
-                sessionStorage.removeItem('userInfo');
-
-                // Redirect to login page with success message
-                window.location.href = `./login.html?message=${encodeURIComponent('Logged out successfully')}&type=success`;
-            } catch (err) {
-                console.error('Logout error:', err);
-                // Even if backend call fails, clear local data
-                localStorage.removeItem('userToken');
-                localStorage.removeItem('userInfo');
-                sessionStorage.removeItem('userToken');
-                sessionStorage.removeItem('userInfo');
-
-                window.location.href = `./login.html?message=${encodeURIComponent('Logged out successfully')}&type=success`;
-            }
+          });
         }
-
-        // Make logout function globally available
-        window.logout = logout;
-
-        // Check if user is already logged in and show appropriate UI
-        function checkLoginStatus() {
-            const userToken = localStorage.getItem('userToken');
-            const userInfo = JSON.parse(localStorage.getItem('userInfo') || '{}');
-
-            if (userToken && userInfo.username) {
-                // User is logged in, you can update UI here if needed
-                console.log('User is logged in:', userInfo.username);
-
-                // Add logout button to header if it doesn't exist
-                addLogoutButtonToHeader(userInfo.username);
-            }
-        }
-
-        // Add logout button to header
-        function addLogoutButtonToHeader(username) {
-            const headerActions = document.querySelector('.header-actions');
-            if (headerActions && !document.getElementById('logoutSection')) {
-                const logoutSection = document.createElement('div');
-                logoutSection.id = 'logoutSection';
-                logoutSection.style.cssText = `
-                    display: flex;
-                    align-items: center;
-                    gap: 10px;
-                    margin-left: 10px;
-                `;
-
-                logoutSection.innerHTML = `
-                    <span style="color: #333; font-weight: 500;">Welcome, ${username}</span>
-                    <button onclick="logout()" style="
-                        background: #dc3545;
-                        color: white;
-                        border: none;
-                        padding: 8px 16px;
-                        border-radius: 4px;
-                        cursor: pointer;
-                        font-size: 14px;
-                        transition: background-color 0.3s ease;
-                    " onmouseover="this.style.backgroundColor='#c82333'" onmouseout="this.style.backgroundColor='#dc3545'">
-                        Logout
-                    </button>
-                `;
-
-                headerActions.appendChild(logoutSection);
-            }
-        }
-
-        // Initialize on page load
-        document.addEventListener('DOMContentLoaded', function () {
-            checkLoginStatus();
-        });
+      });
     </script>
-</body>
-
+  </body>
 </html>
