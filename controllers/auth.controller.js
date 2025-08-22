@@ -136,4 +136,85 @@ const logoutController = async (req, res) => {
   }
 };
 
-module.exports = { registerController, logoutController, loginController };
+const crypto = require("crypto");
+const User = require("../models/auth.model.js");
+const bcrypt = require("bcrypt");
+const jwt = require("jsonwebtoken");
+const nodemailer = require("nodemailer");
+
+// Forgot Password request (send reset link)
+const forgotPasswordController = async (req, res) => {
+    const { email } = req.body;
+    try {
+        const user = await User.findOne({ email });
+        if (!user) {
+            return res.status(404).json({ message: "User not found", success: false });
+        }
+
+        // Generate a reset token
+        const resetToken = crypto.randomBytes(32).toString("hex");
+
+        // Save token & expiry to user (valid 15 mins)
+        user.resetPasswordToken = resetToken;
+        user.resetPasswordExpire = Date.now() + 15 * 60 * 1000;
+        await user.save({ validateBeforeSave: false });
+
+        // Create reset URL
+        const resetUrl = `http://localhost:4000/auth/reset-password/${resetToken}`;
+
+        // Send email (using nodemailer)
+        const transporter = nodemailer.createTransport({
+            service: "gmail", // or SMTP config
+            auth: {
+                user: process.env.EMAIL_USER,
+                pass: process.env.EMAIL_PASS
+            }
+        });
+
+        await transporter.sendMail({
+            to: user.email,
+            subject: "Password Reset Request",
+            html: `<p>You requested to reset password.</p>
+                   <p>Click <a href="${resetUrl}">here</a> to reset password.</p>`
+        });
+
+        return res.status(200).json({ message: "Password reset link sent to email", success: true });
+    } catch (err) {
+        console.error(err);
+        return res.status(500).json({ message: "Server error", success: false });
+    }
+};
+
+// Reset Password (via Token)
+const resetPasswordController = async (req, res) => {
+    const { token } = req.params;
+    const { password } = req.body;
+
+    try {
+        const user = await User.findOne({
+            resetPasswordToken: token,
+            resetPasswordExpire: { $gt: Date.now() }
+        });
+
+        if (!user) {
+            return res.status(400).json({ message: "Invalid or expired token", success: false });
+        }
+
+        // Hash new password
+        const salt = await bcrypt.genSalt(10);
+        user.password = await bcrypt.hash(password, salt);
+
+        // Clear reset token & expiry
+        user.resetPasswordToken = undefined;
+        user.resetPasswordExpire = undefined;
+
+        await user.save();
+
+        res.status(200).json({ message: "Password reset successful!", success: true });
+    } catch (err) {
+        res.status(500).json({ message: "Server error", success: false });
+    }
+};
+
+module.exports = { registerController, loginController, logoutController, forgotPasswordController, resetPasswordController };
+

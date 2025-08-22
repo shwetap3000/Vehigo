@@ -29,7 +29,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     try {
-      const response = await fetch("http://localhost:4000/register", {
+      const response = await fetch("http://localhost:4000/api/auth/signup", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
