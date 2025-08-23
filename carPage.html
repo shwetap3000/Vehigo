@@ -4,15 +4,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="icon" href="favicon.svg">
     <title>Car Page</title>
     <link rel="stylesheet" href="./assets/css/carPage.css">
     <link rel="stylesheet" href="./assets/css/style.css">
+    <link rel="stylesheet" href="src/assets/styles/carPage.css">
+    <link rel="stylesheet" href="src/assets/styles/style.css">
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600&family=Open+Sans&display=swap"
         rel="stylesheet">
 
-    <link rel="shortcut icon" href="./favicon.svg" type="image/svg+xml">
 </head>
 
 <body>
@@ -31,11 +35,11 @@
                 <ul class="navbar-list">
 
                     <li>
-                        <a href="index.html" class="navbar-link" data-nav-link>Home</a>
+                        <a href="src/index.html" class="navbar-link" data-nav-link>Home</a>
                     </li>
 
                     <li>
-                        <a href="#featured-car" class="navbar-link" data-nav-link>Explore cars</a>
+                        <a href="featured-car.html" class="navbar-link" data-nav-link>Explore cars</a>
                     </li>
 
                     <li>
@@ -43,7 +47,7 @@
                     </li>
 
                     <li>
-                        <a href="#blog" class="navbar-link" data-nav-link>Blog</a>
+                        <a href="blog.html" class="navbar-link" data-nav-link>Blog</a>
                     </li>
 
                 </ul>
@@ -63,7 +67,7 @@
                     <span id="aria-label-txt">Explore cars</span>
                 </a>
 
-                <a href="./login.html" class="btn user-btn" aria-label="Profile">
+                <a href="./src/pages/login.html" class="btn user-btn" aria-label="Profile">
                     <ion-icon name="person-outline"></ion-icon>
                 </a>
 
@@ -79,6 +83,11 @@
     </header>
 
     <!-- !MAIN -->
+
+    <div class="car-slider">
+        <button class="car-slide-button prevbutton" onclick="prevSlide()">&#10094;</button>
+
+    <div class="car-slide-section" id="car-slide-section">
 
     <div class="mainCar">
         <div class="carPage1">
@@ -116,6 +125,218 @@
             </a>
         </div>
     </div>
+
+    <div class="mainCar">
+        <div class="carPage1">
+            <img src="./assets/images//creta.jpeg" alt="" class="carPageImage1">
+        </div>
+
+        <div class="carPage2">
+            <h1>Car Details</h1>
+            <hr>
+            <h3>Car Model : </h3>
+            <p>Hyundai Creta</p>
+            <br>
+            <h3>Car Manufactured Year: </h3>
+            <p>2022</p>
+            <br>
+            <p>5-Seater</p>
+
+            <div class="carDet">
+
+                <img class="vert-align-mid" src="https://olawebcdn.com/images/v1/highlights/ic_value_for_money.svg">
+                Value For Money
+
+                <img class="vert-align-mid" style="margin-left: 15px;"
+                    src="https://olawebcdn.com/images/v1/highlights/ic_ac.svg"> AC
+
+                <img class="vert-align-mid" style="margin-left: 15px;"
+                    src="https://olawebcdn.com/images/v1/highlights/ic_regular_hatchback.svg"> Sedan
+                <dom-repeat as="hl" style="display: none;"><template is="dom-repeat"></template></dom-repeat>
+            </div>
+
+            <a href="#featured-car" class="btn" aria-labelledby="aria-label-txt">
+                <ion-icon name="car-outline"></ion-icon>
+
+                <span id="aria-label-txt">Rent Now</span>
+            </a>
+        </div>
+    </div>
+
+
+    <div class="mainCar">
+        <div class="carPage1">
+            <img src="./assets/images/nexon.jpg" alt="" class="carPageImage1">
+        </div>
+
+        <div class="carPage2">
+            <h1>Car Details</h1>
+            <hr>
+            <h3>Car Model : </h3>
+            <p>Tata Nexon</p>
+            <br>
+            <h3>Car Manufactured Year: </h3>
+            <p>2019</p>
+            <br>
+            <p>5-Seater</p>
+
+            <div class="carDet">
+
+                <img class="vert-align-mid" src="https://olawebcdn.com/images/v1/highlights/ic_value_for_money.svg">
+                Value For Money
+
+                <img class="vert-align-mid" style="margin-left: 15px;"
+                    src="https://olawebcdn.com/images/v1/highlights/ic_ac.svg"> AC
+
+                <img class="vert-align-mid" style="margin-left: 15px;"
+                    src="https://olawebcdn.com/images/v1/highlights/ic_regular_hatchback.svg"> Sedan
+                <dom-repeat as="hl" style="display: none;"><template is="dom-repeat"></template></dom-repeat>
+            </div>
+
+            <a href="#featured-car" class="btn" aria-labelledby="aria-label-txt">
+                <ion-icon name="car-outline"></ion-icon>
+
+                <span id="aria-label-txt">Rent Now</span>
+            </a>
+        </div>
+    </div>
+
+    <div class="mainCar">
+        <div class="carPage1">
+            <img src="./assets/images/swift desire.jpg" alt="" class="carPageImage1">
+        </div>
+
+        <div class="carPage2">
+            <h1>Car Details</h1>
+            <hr>
+            <h3>Car Model : </h3>
+            <p>Swift Desire</p>
+            <br>
+            <h3>Car Manufactured Year: </h3>
+            <p>2018</p>
+            <br>
+            <p>5-Seater</p>
+
+            <div class="carDet">
+
+                <img class="vert-align-mid" src="https://olawebcdn.com/images/v1/highlights/ic_value_for_money.svg">
+                Value For Money
+
+                <img class="vert-align-mid" style="margin-left: 15px;"
+                    src="https://olawebcdn.com/images/v1/highlights/ic_ac.svg"> AC
+
+                <img class="vert-align-mid" style="margin-left: 15px;"
+                    src="https://olawebcdn.com/images/v1/highlights/ic_regular_hatchback.svg"> Sedan
+                <dom-repeat as="hl" style="display: none;"><template is="dom-repeat"></template></dom-repeat>
+            </div>
+
+            <a href="#featured-car" class="btn" aria-labelledby="aria-label-txt">
+                <ion-icon name="car-outline"></ion-icon>
+
+                <span id="aria-label-txt">Rent Now</span>
+            </a>
+        </div>
+    </div>
+
+    <div class="mainCar">
+        <div class="carPage1">
+            <img src="./assets/images/innova.jpeg" alt="" class="carPageImage1">
+        </div>
+
+        <div class="carPage2">
+            <h1>Car Details</h1>
+            <hr>
+            <h3>Car Model : </h3>
+            <p>Toyota Innova Crsyta</p>
+            <br>
+            <h3>Car Manufactured Year: </h3>
+            <p>2021</p>
+            <br>
+            <p>7-Seater</p>
+
+            <div class="carDet">
+
+                <img class="vert-align-mid" src="https://olawebcdn.com/images/v1/highlights/ic_value_for_money.svg">
+                Value For Money
+
+                <img class="vert-align-mid" style="margin-left: 15px;"
+                    src="https://olawebcdn.com/images/v1/highlights/ic_ac.svg"> AC
+
+                <img class="vert-align-mid" style="margin-left: 15px;"
+                    src="https://olawebcdn.com/images/v1/highlights/ic_regular_hatchback.svg"> Sedan
+                <dom-repeat as="hl" style="display: none;"><template is="dom-repeat"></template></dom-repeat>
+            </div>
+
+            <a href="#featured-car" class="btn" aria-labelledby="aria-label-txt">
+                <ion-icon name="car-outline"></ion-icon>
+
+                <span id="aria-label-txt">Rent Now</span>
+            </a>
+        </div>
+    </div>
+
+
+    </div>
+    <button class="car-slide-button nextbutton" onclick="nextSlide()">&#10095;</button>
+    <div class="dots" id="dots"></div>
+    </div>
+
+    <!-- Slider script -->
+
+<script>
+
+
+let currentSlide = 0;
+const slides = document.querySelectorAll('.mainCar');
+const slider = document.getElementById('car-slide-section');
+const dotsContainer = document.getElementById('dots');
+
+function updateSlider(){
+  slider.style.transform = `translateX(-${currentSlide * 100}%)` ;
+  updateDots();
+}
+
+function nextSlide(){
+  if (currentSlide < slides.length - 1) {
+     currentSlide++;
+  }
+  else{
+    currentSlide = 0;
+  }
+  updateSlider();
+}
+
+function prevSlide(){
+  if (currentSlide > 0) {
+    currentSlide--;
+  }
+  else{
+    currentSlide = slides.length - 1;
+  }
+  updateSlider();
+}
+
+function createDots(){
+  slides.forEach((_, index) =>{
+    const dot = document.createElement('button');
+    dot.addEventListener('click', () => {
+      currentSlide = index;
+      updateSlider();
+    });
+     dotsContainer.appendChild(dot);
+  });
+}
+
+function updateDots(){
+  const dots = dotsContainer.querySelectorAll('button');
+  dots.forEach((dot,index) => {
+    dot.classList.toggle('active', index==currentSlide);
+  });
+}
+
+createDots();
+updateSlider()
+</script>
 
     <!-- !REVIEWS -->
 
@@ -273,19 +494,19 @@
                     </li>
 
                     <li>
-                        <a href="#" class="footer-link">About us</a>
+                        <a href="./src/pages/about.html" class="footer-link">About us</a>
                     </li>
 
                     <li>
-                        <a href="#" class="footer-link">Pricing plans</a>
+                        <a href="./src/pages/pricing.html" class="footer-link">Pricing plans</a>
                     </li>
 
                     <li>
-                        <a href="#" class="footer-link">Our blog</a>
+                        <a href="./blog.html" class="footer-link">Our blog</a>
                     </li>
 
                     <li>
-                        <a href="#" class="footer-link">Contacts</a>
+                        <a href="./ContactUs.html" class="footer-link">Contacts</a>
                     </li>
 
                 </ul>
@@ -297,19 +518,19 @@
                     </li>
 
                     <li>
-                        <a href="#" class="footer-link">Help center</a>
+                        <a href="./src/pages/help-center.html" class="footer-link">Help center</a>
                     </li>
 
                     <li>
-                        <a href="#" class="footer-link">Ask a question</a>
+                        <a href="./src/pages/Askaques.html" class="footer-link">Ask a question</a>
                     </li>
 
                     <li>
-                        <a href="#" class="footer-link">Privacy policy</a>
+                        <a href="./privacypolicy.html" class="footer-link">Privacy policy</a>
                     </li>
 
                     <li>
-                        <a href="#" class="footer-link">Terms & conditions</a>
+                        <a href="./tandc.html" class="footer-link">Terms & conditions</a>
                     </li>
 
                 </ul>
@@ -362,15 +583,19 @@
                 </ul>
 
                 <p class="copyright">
-                    &copy; 2023 <a href="#">VehiGo</a> Contact us through
+                    &copy; <span id="copyright-year"></span> <a href="#">VehiGo</a> Contact us through
                 </p>
 
             </div>
 
         </div>
     </footer>
+    
 </body>
-
+<script>
+  const yearEl = document.getElementById('copyright-year');
+  if(yearEl) yearEl.textContent = new Date().getFullYear();
+</script>
 <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
 <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
 

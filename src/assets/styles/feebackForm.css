@@ -14,7 +14,7 @@
 .star-rating label:before {
     content: "\2605";
     margin-right: 5px;
-    font-size: 30px;
+    font-size: 25px;
     vertical-align: middle;
 }
 
@@ -38,8 +38,21 @@
 fieldset {
     margin: 20px;
     background-color: white;
-    width: 537px;
     justify-content: center;
+    border-radius: 20px;
+    padding: 50px 40px;
+    width: 100%;
+
+}
+
+legend{
+    padding: 10px;
+}
+
+div{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
 }
 
 fieldset .project {
@@ -47,18 +60,13 @@ fieldset .project {
 }
 
 label {
-    padding-left: 8px;
-}
-
-.legendary {
-    display: flex;
-    margin-top: 10px;
-    align-items: center;
+  padding-left: 8px;
 }
 
 .feedback {
-    margin-top: 120px;
+    margin-top: 60px;
 }
+
 
 input[type="submit"] {
     display: block;
@@ -73,17 +81,18 @@ input[type="submit"] {
     background-color: #0171d3;
     transition: all 0.3s ease;
     cursor: pointer;
-    border-radius: 10px;
+    border-radius: 70px;
 }
 
 input[type="text"],
 textarea {
     background-color: white;
     border: 1px solid #CACACA;
-    border-radius: 6px;
+    border-radius: 20px;
     padding-left: 10px;
     padding-right: 10px;
-    width: 500px;
+    width: 90%;
+    height: 35px;
     margin-left: 5px;
 }
 
@@ -91,10 +100,11 @@ input[type="email"],
 textarea {
     background-color: #fff;
     border: 1px solid #CACACA;
-    border-radius: 6px;
+    border-radius: 20px;
     padding-left: 10px;
     padding-right: 10px;
-    width: 500px;
+    width: 90%;
+    height: 35px;
     margin-left: 5px;
 }
 
@@ -102,10 +112,11 @@ input[type="tel"],
 textarea {
     background-color: #fff;
     border: 1px solid #CACACA;
-    border-radius: 6px;
+    border-radius: 20px;
     padding-left: 10px;
     padding-right: 10px;
-    width: 500px;
+    width: 90%;
+    height: 35px;
     margin-left: 5px;
 
 }
@@ -114,7 +125,7 @@ input[type="date"],
 textarea {
     background-color: #fff;
     border: 1px solid #CACACA;
-    border-radius: 6px;
+    border-radius: 20px;
     padding-left: 10px;
     padding-right: 10px;
     width: 160px;
@@ -127,7 +138,7 @@ input[type="options"],
 textarea {
     background-color: #fff;
     border: 1px solid #CACACA;
-    border-radius: 6px;
+    border-radius: 20px;
     padding-left: 10px;
     padding-right: 10px;
     width: 160px;
@@ -135,9 +146,28 @@ textarea {
     height: 32px
 }
 
-h4,
-h5 {
+h4{
     padding-left: 8px;
+}
+
+h5{
+    font-weight: 100;
+}
+
+.question{
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 10px;
+    align-items: baseline;
+}
+
+.rating{
+    display: grid;
+    grid-template-columns: 65% 35%;
+    margin-left: 0px;
+    align-items: center;
+    padding-left: 10px;
+    width: 100%;
 
 }
 
@@ -145,10 +175,8 @@ h5 {
     width: 150px;
     height: 35px;
     padding: 2px;
-    margin-left: 8px;
-    margin-bottom: 15px;
     border: 1px solid #cacaca;
-    border-radius: 10px;
+    border-radius: 20px;
     background-color: #fff;
     font-size: 15px;
 }
@@ -161,6 +189,30 @@ h5 {
 }
 
 #overallExperience:focus {
-    border-color: #000000;
+    border-color: #ffcaca;
     outline: none;
+}
+
+.formelements{
+    display: grid;
+    grid-template-columns: 20% 80%;
+    column-gap: 30px;
+    row-gap: 40px;
+    align-items: center;
+}
+
+.additional{
+    margin-top: 20px;
+    display: grid;
+    row-gap: 20px;
+}
+
+.additional-1{
+    grid-template-columns: 40% 60%;
+    align-items: center;
+}
+
+.additional-2{
+    display: grid;
+    grid-template-columns: 60% 40%;
 }

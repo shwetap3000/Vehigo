@@ -136,11 +136,11 @@ body {
 }
 
 .rent-btn:hover {
-  background: #1565c0;
+  background: #3983d7;
 }
 
 .buy-btn:hover {
-  background: #388e3c;
+  background: #69d26e;
 }
 
 @media (max-width: 768px) {
@@ -148,6 +148,24 @@ body {
     flex-direction: column;
     align-items: center;
   }
+}
+/* Search */
+.search-container {
+  margin: 1rem 0;
+  text-align: center;
+}
+#searchBar {
+  padding: 0.5rem;
+  width: 50%;
+  font-size: 1rem;
+}
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #007bff;
+  padding: 1rem;
+  border-radius: 8px;
 }
 
 

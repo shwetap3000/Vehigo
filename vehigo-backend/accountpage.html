@@ -472,7 +472,7 @@
         </ul>
 
         <p class="copyright">
-          &copy; 2023 <a href="#">VehiGo</a> Contact us through
+          &copy; <span id="copyright-year"></span> <a href="#">VehiGo</a> Contact us through
         </p>
 
       </div>
@@ -487,6 +487,11 @@
   <!-- 
     - custom js link
   -->
+    <script>
+  const yearEl = document.getElementById('copyright-year');
+  if(yearEl) yearEl.textContent = new Date().getFullYear();
+</script>
+
   <script src="./assets/js/script.js"></script>
 
   <!-- 

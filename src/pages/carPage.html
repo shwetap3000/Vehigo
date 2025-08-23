@@ -35,7 +35,7 @@
                     </li>
 
                     <li>
-                        <a href="#featured-car" class="navbar-link" data-nav-link>Explore cars</a>
+                        <a href="../../featured-car.html" class="navbar-link" data-nav-link>Explore cars</a>
                     </li>
 
                     <li>
@@ -43,7 +43,7 @@
                     </li>
 
                     <li>
-                        <a href="#blog" class="navbar-link" data-nav-link>Blog</a>
+                        <a href="../../blog.html" class="navbar-link" data-nav-link>Blog</a>
                     </li>
 
                 </ul>
@@ -364,7 +364,12 @@
                         </a>
                     </li>
 
-
+                    <li>
+                        <a href="#" class="social-link">
+                          <ion-icon name="logo-github"></ion-icon>
+                        </a>
+                      </li>
+          
                     <li>
                         <a href="#" class="social-link">
                             <ion-icon name="mail-outline"></ion-icon>
@@ -374,7 +379,7 @@
                 </ul>
 
                 <p class="copyright">
-                    &copy; 2023 <a href="#">VehiGo</a> Contact us through
+                    &copy; <span id="copyright-year"></span> <a href="#">VehiGo</a> Contact us through
                 </p>
 
             </div>
@@ -382,6 +387,11 @@
         </div>
     </footer>
 </body>
+
+<script>
+  const yearEl = document.getElementById('copyright-year');
+  if(yearEl) yearEl.textContent = new Date().getFullYear();
+</script>
 
 <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
 <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>

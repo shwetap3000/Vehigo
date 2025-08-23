@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Help Center | VehiGo</title>
+    <link rel="stylesheet" href="../../assets/styles/main.css">
+    <link rel="stylesheet" href="../../assets/styles/pricing-help.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        .help-hero {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 80px 0;
+            text-align: center;
+        }
+        
+        .help-hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+        
+        .help-hero p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+
+        .search-box {
+            max-width: 600px;
+            margin: 2rem auto;
+            position: relative;
+        }
+
+        .search-box input {
+            width: 100%;
+            padding: 15px 20px;
+            border: none;
+            border-radius: 50px;
+            font-size: 16px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        .search-box button {
+            position: absolute;
+            right: 5px;
+            top: 5px;
+            background: #007BFF;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 50px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header" data-header>
+        <div class="container">
+            <a href="../../index.html" class="logo">
+                <img src="../../assets/images/vehigologo.png" alt="VehiGo logo" width="160" height="50" />
+            </a>
+
+            <nav class="navbar" data-navbar>
+                <div class="navbar-top">
+                    <a href="../../index.html" class="logo">
+                        <img src="../../assets/images/vehigologo.png" alt="VehiGo logo" width="160" height="50" />
+                    </a>
+
+                    <button class="nav-close-btn" aria-label="Close menu" data-nav-toggler>
+                        <ion-icon name="close-outline" aria-hidden="true"></ion-icon>
+                    </button>
+                </div>
+
+                <ul class="navbar-list">
+                    <li><a href="../../index.html" class="navbar-link" data-nav-link>Home</a></li>
+                    <li><a href="about.html" class="navbar-link" data-nav-link>About us</a></li>
+                    <li><a href="../../blog.html" class="navbar-link" data-nav-link>Blog</a></li>
+                    <li><a href="../../ContactUs.html" class="navbar-link" data-nav-link>Contact</a></li>
+                </ul>
+            </nav>
+
+            <div class="header-action">
+                <button class="header-action-btn" aria-label="User" data-nav-toggler>
+                    <ion-icon name="person-outline" aria-hidden="true"></ion-icon>
+                </button>
+
+                <button class="header-action-btn" aria-label="Open menu" data-nav-toggler>
+                    <ion-icon name="menu-outline" aria-hidden="true"></ion-icon>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="help-hero">
+        <div class="container">
+            <h1>Help Center</h1>
+            <p>Find answers to your questions and get the support you need</p>
+            <div class="search-box">
+                <input type="text" placeholder="Search for help articles..." id="searchInput">
+                <button onclick="searchFAQ()"><i class="fas fa-search"></i></button>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Categories -->
+    <section class="help-categories">
+        <div class="container">
+            <div class="category-grid">
+                <div class="category-card" onclick="showCategory('booking')">
+                    <i class="fas fa-calendar-check"></i>
+                    <h3>Booking & Reservations</h3>
+                    <p>Learn how to book cars and manage reservations</p>
+                </div>
+                <div class="category-card" onclick="showCategory('payment')">
+                    <i class="fas fa-credit-card"></i>
+                    <h3>Payment & Billing</h3>
+                    <p>Payment methods and billing information</p>
+                </div>
+                <div class="category-card" onclick="showCategory('cancellation')">
+                    <i class="fas fa-times-circle"></i>
+                    <h3>Cancellation & Refunds</h3>
+                    <p>How to cancel bookings and get refunds</p>
+                </div>
+                <div class="category-card" onclick="showCategory('insurance')">
+                    <i class="fas fa-shield-alt"></i>
+                    <h3>Insurance & Safety</h3>
+                    <p>Insurance coverage and safety information</p>
+                </div>
+                <div class="category-card" onclick="showCategory('technical')">
+                    <i class="fas fa-tools"></i>
+                    <h3>Technical Support</h3>
+                    <p>Website and app technical issues</p>
+                </div>
+                <div class="category-card" onclick="showCategory('general')">
+                    <i class="fas fa-question-circle"></i>
+                    <h3>General Questions</h3>
+                    <p>Other frequently asked questions</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Sections -->
+    <section class="faq-section" id="faqSection">
+        <div class="container">
+            <!-- Booking FAQ -->
+            <div class="faq-category" id="booking">
+                <h2>Booking & Reservations</h2>
+                <div class="faq-list">
+                    <div class="faq-item">
+                        <div class="faq-question" onclick="toggleFAQ(this)">
+                            <h3>How do I book a car?</h3>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <p>To book a car, simply browse our available vehicles, select your preferred car, choose your rental dates and time, and complete the booking process. You can book online through our website or mobile app.</p>
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <div class="faq-question" onclick="toggleFAQ(this)">
+                            <h3>What documents do I need to rent a car?</h3>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <p>You'll need a valid driving license, government-issued ID proof (Aadhar card, PAN card, or passport), and a credit/debit card for payment. For international travelers, an international driving permit may be required.</p>
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <div class="faq-question" onclick="toggleFAQ(this)">
+                            <h3>Can I modify my booking after confirmation?</h3>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <p>Yes, you can modify your booking up to 24 hours before the rental start time. Changes are subject to availability and may incur additional charges.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Payment FAQ -->
+            <div class="faq-category" id="payment" style="display: none;">
+                <h2>Payment & Billing</h2>
+                <div class="faq-list">
+                    <div class="faq-item">
+                        <div class="faq-question" onclick="toggleFAQ(this)">
+                            <h3>What payment methods do you accept?</h3>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <p>We accept all major credit cards, debit cards, UPI payments, net banking, and digital wallets like Paytm, Google Pay, and PhonePe.</p>
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <div class="faq-question" onclick="toggleFAQ(this)">
+                            <h3>When is the payment charged?</h3>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <p>Payment is charged at the time of booking confirmation. A security deposit may be held and will be refunded after the rental period.</p>
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <div class="faq-question" onclick="toggleFAQ(this)">
+                            <h3>Are there any hidden charges?</h3>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <p>No hidden charges. All fees are clearly displayed during the booking process. Additional charges may apply for fuel, tolls, or damages.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Cancellation FAQ -->
+            <div class="faq-category" id="cancellation" style="display: none;">
+                <h2>Cancellation & Refunds</h2>
+                <div class="faq-list">
+                    <div class="faq-item">
+                        <div class="faq-question" onclick="toggleFAQ(this)">
+                            <h3>What is your cancellation policy?</h3>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <p>Free cancellation up to 24 hours before rental start time. Cancellations within 24 hours may incur a cancellation fee of 50% of the rental amount.</p>
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <div class="faq-question" onclick="toggleFAQ(this)">
+                            <h3>How long does it take to process refunds?</h3>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <p>Refunds are processed within 5-7 business days and will be credited to your original payment method.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Insurance FAQ -->
+            <div class="faq-category" id="insurance" style="display: none;">
+                <h2>Insurance & Safety</h2>
+                <div class="faq-list">
+                    <div class="faq-item">
+                        <div class="faq-question" onclick="toggleFAQ(this)">
+                            <h3>What insurance coverage is included?</h3>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <p>Basic insurance coverage is included with all rentals. This covers third-party liability and basic damage protection. Additional coverage options are available.</p>
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <div class="faq-question" onclick="toggleFAQ(this)">
+                            <h3>What happens in case of an accident?</h3>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <p>In case of an accident, immediately contact our 24/7 support team. Document the incident with photos and police report if required. Our insurance team will guide you through the process.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Technical FAQ -->
+            <div class="faq-category" id="technical" style="display: none;">
+                <h2>Technical Support</h2>
+                <div class="faq-list">
+                    <div class="faq-item">
+                        <div class="faq-question" onclick="toggleFAQ(this)">
+                            <h3>The website is not loading properly</h3>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <p>Try clearing your browser cache, updating your browser, or using a different browser. If the issue persists, contact our technical support team.</p>
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <div class="faq-question" onclick="toggleFAQ(this)">
+                            <h3>I can't complete my booking</h3>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <p>Check your internet connection and ensure all required fields are filled. If the problem continues, try refreshing the page or contact our support team.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- General FAQ -->
+            <div class="faq-category" id="general" style="display: none;">
+                <h2>General Questions</h2>
+                <div class="faq-list">
+                    <div class="faq-item">
+                        <div class="faq-question" onclick="toggleFAQ(this)">
+                            <h3>What are your operating hours?</h3>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <p>Our customer support is available 24/7. Car pickup and drop-off services are available from 6:00 AM to 10:00 PM daily.</p>
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <div class="faq-question" onclick="toggleFAQ(this)">
+                            <h3>Do you offer airport pickup/drop?</h3>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <p>Yes, we offer airport pickup and drop services at major airports in Madhya Pradesh. Please book this service in advance.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Support -->
+    <section class="contact-support">
+        <div class="container">
+            <h2>Still Need Help?</h2>
+            <p>Our support team is here to help you 24/7</p>
+            <div class="support-options">
+                <div class="support-card">
+                    <i class="fas fa-phone"></i>
+                    <h3>Call Us</h3>
+                    <p>1800-100-100</p>
+                    <p>Mon - Sat: 9:00 AM - 6:00 PM</p>
+                </div>
+                <div class="support-card">
+                    <i class="fas fa-envelope"></i>
+                    <h3>Email Support</h3>
+                    <p>support@vehigo.com</p>
+                    <p>Response within 2 hours</p>
+                </div>
+                <div class="support-card">
+                    <i class="fas fa-comments"></i>
+                    <h3>Live Chat</h3>
+                    <p>Available 24/7</p>
+                    <p>Click the chat icon below</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container" style="max-width: 1200px; margin: auto;">
+            <!-- Top Section -->
+            <div class="footer-top" style="display: flex; flex-wrap: wrap; justify-content: space-between; gap: 2.5rem;">
+                <!-- Brand Section -->
+                <div class="footer-brand" style="flex: 1 1 300px;">
+                    <a href="../../index.html" class="logo">
+                        <img src="../../assets/images/vehigologo.png" alt="VehiGo logo" style="width: 160px;" />
+                    </a>
+                    <p class="footer-text" style="margin-top: 1rem; line-height: 1.6;">
+                        🚗 <strong>Find affordable rental cars across Madhya Pradesh!</strong><br>
+                        Choose from a wide range of vehicles, or rent out your own when not in use. We make car rental easy, accessible, and efficient for everyone.
+                    </p>
+                </div>
+
+                <!-- Company Section -->
+                <ul class="footer-list">
+                    <li><p class="footer-list-title">Company</p></li>
+                    <li><a href="about.html" class="footer-link">About us</a></li>
+                    <li><a href="pricing.html" class="footer-link">Pricing plans</a></li>
+                    <li><a href="../../blog.html" class="footer-link">Our blog</a></li>
+                    <li><a href="../../ContactUs.html" class="footer-link">Contact us</a></li>
+                </ul>
+
+                <!-- Support Section -->
+                <ul class="footer-list">
+                    <li><p class="footer-list-title">Support</p></li>
+                    <li><a href="help-center.html" class="footer-link">Help center</a></li>
+                    <li><a href="Askaques.html" class="footer-link">Ask a question</a></li>
+                    <li><a href="../../privacypolicy.html" class="footer-link">Privacy policy</a></li>
+                    <li><a href="tandc.html" class="footer-link">Terms & conditions</a></li>
+                </ul>
+            </div>
+
+            <!-- Bottom Section -->
+            <div class="footer-bottom">
+                <div class="social-icons" style="text-align: center; margin-bottom: 10px;">
+                    <a href="https://www.linkedin.com" target="_blank" style="margin: 0 10px; font-size: 24px; color: #0077b5;"><i class="fab fa-linkedin"></i></a>
+                    <a href="https://www.twitter.com" target="_blank" style="margin: 0 10px; font-size: 24px; color: #1da1f2;"><i class="fab fa-twitter"></i></a>
+                    <a href="https://www.instagram.com" target="_blank" style="margin: 0 10px; font-size: 24px; color: #e1306c;"><i class="fab fa-instagram"></i></a>
+                    <a href="https://www.facebook.com" target="_blank" style="margin: 0 10px; font-size: 24px; color: #3b5998;"><i class="fab fa-facebook"></i></a>
+                </div>
+                <p style="text-align: center; font-size: 14px; color: #333;">© <span id="copyright-year">2023</span> Vehigo — All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../../assets/js/script.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            var yearSpan = document.getElementById('copyright-year');
+            if (yearSpan) {
+                yearSpan.textContent = new Date().getFullYear();
+            }
+        });
+
+        function showCategory(category) {
+            // Hide all categories
+            const categories = document.querySelectorAll('.faq-category');
+            categories.forEach(cat => cat.style.display = 'none');
+            
+            // Show selected category
+            document.getElementById(category).style.display = 'block';
+        }
+
+        function toggleFAQ(element) {
+            const answer = element.nextElementSibling;
+            const icon = element.querySelector('i');
+            
+            if (answer.style.display === 'block') {
+                answer.style.display = 'none';
+                icon.className = 'fas fa-chevron-down';
+            } else {
+                answer.style.display = 'block';
+                icon.className = 'fas fa-chevron-up';
+            }
+        }
+
+        function searchFAQ() {
+            const searchTerm = document.getElementById('searchInput').value.toLowerCase();
+            const faqItems = document.querySelectorAll('.faq-item');
+            
+            faqItems.forEach(item => {
+                const question = item.querySelector('h3').textContent.toLowerCase();
+                const answer = item.querySelector('p').textContent.toLowerCase();
+                
+                if (question.includes(searchTerm) || answer.includes(searchTerm)) {
+                    item.style.display = 'block';
+                    item.closest('.faq-category').style.display = 'block';
+                } else {
+                    item.style.display = 'none';
+                }
+            });
+        }
+    </script>
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+</body>
+</html> 

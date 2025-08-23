@@ -1,105 +1,770 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Buy Car</title>
-    <link rel="stylesheet" href="./styles/buyscar.css" />
-     <script src="./scripts/buycar.js" defer></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="icon" href="favicon.svg">
+    <title>Vehigo - Buy Cars</title>
+    <link rel="stylesheet" href="./assets/css/style.css" />
+    <link rel="stylesheet" href="src/assets/styles/style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600&family=Open+Sans&display=swap"
+        rel="stylesheet" />
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Nunito', sans-serif;
+            background: linear-gradient(135deg, #e0eafc 0%, #cfdef3 100%), url('./assets/images/car-bg.jpg') center/cover no-repeat;
+            min-height: 100vh;
+            color: #333;
+        }
+
+        body.dark-mode {
+            background: linear-gradient(135deg, #232526 0%, #414345 100%), url('./assets/images/car-bg.jpg') center/cover no-repeat;
+            color: #fff;
+        }
+
+        .buy-container {
+            max-width: 1400px;
+            margin: 70px auto;
+            padding: 40px 20px;
+        }
+
+        .buy-header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .buy-header h1 {
+            font-size: 3rem;
+            color: #1565c0;
+            margin-bottom: 10px;
+        }
+
+        .buy-header p {
+            font-size: 1.2rem;
+            color: #666;
+        }
+
+        body.dark-mode .buy-header h1 {
+            color: #4299e1;
+        }
+
+        body.dark-mode .buy-header p {
+            color: #e2e8f0;
+        }
+
+        .filters-section {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            padding: 30px;
+            margin-bottom: 40px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            backdrop-filter: blur(10px);
+        }
+
+        body.dark-mode .filters-section {
+            background: rgba(45, 45, 45, 0.95);
+        }
+
+        .filters-row {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+
+        .filter-group {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .filter-group label {
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: #333;
+        }
+
+        body.dark-mode .filter-group label {
+            color: #e2e8f0;
+        }
+
+        .filter-group input,
+        .filter-group select {
+            padding: 12px 16px;
+            border: 2px solid #e1e5e9;
+            border-radius: 8px;
+            font-size: 16px;
+            background: #f8f9fa;
+        }
+
+        body.dark-mode .filter-group input,
+        body.dark-mode .filter-group select {
+            background: rgba(55, 55, 55, 0.8);
+            border-color: rgba(255, 255, 255, 0.2);
+            color: #fff;
+        }
+
+        .search-btn {
+            background: linear-gradient(135deg, #1565c0, #1976d2);
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .search-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(21, 101, 192, 0.3);
+        }
+
+        .cars-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .car-card {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+        }
+
+        body.dark-mode .car-card {
+            background: rgba(45, 45, 45, 0.95);
+        }
+
+        .car-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+        }
+
+        .car-image {
+            width: 100%;
+            height: 200px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 3rem;
+        }
+
+        .car-details {
+            padding: 25px;
+        }
+
+        .car-title {
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin-bottom: 10px;
+            color: #333;
+        }
+
+        body.dark-mode .car-title {
+            color: #e2e8f0;
+        }
+
+        .car-price {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: #1565c0;
+            margin-bottom: 15px;
+        }
+
+        body.dark-mode .car-price {
+            color: #4299e1;
+        }
+
+        .car-info {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        .info-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 14px;
+            color: #666;
+        }
+
+        body.dark-mode .info-item {
+            color: #a0aec0;
+        }
+
+        .car-description {
+            color: #666;
+            line-height: 1.6;
+            margin-bottom: 20px;
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+
+        body.dark-mode .car-description {
+            color: #a0aec0;
+        }
+
+        .car-actions {
+            display: flex;
+            gap: 10px;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #1565c0, #1976d2);
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 8px;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            flex: 1;
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: #1565c0;
+            border: 2px solid #1565c0;
+            padding: 10px 18px;
+            border-radius: 8px;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        body.dark-mode .btn-secondary {
+            color: #4299e1;
+            border-color: #4299e1;
+        }
+
+        .btn-primary:hover,
+        .btn-secondary:hover {
+            transform: translateY(-2px);
+        }
+
+        .no-cars {
+            text-align: center;
+            padding: 60px 20px;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            margin-top: 40px;
+        }
+
+        body.dark-mode .no-cars {
+            background: rgba(45, 45, 45, 0.95);
+        }
+
+        .no-cars h3 {
+            font-size: 2rem;
+            color: #666;
+            margin-bottom: 20px;
+        }
+
+        body.dark-mode .no-cars h3 {
+            color: #a0aec0;
+        }
+
+        .chat-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 1000;
+        }
+
+        .chat-content {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: white;
+            border-radius: 20px;
+            padding: 30px;
+            width: 90%;
+            max-width: 500px;
+            max-height: 80vh;
+            overflow-y: auto;
+        }
+
+        body.dark-mode .chat-content {
+            background: #232526;
+            color: #fff;
+        }
+
+        .chat-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid #e1e5e9;
+        }
+
+        .close-chat {
+            background: none;
+            border: none;
+            font-size: 24px;
+            cursor: pointer;
+            color: #666;
+        }
+
+        .chat-messages {
+            max-height: 300px;
+            overflow-y: auto;
+            margin-bottom: 20px;
+        }
+
+        .message {
+            margin-bottom: 15px;
+            padding: 10px 15px;
+            border-radius: 10px;
+            max-width: 80%;
+        }
+
+        .message.sent {
+            background: #1565c0;
+            color: white;
+            margin-left: auto;
+        }
+
+        .message.received {
+            background: #f1f3f4;
+            color: #333;
+        }
+
+        body.dark-mode .message.received {
+            background: #374151;
+            color: #e2e8f0;
+        }
+
+        .chat-input {
+            display: flex;
+            gap: 10px;
+        }
+
+        .chat-input input {
+            flex: 1;
+            padding: 12px;
+            border: 2px solid #e1e5e9;
+            border-radius: 8px;
+            font-size: 16px;
+        }
+
+        body.dark-mode .chat-input input {
+            background: rgba(55, 55, 55, 0.8);
+            border-color: rgba(255, 255, 255, 0.2);
+            color: #fff;
+        }
+
+        .send-btn {
+            background: #1565c0;
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 8px;
+            cursor: pointer;
+        }
+    </style>
 </head>
+
 <body>
+    <!-- Header -->
+    <header class="header" data-header>
+        <div class="container">
+            <div class="overlay" data-overlay></div>
+            <a href="index.html" class="logo">
+                <img src="./assets/images/vehigologo.png" alt="VehiGo logo" />
+            </a>
+            <nav class="navbar" data-navbar>
+                <ul class="navbar-list">
+                    <li><a href="index.html" class="navbar-link" data-nav-link>Home</a></li>
+                    <li><a href="featured-car.html" class="navbar-link" data-nav-link>Explore cars</a></li>
+                    <li><a href="#" class="navbar-link" data-nav-link>About us</a></li>
+                    <li><a href="blog.html" class="navbar-link" data-nav-link>Blog</a></li>
+                    <li><a href="offline.html" class="navbar-link" data-nav-link>Offline Centers</a></li>
+                    <li><a href="rentcar.html" class="navbar-link" data-nav-link>Rent Your Car</a></li>
+                </ul>
+            </nav>
+            <div class="header-actions">
+                <div class="header-contact">
+                    <a href="tel:1800100100" class="contact-link">1800-100-100</a>
+                    <span class="contact-time">Mon - Sat: 9:00 am - 6:00 pm</span>
+                </div>
+                <label class="theme-switch" for="theme-toggle">
+                    <input type="checkbox" id="theme-toggle" />
+                    <span class="slider">
+                        <span class="icon sun" aria-label="Light mode">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="orange" stroke-width="2"
+                                stroke-linecap="round" stroke-linejoin="round">
+                                <circle cx="12" cy="12" r="5" />
+                                <line x1="12" y1="1" x2="12" y2="3" />
+                                <line x1="12" y1="21" x2="12" y2="23" />
+                                <line x1="4.22" y1="4.22" x2="5.64" y2="5.64" />
+                                <line x1="18.36" y1="18.36" x2="19.78" y2="19.78" />
+                                <line x1="1" y1="12" x2="3" y2="12" />
+                                <line x1="21" y1="12" x2="23" y2="12" />
+                                <line x1="4.22" y1="19.78" x2="5.64" y2="18.36" />
+                                <line x1="18.36" y1="5.64" x2="19.78" y2="4.22" />
+                            </svg>
+                        </span>
+                        <span class="icon moon" aria-label="Dark mode">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#f5f5f5"
+                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M21 12.79A9 9 0 1 1 11.21 3a7 7 0 0 0 9.79 9.79z" />
+                            </svg>
+                        </span>
+                    </span>
+                </label>
+                <a href="#featured-car" class="btn" aria-labelledby="aria-label-txt">
+                    <ion-icon name="car-outline"></ion-icon>
+                    <span id="aria-label-txt">Explore cars</span>
+                </a>
+                <a href="./src/pages/login.html" class="btn user-btn" aria-label="Profile">
+                    <ion-icon name="person-outline"></ion-icon>
+                </a>
+                <button class="nav-toggle-btn" data-nav-toggle-btn aria-label="Toggle Menu">
+                    <span class="one"></span>
+                    <span class="two"></span>
+                    <span class="three"></span>
+                </button>
+            </div>
+        </div>
+    </header>
 
+    <div class="buy-container">
+        <div class="buy-header">
+            <h1>Buy Used Cars</h1>
+            <p>Find your perfect car from verified sellers</p>
+        </div>
 
-   <nav class="navbar" data-navbar>
-          <ul class="navbar-list">
-            <li>
-              <a href="index.html" class="navbar-link" data-nav-link>Home</a>
-            </li>
+        <!-- Filters Section -->
+        <div class="filters-section">
+            <div class="filters-row">
+                <div class="filter-group">
+                    <label for="searchBrand">Brand</label>
+                    <select id="searchBrand">
+                        <option value="">All Brands</option>
+                        <option value="maruti">Maruti Suzuki</option>
+                        <option value="hyundai">Hyundai</option>
+                        <option value="honda">Honda</option>
+                        <option value="toyota">Toyota</option>
+                        <option value="mahindra">Mahindra</option>
+                        <option value="tata">Tata</option>
+                        <option value="kia">Kia</option>
+                        <option value="mg">MG</option>
+                    </select>
+                </div>
+                <div class="filter-group">
+                    <label for="searchPrice">Max Price</label>
+                    <select id="searchPrice">
+                        <option value="">Any Price</option>
+                        <option value="200000">Under ₹2 Lakh</option>
+                        <option value="500000">Under ₹5 Lakh</option>
+                        <option value="1000000">Under ₹10 Lakh</option>
+                        <option value="2000000">Under ₹20 Lakh</option>
+                    </select>
+                </div>
+                <div class="filter-group">
+                    <label for="searchYear">Year</label>
+                    <select id="searchYear">
+                        <option value="">Any Year</option>
+                        <option value="2024">2024</option>
+                        <option value="2023">2023</option>
+                        <option value="2022">2022</option>
+                        <option value="2021">2021</option>
+                        <option value="2020">2020</option>
+                        <option value="2019">2019</option>
+                        <option value="2018">2018</option>
+                        <option value="2017">2017</option>
+                    </select>
+                </div>
+                <div class="filter-group">
+                    <label for="searchFuel">Fuel Type</label>
+                    <select id="searchFuel">
+                        <option value="">Any Fuel</option>
+                        <option value="petrol">Petrol</option>
+                        <option value="diesel">Diesel</option>
+                        <option value="cng">CNG</option>
+                        <option value="electric">Electric</option>
+                        <option value="hybrid">Hybrid</option>
+                    </select>
+                </div>
+            </div>
+            <button class="search-btn" onclick="filterCars()">Search Cars</button>
+        </div>
 
-            <li>
-              <a href="ContactUs.html" class="navbar-link" data-nav-link
-                >Contact US</a
-              >
-            </li>
+        <!-- Cars Grid -->
+        <div id="carsGrid" class="cars-grid">
+            <!-- Cars will be loaded here -->
+        </div>
 
-            <li>
-              <a href="login.html" class="navbar-link" data-nav-link>Login in</a>
-            </li>
-
-            <li>
-              <a href="tandc.html" class="navbar-link" data-nav-link>Terms and Conditions</a>
-            </li>
-
-            <li>
-              <a href="offline.html" class="navbar-link" data-nav-link>Offline Centers</a>
-            </li>
-
-             <li>
-              <a href="rentcar.html" class="navbar-link" data-nav-link>Rent Your Car</a>
-            </li>
-
-     <section class="featured-section">
-    <div class="section-header">
-      <h1>Available cars</h1>
-      <a href="#" class="view-more">View more →</a>
+        <!-- No Cars Message -->
+        <div id="noCars" class="no-cars" style="display: none;">
+            <h3>No cars available</h3>
+            <p>Try adjusting your filters or check back later for new listings.</p>
+        </div>
     </div>
 
-    <div class="car-cards">
-      <!-- Card 1 -->
-      <div class="car-card">
-        <img src="./images/car-1.jpg" alt="Hyundai Creta">
-        <div class="car-info">
-          <h2>Hyundai Creta</h2>
-          <p><i class="fas fa-users" title="Seating Capacity"></i> 5 People</p>
-          <p><i class="fas fa-gas-pump" title="Fuel Type"></i> Petrol</p>
-          <p><i class="fas fa-road" title="Mileage"></i> 17.2km / 1-litre</p>
-          <p><i class="fas fa-cogs" title="Transmission"></i> Manual</p>
-          <span class="car-year">2022</span>
-          <div class="price">Original :<strike><I> ₹830000</I></strike><br> Sale Price : ₹730000<br> </div>
+    <!-- Chat Modal -->
+    <div id="chatModal" class="chat-modal">
+        <div class="chat-content">
+            <div class="chat-header">
+                <h3 id="chatTitle">Chat with Seller</h3>
+                <button class="close-chat" onclick="closeChat()">&times;</button>
+            </div>
+            <div id="chatMessages" class="chat-messages">
+                <!-- Messages will appear here -->
+            </div>
+            <div class="chat-input">
+                <input type="text" id="messageInput" placeholder="Type your message..."
+                    onkeypress="sendMessageOnEnter(event)">
+                <button class="send-btn" onclick="sendMessage()">Send</button>
+            </div>
         </div>
-        <div class="buttons">
-          <button class="rent-btn">Rent now</button>
-          <button class="buy-btn">Buy Car</button>
-        </div>
-      </div>
-
-      <!-- Card 2 -->
-      <div class="car-card">
-        <img src="./images/car-2.jpg" alt="Tata Nexon">
-        <div class="car-info">
-          <h2>Tata Nexon</h2>
-          <p><i class="fas fa-users"></i> 5 People</p>
-          <p><i class="fas fa-gas-pump"></i> Petrol</p>
-          <p><i class="fas fa-road"></i> 17.4km / 1-litre</p>
-          <p><i class="fas fa-cogs"></i> Manual</p>
-          <span class="car-year">2019</span>
-          <div class="price">Original :<strike><I> ₹103000</I></strike><br> Sale Price : ₹893000<br> </div>
-        </div>
-        <div class="buttons">
-          <button class="rent-btn">Rent now</button>
-          <button class="buy-btn">Buy Car</button>
-        </div>
-      </div>
-
-      <!-- Card 3 -->
-      <div class="car-card">
-        <img src="./images/car-3.jpg" alt="Swift Desire">
-        <div class="car-info">
-          <h2>Swift Desire</h2>
-          <p><i class="fas fa-users"></i> 5 People</p>
-          <p><i class="fas fa-gas-pump"></i> Petrol</p>
-          <p><i class="fas fa-road"></i> 23.3km / 1-litre</p>
-          <p><i class="fas fa-cogs"></i> Automatic</p>
-          <span class="car-year">2018</span>
-          <div class="price">Original :<strike><I> ₹120000</I></strike><br> Sale Price : ₹900000<br></div>
-        </div>
-        <div class="buttons">
-          <!-- <button class="rent-btn">Rent now</button> -->
-          <button class="buy-btn">Buy Car</button>
-        </div>
-      </div>
     </div>
-  </section>
+
+    <script>
+        // Dark mode toggle
+        document.addEventListener('DOMContentLoaded', function () {
+            const themeToggle = document.getElementById('theme-toggle');
+            if (themeToggle) {
+                if (localStorage.getItem('theme') === 'dark') {
+                    document.body.classList.add('dark-mode');
+                    themeToggle.checked = true;
+                }
+                themeToggle.addEventListener('change', function () {
+                    if (this.checked) {
+                        document.body.classList.add('dark-mode');
+                        localStorage.setItem('theme', 'dark');
+                    } else {
+                        document.body.classList.remove('dark-mode');
+                        localStorage.setItem('theme', 'light');
+                    }
+                });
+            }
+
+            // Load cars on page load
+            loadCars();
+        });
+
+        // Load cars from localStorage
+        function loadCars() {
+            const cars = JSON.parse(localStorage.getItem('vehigoCarsForSale') || '[]');
+            const carsGrid = document.getElementById('carsGrid');
+            const noCars = document.getElementById('noCars');
+
+            if (cars.length === 0) {
+                carsGrid.style.display = 'none';
+                noCars.style.display = 'block';
+                return;
+            }
+
+            carsGrid.style.display = 'grid';
+            noCars.style.display = 'none';
+            carsGrid.innerHTML = '';
+
+            cars.forEach(car => {
+                if (car.status === 'available') {
+                    const carCard = createCarCard(car);
+                    carsGrid.appendChild(carCard);
+                }
+            });
+        }
+
+        // Create car card
+        function createCarCard(car) {
+            const card = document.createElement('div');
+            card.className = 'car-card';
+            card.innerHTML = `
+                <div class="car-image">
+                    🚗
+                </div>
+                <div class="car-details">
+                    <div class="car-title">${car.brand} ${car.model}</div>
+                    <div class="car-price">${car.estimatedPrice}</div>
+                    <div class="car-info">
+                        <div class="info-item">
+                            <ion-icon name="calendar-outline"></ion-icon>
+                            <span>${car.year}</span>
+                        </div>
+                        <div class="info-item">
+                            <ion-icon name="speedometer-outline"></ion-icon>
+                            <span>${car.kms} km</span>
+                        </div>
+                        <div class="info-item">
+                            <ion-icon name="water-outline"></ion-icon>
+                            <span>${car.fuel}</span>
+                        </div>
+                        <div class="info-item">
+                            <ion-icon name="settings-outline"></ion-icon>
+                            <span>${car.transmission}</span>
+                        </div>
+                    </div>
+                    <div class="car-description">${car.description}</div>
+                    <div class="car-actions">
+                        <button class="btn-primary" onclick="contactSeller('${car.id}', '${car.sellerName}')">Contact Seller</button>
+                        <button class="btn-secondary" onclick="viewDetails('${car.id}')">View Details</button>
+    </div>
+  </div>
+            `;
+            return card;
+        }
+
+        // Filter cars
+        function filterCars() {
+            const brand = document.getElementById('searchBrand').value;
+            const price = document.getElementById('searchPrice').value;
+            const year = document.getElementById('searchYear').value;
+            const fuel = document.getElementById('searchFuel').value;
+
+            const cars = JSON.parse(localStorage.getItem('vehigoCarsForSale') || '[]');
+            const filteredCars = cars.filter(car => {
+                if (car.status !== 'available') return false;
+                if (brand && car.brand !== brand) return false;
+                if (year && car.year !== year) return false;
+                if (fuel && car.fuel !== fuel) return false;
+                if (price) {
+                    const carPrice = parseInt(car.estimatedPrice.replace(/[^\d]/g, ''));
+                    if (carPrice > parseInt(price)) return false;
+                }
+                return true;
+            });
+
+            displayFilteredCars(filteredCars);
+        }
+
+        // Display filtered cars
+        function displayFilteredCars(cars) {
+            const carsGrid = document.getElementById('carsGrid');
+            const noCars = document.getElementById('noCars');
+
+            if (cars.length === 0) {
+                carsGrid.style.display = 'none';
+                noCars.style.display = 'block';
+                return;
+            }
+
+            carsGrid.style.display = 'grid';
+            noCars.style.display = 'none';
+            carsGrid.innerHTML = '';
+
+            cars.forEach(car => {
+                const carCard = createCarCard(car);
+                carsGrid.appendChild(carCard);
+            });
+        }
+
+        // Contact seller (open chat)
+        function contactSeller(carId, sellerName) {
+            const chatModal = document.getElementById('chatModal');
+            const chatTitle = document.getElementById('chatTitle');
+            const chatMessages = document.getElementById('chatMessages');
+
+            chatTitle.textContent = `Chat with ${sellerName}`;
+            chatMessages.innerHTML = `
+                <div class="message received">
+                    <strong>${sellerName}:</strong> Hi! I'm interested in your car. Is it still available?
+                </div>
+            `;
+
+            chatModal.style.display = 'block';
+
+            // Store current chat info
+            localStorage.setItem('currentChat', JSON.stringify({
+                carId: carId,
+                sellerName: sellerName
+            }));
+        }
+
+        // Close chat
+        function closeChat() {
+            document.getElementById('chatModal').style.display = 'none';
+        }
+
+        // Send message
+        function sendMessage() {
+            const messageInput = document.getElementById('messageInput');
+            const message = messageInput.value.trim();
+
+            if (message) {
+                const chatMessages = document.getElementById('chatMessages');
+                const currentChat = JSON.parse(localStorage.getItem('currentChat') || '{}');
+
+                chatMessages.innerHTML += `
+                    <div class="message sent">
+                        <strong>You:</strong> ${message}
+                    </div>
+                `;
+
+                // Simulate seller response
+                setTimeout(() => {
+                    chatMessages.innerHTML += `
+                        <div class="message received">
+                            <strong>${currentChat.sellerName}:</strong> Thanks for your interest! Yes, the car is still available. Would you like to schedule a viewing?
+                        </div>
+                    `;
+                    chatMessages.scrollTop = chatMessages.scrollHeight;
+                }, 1000);
+
+                messageInput.value = '';
+                chatMessages.scrollTop = chatMessages.scrollHeight;
+            }
+        }
+
+        // Send message on Enter key
+        function sendMessageOnEnter(event) {
+            if (event.key === 'Enter') {
+                sendMessage();
+            }
+        }
+
+        // View car details
+        function viewDetails(carId) {
+            const cars = JSON.parse(localStorage.getItem('vehigoCarsForSale') || '[]');
+            const car = cars.find(c => c.id == carId);
+
+            if (car) {
+                alert(`Car Details:\n\nBrand: ${car.brand}\nModel: ${car.model}\nYear: ${car.year}\nFuel: ${car.fuel}\nTransmission: ${car.transmission}\nKilometers: ${car.kms}\nPrice: ${car.estimatedPrice}\n\nDescription: ${car.description}`);
+            }
+        }
+
+        // Close chat when clicking outside
+        window.onclick = function (event) {
+            const chatModal = document.getElementById('chatModal');
+            if (event.target === chatModal) {
+                closeChat();
+            }
+        }
+    </script>
+    <script src="./assets/js/script.js"></script>
 </body>
+
 </html>
