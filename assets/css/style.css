@@ -506,6 +506,7 @@ a {
   box-shadow: var(--shadow-1);
   visibility: hidden;
   transition: 0.25s cubic-bezier(0.51, 0.03, 0.64, 0.28);
+  text-align: left;
 }
 
 .navbar.active {
@@ -1622,7 +1623,9 @@ font-weight: bolder;
   .nav-toggle-btn {
     display: none;
   }
-  .navbar,
+  .navbar{
+    background-color: white;
+  }
   .navbar.active {
     all: unset;
   }
