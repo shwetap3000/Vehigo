@@ -709,6 +709,12 @@
           © <span id="copyright-year">2023</span> Vehigo — All rights
           reserved.
         </p>
+
+        <!-- logic for dynamic year -->
+        <script>
+          document.getElementById("copyright-year").textContent = new Date().getFullYear();
+        </script>
+        
       </div>
     </div>
   </footer>
