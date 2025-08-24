@@ -4,6 +4,12 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Ask a Question - Car Rental</title>
+harshmain1
+
+   <link rel="stylesheet" href="../assets/styles/style.css">
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+ main
   <style>
     /* Global Reset & Base */
     * {
@@ -14,7 +20,7 @@
     body {
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       line-height: 1.6;
-      background-color: #f0f4f8;
+      background-color: hsl(204, 91%, 53%);
       color: #333;
       overflow-x: hidden;
       animation: fadeInBody 1s ease-in;
@@ -25,17 +31,6 @@
       to { opacity: 1; }
     }
 
-    /* Header */
-    .heading {
-      margin-top: 0;
-      background-color: hsl(204, 91%, 53%);
-      border-radius: 0 0 20px 20px;
-      color: #fff;
-      text-align: center;
-      padding: 30px 20px;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-      animation: slideDown 1s ease-out;
-    }
 
     @keyframes slideDown {
       from { transform: translateY(-100px); opacity: 0; }
@@ -44,6 +39,8 @@
 
     h1 {
       font-size: 2.2em;
+      text-align: center;
+      color: #fff;
     }
 
     main {
@@ -51,7 +48,7 @@
       margin: 30px auto;
       background-color: #fff;
       padding: 30px 40px;
-      border-radius: 10px;
+      border-radius: 20px;
       box-shadow: 0 10px 20px rgba(0,0,0,0.1);
       animation: fadeInForm 1.3s ease;
     }
@@ -63,7 +60,7 @@
 
     h2 {
       font-size: 1.5em;
-      margin-bottom: 20px;
+      margin-bottom: 30px;
       color: hsl(204, 91%, 53%);
       text-align: center;
     }
@@ -82,9 +79,14 @@
       padding: 12px;
       margin-bottom: 20px;
       border: 1px solid hsl(204, 91%, 80%);
-      border-radius: 8px;
+      border-radius: 15px;
       font-size: 1em;
       transition: border-color 0.3s, box-shadow 0.3s;
+    }
+
+    form input[type="text"],
+    form input[type="email"]{
+      border-radius: 30px;
     }
 
     form input:focus,
@@ -104,10 +106,11 @@
       color: #fff;
       padding: 12px 25px;
       border: none;
-      border-radius: 8px;
+      border-radius: 30px;
       font-size: 1em;
       cursor: pointer;
       transition: background-color 0.3s ease, transform 0.2s;
+      text-align: center;
     }
 
     form button:hover {
@@ -115,11 +118,15 @@
       transform: scale(1.05);
     }
 
+    button[type="submit"] {
+      margin: auto;
+    }
+
     footer {
       margin-top: 40px;
       text-align: center;
       font-size: 0.9em;
-      color: #666;
+      color: #ffffff;
       padding: 20px 10px;
     }
 
@@ -140,22 +147,68 @@
     }
   </style>
 </head>
+
 <body>
-  <header class="heading">
-    <h1>Ask a Question</h1>
-    <!-- Theme Toggle Switch with SVG icons -->
-    <label class="theme-switch" for="theme-toggle">
-      <input type="checkbox" id="theme-toggle" />
-      <span class="slider">
-        <span class="icon sun" aria-label="Light mode">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="orange" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
-        </span>
-        <span class="icon moon" aria-label="Dark mode">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#f5f5f5" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3a7 7 0 0 0 9.79 9.79z"/></svg>
-        </span>
-      </span>
-    </label>
+    <header class="header" data-header>
+    <div class="container">
+
+      <div class="overlay" data-overlay></div>
+
+      <a href="index.html" class="logo">
+        <img src="../assets/images/vehigologo.png" alt="VehiGo logo">
+      </a>
+
+<nav class="navbar" data-navbar>
+  <ul class="navbar-list">
+
+    <li>
+      <a href="/src/index.html" class="navbar-link" data-nav-link>Home</a>
+    </li>
+
+    <li>
+      <a href="../../featured-car.html" class="navbar-link" data-nav-link>Explore cars</a>
+    </li>
+
+    <li>
+      <a href="./about.html" class="navbar-link" data-nav-link>About us</a>
+    </li>
+
+    <li>
+      <a href="../../blog.html" class="navbar-link" data-nav-link>Blog</a>
+    </li>
+
+    <li>
+      <a href="./bill.html" class="navbar-link" data-nav-link>Fare Calculator</a>
+    </li>
+
+  </ul>
+</nav>
+
+
+      <div class="header-actions">
+
+        <div class="header-contact">
+          <a href="tel:1800100100" class="contact-link">1800-100-100</a>
+
+          <span class="contact-time">Mon - Sat: 9:00 am - 6:00 pm</span>
+        </div>
+
+        <a href="./pages/login.html" class="btn user-btn" aria-label="Profile">
+          <ion-icon name="person-outline"></ion-icon>
+        </a>
+
+        <button class="nav-toggle-btn" data-nav-toggle-btn aria-label="Toggle Menu">
+          <span class="one"></span>
+          <span class="two"></span>
+          <span class="three"></span>
+        </button>
+
+      </div>
+
+    </div>
   </header>
+
+    <h1>Ask a Question</h1>
 
   <main>
     <section>
@@ -178,8 +231,61 @@
     </section>
   </main>
 
-  <footer>
-    &copy; 2025 Vehigo Car Rentals. All rights reserved.
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container" style="max-width: 1200px; margin: auto;">
+      <!-- Top Section -->
+      <div class="footer-top" style="display: flex; flex-wrap: wrap; justify-content: space-between; gap: 2.5rem;">
+        <!-- Brand Section -->
+        <div class="footer-brand" style="flex: 1 1 300px;">
+          <a href="../index.html" class="logo">
+            <img src="../assets/images/vehigologo.png" alt="VehiGo logo" style="width: 160px;" />
+          </a>
+          <p class="footer-text" style="margin-top: 1rem; line-height: 1.6;">
+            🚗 <strong>Find affordable rental cars across Madhya Pradesh!</strong><br>
+            Choose from a wide range of vehicles, or rent out your own when not in use. We make car rental easy, accessible, and efficient for everyone.
+          </p>
+        </div>
+
+        <!-- Company Section -->
+        <ul class="footer-list">
+          <li><p class="footer-list-title">Company</p></li>
+          <li><a href="about.html" class="footer-link">About us</a></li>
+          <li><a href="pricing.html" class="footer-link">Pricing plans</a></li>
+          <li><a href="../blog.html" class="footer-link">Our blog</a></li>
+          <li><a href="../ContactUs.html" class="footer-link">Contact us</a></li>
+        </ul>
+
+        <!-- Support Section -->
+        <ul class="footer-list">
+          <li><p class="footer-list-title">Support</p></li>
+          <li><a href="help-center.html" class="footer-link">Help center</a></li>
+          <li><a href="Askaques.html" class="footer-link">Ask a question</a></li>
+          <li><a href="../privacypolicy.html" class="footer-link">Privacy policy</a></li>
+          <li><a href="tandc.html" class="footer-link">Terms & conditions</a></li>
+        </ul>
+      </div>
+
+      <!-- Bottom Section -->
+      <div class="footer-bottom">
+        <div class="social-icons" style="text-align: center; margin-bottom: 10px;">
+          <a href="https://www.linkedin.com" target="_blank" style="margin: 0 10px; font-size: 24px; color: #0077b5;"><i class="fab fa-linkedin"></i></a>
+          <a href="https://www.twitter.com" target="_blank" style="margin: 0 10px; font-size: 24px; color: #1da1f2;"><i class="fab fa-twitter"></i></a>
+          <a href="https://www.instagram.com" target="_blank" style="margin: 0 10px; font-size: 24px; color: #e1306c;"><i class="fab fa-instagram"></i></a>
+          <a href="https://www.facebook.com" target="_blank" style="margin: 0 10px; font-size: 24px; color: #3b5998;"><i class="fab fa-facebook"></i></a>
+        </div>
+        <p style="text-align: center; font-size: 14px; color: #333;">© <span id="copyright-year">2023</span> Vehigo — All rights reserved.</p>
+      </div>
+    </div>
   </footer>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      var yearSpan = document.getElementById('copyright-year');
+      if (yearSpan) {
+        yearSpan.textContent = new Date().getFullYear();
+      }
+    });
+  </script>
 </body>
 </html>

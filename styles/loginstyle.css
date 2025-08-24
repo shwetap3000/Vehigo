@@ -8,6 +8,23 @@
     font-family: 'Poppins', sans-serif;
 }
 
+#error, .error {
+  color: red;
+  background-color: #ffe0e0;
+  padding: 8px;
+  margin-top: 10px;
+  border: 1px solid red;
+}
+
+.success {
+  color: green;
+  background-color: #e0ffe0;
+  padding: 8px;
+  margin-top: 10px;
+  border: 1px solid green;
+}
+
+
 .container {
     height: 100vh;
     width: 100%;

@@ -1,20 +1,8 @@
-/*-----------------------------------*\
-  #style.css
-\*-----------------------------------*/
-
-/**
- * copyright 2022 codewithsadee
- */
-
-/*-----------------------------------*\
-  #CUSTOM PROPERTY
-\*-----------------------------------*/
 
 :root {
   /**
-   * colors
-   */
-
+  * colors
+  */
   --pale-purple-pantone: hsl(262, 63%, 92%);
   --medium-sea-green: hsl(152, 63%, 43%);
   --lavender-blush: hsl(336, 35%, 92%);
@@ -25,10 +13,10 @@
   --alice-blue-2: hsl(216, 75%, 97%);
   --alice-blue-3: hsl(216, 38%, 95%);
   --alice-blue-4: hsl(217, 33%, 92%);
-  --independence: hsl(219, 21%, 39%); /* Original independence color */
+  --independence: hsl(219, 21%, 39%);
   --deep-cerise: hsl(329, 63%, 52%);
   --eerie-black: hsl(210, 11%, 15%);
-  --space-cadet: hsl(240, 22%, 25%); /* Used for headings, already quite dark */
+  --space-cadet: hsl(240, 22%, 25%);
   --blue-jeans: hsl(204, 80%, 63%);
   --slate-blue: hsl(262, 60%, 57%);
   --beau-blue: hsl(208, 86%, 92%);
@@ -36,18 +24,15 @@
   --mimi-pink: hsl(329, 63%, 90%);
   --red-salsa: hsl(0, 79%, 63%);
   --sapphire: hsl(211, 100%, 35%);
-  --manatee: hsl(219, 14%, 60%); /* Used for input labels, might need adjustment */
+  --manatee: hsl(219, 14%, 60%);
   --white: hsl(0, 0%, 100%);
-
   --gradient: linear-gradient(to top, var(--alice-blue-2), var(--alice-blue-3));
 
   /**
-   * typography
-   */
-
+  * typography
+  */
   --ff-nunito: 'Nunito', sans-serif;
   --ff-open-sans: 'Open Sans', sans-serif;
-
   --fs-1: 2.125rem;
   --fs-2: 1.875rem;
   --fs-3: 1.5rem;
@@ -55,51 +40,37 @@
   --fs-5: 1.125rem;
   --fs-6: 0.875rem;
   --fs-7: 0.625rem;
-
-  /* NEW: Define a new font size variable for slightly larger nav links */
-  --fs-navbar-link: 1rem; /* 16px */
-
+  --fs-navbar-link: 1rem;
   --fw-400: 400;
   --fw-600: 600;
 
   /**
-   * transition
-   */
-
+  * transition
+  */
   --transition: 0.5s ease;
 
   /**
-   * spacing
-   */
-
+  * spacing
+  */
   --section-padding: 50px;
 
   /**
-   * radius
-   */
-
+  * radius
+  */
   --radius-10: 10px;
   --radius-14: 14px;
   --radius-18: 18px;
 
-  /**
-   * shadow
-   */
-
+  
   --shadow-1: 3px 3px 9px hsla(240, 14%, 69%, 0.2);
   --shadow-2: 3px 3px 9px hsla(204, 92%, 59%, 0.3);
 
   /* --- NEW CONTRAST COLORS --- */
-  --text-primary-dark: hsl(210, 11%, 15%); /* Very dark grey, closer to black */
-  --text-secondary-dark: hsl(219, 21%, 25%); /* Darker shade of independence */
-  --text-light-on-dark: hsl(0, 0%, 90%); /* Light grey for text on dark backgrounds */
-  /* --- END NEW CONTRAST COLORS --- */
-
+  --text-primary-dark: hsl(210, 11%, 15%);
+  --text-secondary-dark: hsl(219, 21%, 25%);
+  --text-light-on-dark: hsl(0, 0%, 90%);
 }
 
-/*-----------------------------------*\
-  #RESET
-\*-----------------------------------*/
 
 *,
 *::before,
@@ -148,17 +119,17 @@ ion-icon {
 
 html {
   font-family: var(--ff-open-sans);
-  color: var(--text-primary-dark); /* Changed global text color for better readability */
+  color: var(--text-primary-dark);
   font-size: 1rem;
   line-height: 1.5;
   scroll-behavior: smooth;
-  height: 100%; /* Ensure html has 100% height for vh to work consistently */
+  height: 100%;
 }
 
 body {
   background: var(--alice-blue-1);
   overflow-x: hidden;
-  height: 100%; /* Ensure body has 100% height for vh to work consistently */
+  height: 100%;
 }
 
 ::-webkit-scrollbar {
@@ -175,31 +146,178 @@ body {
   border: 2px solid var(--white);
 }
 
-
-::-webkit-scrollbar-thumb:hover { background: hsla(219, 14%, 60%, 0.5); }
-
-
-
-/* Removed dark mode related CSS */
-
-#theme-toggle {
-  position: fixed;
-  top: 1rem;
-  right: 1rem;
-  font-size: 1.5rem;
-  background: none;
-  border: none;
-  cursor: pointer;
+::-webkit-scrollbar-thumb:hover {
+  background: hsla(219, 14%, 60%, 0.5);
 }
 
-/*-----------------------------------*\
-  #REUSED STYLE
-\*-----------------------------------*/
+
+.theme-switch {
+  position: relative;
+  display: inline-block;
+  width: 60px;
+  height: 30px;
+  margin-left: 15px;
+  z-index: 1000;
+  cursor: pointer;
+  overflow: hidden;
+}
+
+.theme-switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: relative;
+  cursor: pointer;
+  width: 60px;
+  height: 30px;
+  background-color: #ccc;
+  transition: .4s;
+  border-radius: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 5px;
+  overflow: hidden;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 22px;
+  width: 22px;
+  left: 4px;
+  bottom: 4px;
+  background-color: rgba(255, 255, 255, 0.568);
+  transition: .4s;
+  border-radius: 50%;
+  z-index: 2;
+}
+
+input:checked+.slider {
+  background-color: #2196F3;
+}
+
+input:checked+.slider:before {
+  transform: translateX(30px);
+}
+
+.slider .icon {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1;
+  width: 15px;
+  height: 15px;
+  opacity: 0.5;
+  transition: opacity 0.3s;
+}
+
+.slider .icon.sun {
+  color: #f39c12;
+  opacity: 1;
+}
+
+.slider .icon.moon {
+  color: #f5f5f5;
+  opacity: 0;
+}
+
+input:checked+.slider .sun {
+  opacity: 0;
+}
+
+input:checked+.slider .moon {
+  opacity: 1;
+}
+
+.header-actions > :not(.theme-switch) {
+  position: relative;
+  z-index: 1000;
+}
+
+
+body.dark-mode {
+  background-color: #121212;
+  color: #f5f5f5;
+}
+
+body.dark-mode .header {
+  background-color: #1e1e1e;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.7);
+}
+
+body.dark-mode .navbar {
+  background-color: #1a1a1a;
+}
+
+body.dark-mode footer {
+  background-color: #1e1e1e;
+  color: #f5f5f5;
+}
+
+body.dark-mode p,
+body.dark-mode h1,
+body.dark-mode h2,
+body.dark-mode h3,
+body.dark-mode a,
+body.dark-mode .navbar-link,
+body.dark-mode .contact-link {
+  color: #f5f5f5;
+}
+
+body.dark-mode .navbar-link:hover {
+  color: #4dabf7;
+}
+
+body.dark-mode .header-contact .contact-time {
+  color: #bbbbbb;
+}
+
+body.dark-mode .slider {
+  background-color: #444;
+}
+
+body.dark-mode .theme-switch .moon svg {
+  stroke: #f5f5f5;
+}
+
+body.dark-mode .btn {
+  background-color: #0d6efd;
+  color: #fff;
+}
+
+body.dark-mode .user-btn {
+  background-color: #ffffff;
+}
+
+body.dark-mode .user-btn ion-icon {
+  color: #200f0f;
+}
+
+.title-wrapper.dark-mode{
+  
+ color: #fff;
+}
+
+body.dark-mode .footer-bottom,
+body.dark-mode .footer-bottom p,
+body.dark-mode .footer-bottom a,
+body.dark-mode .footer-bottom ion-icon {
+
+color: #121212;
+color: white;
+}
+
+
 
 .btn {
   position: relative;
   background: var(--background, var(--carolina-blue));
-  color: var(--color, var(--white)); /* Buttons on blue background should have white text */
+  color: var(--color, var(--white));
   min-width: var(--width, 40px);
   min-height: var(--height, 40px);
   padding: 5px;
@@ -242,7 +360,7 @@ body {
 .h1,
 .h2,
 .h3 {
-  color: var(--text-primary-dark); /* Headings should be very dark for contrast */
+  color: var(--text-primary-dark);
   font-family: var(--ff-nunito);
   line-height: 1.4;
 }
@@ -269,31 +387,16 @@ body {
   width: 100%;
 }
 
-
-/* --- BEGINNING OF .container adjustments for left alignment --- */
 .container {
   width: 100%;
-  padding-inline: 15px; /* Default padding for all containers */
-  /* REMOVED margin-inline: auto and max-width from here and moved to media queries */
-  /* for a more intentional left alignment on larger screens */
+  padding-inline: 15px;
 }
 
-/* Specific adjustments for header container only */
-.header .container {
-    padding-inline: 15px; /* Adjust padding for small screens */
-}
-
-/* --- END OF .container adjustments --- */
-
-
-button, a {
+button,
+a {
   transition: var(--transition);
 }
 
-
-/*-----------------------------------*\
-  #HEADER
-\*-----------------------------------*/
 
 .header-contact {
   display: none;
@@ -318,13 +421,19 @@ button, a {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  /* Removed padding-inline from here as it's now in the generic .container above */
+  box-shadow: var(--shadow-1);
 }
 
 .header-actions {
+  position: relative;
+  z-index: 1001;
   display: flex;
   align-items: center;
-  gap: 20px;
+  gap: 10px;
+}
+
+.header-actions .btn {
+  margin-left: 10px;
 }
 
 .header-actions .btn span {
@@ -338,11 +447,9 @@ button, a {
   box-shadow: var(--shadow-1);
 }
 
-/* animation in logo */
 .logo {
   margin-top: 0.5rem;
   transition: transform 0.5s ease-in-out;
-  animation: zoom 3s ease-in-out infinite;
 }
 
 @keyframes zoom {
@@ -384,6 +491,8 @@ button, a {
   background: var(--carolina-blue);
 }
 
+
+
 .navbar {
   background: var(--alice-blue-1);
   position: fixed;
@@ -397,6 +506,7 @@ button, a {
   box-shadow: var(--shadow-1);
   visibility: hidden;
   transition: 0.25s cubic-bezier(0.51, 0.03, 0.64, 0.28);
+  text-align: left;
 }
 
 .navbar.active {
@@ -406,9 +516,9 @@ button, a {
 }
 
 .navbar-link {
-  color: var(--text-secondary-dark); /* Use a darker text color for navbar links */
+  color: var(--text-secondary-dark);
   font-family: var(--ff-nunito);
-  font-size: var(--fs-navbar-link); /* Using the new variable */
+  font-size: var(--fs-navbar-link);
   padding-block: 5px;
   margin-bottom: 15px;
   transition: 0.3s ease;
@@ -417,12 +527,15 @@ button, a {
   border-radius: 5px;
 }
 
-.navbar-link:is(:hover, :focus) {
-  color: white; /* This contrast should be good on carolina-blue */
-  background-color: var(--carolina-blue);
-  padding-left: 8px;
-  padding-right: 8px;
-  font-weight: bolder;
+
+.navbar-link:is( :hover,:focus) {
+color: black;
+/* This contrast should be good on carolina-blue */
+background-color: var(--carolina-blue);
+padding-left: 8px;
+padding-right: 8px;
+font-weight: bolder;
+
 }
 
 .navbar-link.active {
@@ -449,53 +562,9 @@ button, a {
   pointer-events: all;
 }
 
-.header .container {
-  box-shadow: var(--shadow-1);
-  color: #e3ff00;
+.header-contact .contact-time {
+  color: #4c4f6a;
 }
-
-
-/* Dark Mode Styling */
-body.dark-mode {
-  background-color: #121212;
-  color: #ffffff;
-}
-body.dark-mode p,
-body.dark-mode h1,
-body.dark-mode h2,
-body.dark-mode h3,
-body.dark-mode a {
-  color: #f5f5f5;
-}
-
-body.dark-mode a,
-body.dark-mode .navbar-link {
-  color: #ffffff;
-}
-body.dark-mode .footer-bottom,
-body.dark-mode .footer-bottom p,
-body.dark-mode .footer-bottom a,
-body.dark-mode .footer-bottom ion-icon {
-  color: #121212;
-}
-body.dark-mode .user-btn ion-icon {
-  color: #200f0f; /* Light color for dark mode */
-}
-
-body.dark-mode .navbar {
-  background-color: #1a1a1a;
-}
-
-body.dark-mode header,
-body.dark-mode footer {
-  background-color: #1e1e1e;
-  color: #ffffff;
-}
-
-
-/*-----------------------------------*\
-  #HERO
-\*-----------------------------------*/
 
 .hero {
   padding-top: 120px;
@@ -508,6 +577,7 @@ body.dark-mode footer {
   overflow: hidden;
   margin-bottom: 3rem;
 }
+
 .hero-title {
   max-width: 22ch;
   margin-bottom: 10px;
@@ -515,13 +585,15 @@ body.dark-mode footer {
   -webkit-text-fill-color: transparent;
   background: linear-gradient(50deg, var(--independence), var(--carolina-blue));
   -webkit-background-clip: text;
+  background-clip: text;
   overflow: hidden;
   white-space: nowrap;
   width: 0;
   border-right: 0.3rem solid var(--carolina-blue-1);
   animation: hideRevel 4s steps(14) 1s infinite,
-    blink 0.6s infinite step-end alternate;
+  blink 0.6s infinite step-end alternate;
 }
+
 .first {
   max-width: 17ch;
 }
@@ -540,6 +612,7 @@ body.dark-mode footer {
     width: 0;
   }
 }
+
 @keyframes blink {
   50% {
     border-color: transparent;
@@ -547,14 +620,14 @@ body.dark-mode footer {
 }
 
 .hero-text {
-  color: var(--text-secondary-dark); /* Use a darker text color for hero text */
+  color: var(--text-secondary-dark);
   line-height: 1.8;
   margin-bottom: 30px;
   margin-top: 10px;
 }
 
 .hero-banner {
-  display: none; /* Default for mobile, will be overridden by media queries */
+  display: none;
 }
 
 .hero-form {
@@ -577,14 +650,13 @@ body.dark-mode footer {
 }
 
 .input-label {
-  color: var(--manatee); /* Keep original manatee, or adjust if needed */
+  color: var(--manatee);
   font-size: var(--fs-6);
   margin-bottom: 12px;
-  font-size: var(--fs-5);
 }
 
 .input-field {
-  color: var(--text-primary-dark); /* Input field typed text should be very dark */
+  color: var(--text-primary-dark);
   outline: 2px solid transparent;
   outline-offset: 5px;
   border-radius: 4px;
@@ -601,31 +673,13 @@ body.dark-mode footer {
 
 .hero-form #input-1,
 .hero-form #input-2 {
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%236c757d'%3E%3Cpath d='M7 10l5 5 5-5z'/%3E%3C/svg%3E");
-  background-repeat: no-repeat;
-  background-position: right 10px center;
-  background-size: 20px;
-  padding-right: 35px;
+  background-image: none;
 }
 
-.hero-form #input-1::placeholder {
-  color: var(--text-secondary-dark); /* Darken placeholder text for contrast */
-  opacity: 1;
-}
-
+.hero-form #input-1::placeholder,
 .hero-form #input-2::placeholder {
-  color: var(--text-secondary-dark); /* Darken placeholder text for contrast */
+  color: var(--text-secondary-dark);
   opacity: 1;
-}
-
-.hero-form #input-1 {
-  font-size: var(--fs-4);
-  color: var(--text-primary-dark); /* Ensure input text is dark */
-}
-
-.hero-form #input-2 {
-  font-size: var(--fs-4);
-  color: var(--text-primary-dark); /* Ensure input text is dark */
 }
 
 .input-field:focus {
@@ -633,7 +687,7 @@ body.dark-mode footer {
 }
 
 .input-field::placeholder {
-  color: var(--independence); /* Keep this as it's for default, then override above */
+  color: var(--independence);
 }
 
 .hero-form .btn {
@@ -642,10 +696,6 @@ body.dark-mode footer {
   margin: 20px;
   text-transform: uppercase;
 }
-
-/*-----------------------------------*\
-  #FEATURED CAR
-\*-----------------------------------*/
 
 .featured-car .title-wrapper {
   display: flex;
@@ -657,7 +707,7 @@ body.dark-mode footer {
 }
 
 .featured-car-link {
-  color: var(--text-secondary-dark); /* Adjust featured car link color */
+  color: var(--text-secondary-dark);
   display: flex;
   align-items: center;
   gap: 5px;
@@ -693,6 +743,14 @@ body.dark-mode footer {
   border-radius: var(--radius-18);
   padding: 10px;
   box-shadow: var(--shadow-1);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.featured-car-card:hover,
+.blog-card:hover {
+  transform: translateY(-4px) scale(1.02);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+  cursor: pointer;
 }
 
 .featured-car-card .card-banner {
@@ -766,8 +824,11 @@ body.dark-mode footer {
 }
 
 .featured-car-card .card-item-text {
-  color: var(--text-secondary-dark); /* Adjust featured car item text color */
+  color: var(--text-secondary-dark);
   font-size: var(--fs-6);
+}
+.car_name{
+  color: var(--text-secondary-dark);
 }
 
 .featured-car-card .card-price-wrapper {
@@ -811,9 +872,6 @@ body.dark-mode footer {
   --color: var(--red-salsa);
 }
 
-/*-----------------------------------*\
-  #GET START
-\*-----------------------------------*/
 
 .get-start .section-title {
   margin-bottom: 25px;
@@ -869,14 +927,14 @@ body.dark-mode footer {
 }
 
 .get-start-card .card-title {
-  color: var(--text-primary-dark); /* Card titles should be very dark */
+  color: var(--text-primary-dark);
   font-family: var(--ff-nunito);
   font-weight: var(--fw-400);
   margin-bottom: 15px;
 }
 
 .get-start-card .card-text {
-  color: var(--text-secondary-dark); /* Adjust get-start card text color */
+  color: var(--text-secondary-dark);
 }
 
 .get-start-card .card-link {
@@ -900,28 +958,25 @@ body.dark-mode footer {
   width: 100%;
 }
 
-/*-----------------------------------*\
-  #REVIEW
-\*-----------------------------------*/
 
 @import url('https://fonts.googleapis.com/css2?family=Barlow+Semi+Condensed:wght@500;600&display=swap');
 .reviews {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  /* font-family: 'Barlow Semi Condensed', sans-serif; */
   font-family: var(--ff-nunito);
 }
+
 .reviews .contain h2 {
   font-family: var(--ff-nunito);
   color: #32324e;
   font-size: var(--fs-2);
   display: block;
   text-align: justify;
-
   font-weight: var(--fw-400);
   margin-inline-end: 120px;
 }
+
 .outerdiv {
   width: 100%;
   background: var(--alice-blue-1);
@@ -929,84 +984,98 @@ body.dark-mode footer {
   align-items: center;
   margin-left: -10px;
 }
+
 .innerdiv {
   margin: 1rem;
   display: grid;
   grid-gap: 1.5rem;
 }
+
 .eachdiv {
   padding: 1rem 1rem;
   border-radius: 0.8rem;
-  /* box-shadow: 5px 5px 20px #6d6b6b6b; */
-  /* box-shadow: var(--shadow-1); */
   color: white;
 }
+
 .div1 {
   background: #18202d;
   grid-column: 1/3;
   grid-row: 1/2;
-
   background-repeat: no-repeat;
   background-position-x: 25rem;
 }
+
 .div2 {
   background: #49556b;
   grid-column: 3/4;
   grid-row: 1/2;
 }
+
 .div3 {
   background: white;
   grid-column: 4/5;
   grid-row: 1/3;
   color: black;
 }
+
 .div4 {
   background: white;
   grid-column: 1/2;
   grid-row: 2/3;
   color: black;
 }
+
 .div5 {
   background: #18202d;
   grid-column: 2/4;
   grid-row: 2/3;
 }
+
 .userdetails {
   display: flex;
 }
+
 .imgbox {
   margin-right: 1rem;
 }
+
 .imgbox img {
   border-radius: 100%;
   width: 2rem;
   border: 2px solid #cec5c5;
 }
+
 .detbox {
   display: flex;
   flex-direction: column;
   justify-content: center;
 }
+
 .detbox p {
   margin: 0;
 }
+
 .detbox .name {
   color: hsl(0, 0%, 81%);
   font-size: 0.9rem;
   margin-bottom: 0.1rem;
   font-weight: 600;
 }
+
 .detbox .name.dark {
   color: #49505a;
 }
+
 .detbox .designation {
   color: hsl(0, 0%, 81%);
   opacity: 50%;
   font-size: 0.8rem;
 }
+
 .detbox .designation.dark {
   color: #49505a;
 }
+
 .review h4 {
   font-size: 1.4rem;
   color: #f3deff;
@@ -1014,9 +1083,11 @@ body.dark-mode footer {
   line-height: 1.5;
   margin-bottom: 0.8rem;
 }
+
 .review.dark h4 {
   color: #4b5258;
 }
+
 .review p {
   font-size: 0.95rem;
   color: #f3deff;
@@ -1024,9 +1095,11 @@ body.dark-mode footer {
   opacity: 50%;
   line-height: 1.5;
 }
+
 .review.dark p {
   color: #0e0e0e;
 }
+
 .attribution {
   font-size: 1rem;
   line-height: 1.5;
@@ -1035,6 +1108,7 @@ body.dark-mode footer {
   right: 1rem;
   text-align: right;
 }
+
 .attribution a {
   text-decoration: none;
 }
@@ -1057,7 +1131,6 @@ body.dark-mode footer {
     display: flex;
     flex-direction: column;
     transform: scale(1);
-
     margin-bottom: 50px;
   }
   .attribution {
@@ -1065,9 +1138,6 @@ body.dark-mode footer {
   }
 }
 
-/*-----------------------------------*\
-  #BLOG
-\*-----------------------------------*/
 
 .blog .section-title {
   margin-bottom: 30px;
@@ -1079,6 +1149,7 @@ body.dark-mode footer {
   border: 1px solid var(--white);
   box-shadow: var(--shadow-1);
   overflow: hidden;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
 .blog-card .card-banner {
@@ -1227,13 +1298,13 @@ body.dark-mode footer {
   width: calc(25% - 40px);
 }
 
-/*-----------------------------------*\
-  #FOOTER
-\*-----------------------------------*/
 
 .footer {
-  background: var(--alice-blue-4);
   color: var(--independence);
+  background-color: #ceeafd;
+  padding: 3rem 1rem;
+  font-family: 'Segoe UI', sans-serif;
+  font-size: 1.05rem;
 }
 
 .footer a {
@@ -1260,6 +1331,9 @@ body.dark-mode footer {
 
 .footer-list {
   font-family: var(--ff-nunito);
+  list-style: none;
+  padding: 0;
+  flex: 1 1 200px;
 }
 
 .footer-list:not(:last-of-type) {
@@ -1267,18 +1341,23 @@ body.dark-mode footer {
 }
 
 .footer-list-title {
+  font-weight: 700;
+  font-size: 1.6rem;
+  margin-bottom: 0.75rem;
   color: var(--space-cadet);
-  font-weight: var(--fw-600);
-  margin-bottom: 8px;
 }
 
 .footer-link {
-  font-size: var(--fs-6);
+  font-size: 1.1rem;
   padding-block: 6px;
+  color: #444;
+  text-decoration: none;
+  display: block;
+  margin-bottom: 0.5rem;
 }
 
-.footer-link:is(:hover, :focus) {
-  color: var(--carolina-blue);
+.footer-link:hover {
+  color: rgb(42, 21, 231);
 }
 
 .footer-list:last-child > li:first-child {
@@ -1286,8 +1365,7 @@ body.dark-mode footer {
 }
 
 .footer-bottom {
-  background: var(--gradient);
-  border: 1px solid var(--white);
+  border: 1px solid rgb(107, 207, 254);
   border-radius: var(--radius-18) var(--radius-18) 0 0;
   padding: 20px;
 }
@@ -1300,7 +1378,7 @@ body.dark-mode footer {
 }
 
 .social-link {
-  font-size: 20px;
+  font-size: 35px;
 }
 
 .social-link ion-icon {
@@ -1323,27 +1401,15 @@ body.dark-mode footer {
   color: var(--carolina-blue);
 }
 
-/*-----------------------------------*\
-  #MEDIA QUERIES
-\*-----------------------------------*/
 
-/**
- * responsive for large than 350px screen
- */
 
 @media (min-width: 350px) {
-  /**
-   * FEATURED CAR
-   */
-
   .featured-car-card .card-list {
     grid-template-columns: 1fr 1fr;
   }
-
   .featured-car-card .card-price {
     margin-right: auto;
   }
-
   .featured-car-card .btn:last-child {
     min-width: max-content;
     padding-inline: 15px;
@@ -1351,66 +1417,33 @@ body.dark-mode footer {
 }
 
 /**
- * responsive for large than 580px screen
- */
-
+* responsive for large than 580px screen
+*/
 @media (min-width: 580px) {
-  /**
-   * REUSED STYLE
-   */
-
   .container {
-    /* Removed max-width and margin-inline: auto to allow it to be flexible */
-    padding-inline: 30px; /* Increase padding for larger screens */
+    padding-inline: 30px;
   }
-
-
-  /**
-   * HEADER
-   */
-
   .header-actions .btn span {
     display: block;
     font-weight: var(--fw-400);
     padding-inline: 15px;
   }
-
   .header-actions .btn:first-of-type ion-icon {
     display: none;
   }
 }
 
-
 /**
- * responsive for large than 768px screen
- */
-
+* responsive for large than 768px screen
+*/
 @media (min-width: 768px) {
-  /**
-   * CUSTOM PROPERTY
-   */
-
   :root {
-    /**
-     * typography
-     */
-
     --fs-1: 2.625rem;
   }
 
-  /**
-   * REUSED STYLE
-   */
-
   .container {
-    /* Removed max-width and margin-inline: auto */
-    padding-inline: 50px; /* Adjust padding for larger screens */
+    padding-inline: 50px;
   }
-
-
-  /**
-   * HEADER
-   */
 
   .header-actions {
     gap: 30px;
@@ -1422,7 +1455,6 @@ body.dark-mode footer {
   }
 
   .header-contact .contact-link {
-    color: var(--space-cadet);
     font-family: var(--ff-nunito);
     font-size: var(--fs-5);
     line-height: 1.3;
@@ -1433,32 +1465,25 @@ body.dark-mode footer {
   }
 
   .header-contact .contact-time {
-    color: var(--independence);
     font-size: var(--fs-7);
   }
-
-  /**
-   * HERO
-   */
 
   .hero {
     position: relative;
     min-height: 85vh;
     display: flex;
     align-items: center;
-    /* Hero section's padding-left is handled by its child .container */
     z-index: 1;
   }
 
   .hero-content {
-      /* Keep hero-content aligned with the left edge of its container */
-      width: 100%; /* Ensure it takes full width of its container */
+    width: 100%;
   }
 
   .hero-form {
     grid-template-columns: 1fr 1fr;
-    max-width: 600px; /* Keep it narrower as per image */
-    margin-inline: 0; /* Align left */
+    max-width: 600px;
+    margin-inline: 0;
     justify-self: start;
     padding: 30px;
     gap: 30px;
@@ -1469,33 +1494,24 @@ body.dark-mode footer {
     border-right: 1px solid hsla(0, 0%, 0%, 0.08);
   }
 
-  /* Specific border adjustments for 768px breakpoint */
-  .hero-form .input-wrapper:nth-child(2) {
+  .hero-form .input-wrapper:nth-child(2),
+  .hero-form .input-wrapper:nth-child(even) {
     border-right: none;
   }
 
-  .hero-form .input-wrapper:nth-child(even) {
-      border-right: none;
-  }
-
   .hero-form .input-wrapper:nth-child(odd) {
-      border-right: 1px solid hsla(0, 0%, 0%, 0.08);
+    border-right: 1px solid hsla(0, 0%, 0%, 0.08);
   }
 
-
-  /* Force 'Car Type' to have a bottom border if it's the last in its row before the wrap */
-  .hero-form .input-wrapper:nth-child(3), /* Car Type */
-  .hero-form .input-wrapper:nth-child(4) { /* Transmission */
+  .hero-form .input-wrapper:nth-child(3),
+  .hero-form .input-wrapper:nth-child(4) {
     border-bottom: 1px solid hsla(0, 0%, 0%, 0.08);
   }
 
-  /* Remove right border for 'Transmission' */
   .hero-form .input-wrapper:nth-child(4) {
-      border-right: none;
+    border-right: none;
   }
 
-
-  /* Force 'Fuel Type' to start on a new row and span both columns */
   .hero-form .input-wrapper:nth-child(5) {
     grid-column: 1 / -1;
     border-right: none;
@@ -1521,6 +1537,7 @@ body.dark-mode footer {
     border-radius: 30px;
     z-index: -1;
   }
+
   .hero-form .btn {
     grid-column: 1 / -1;
     width: 100%;
@@ -1528,25 +1545,13 @@ body.dark-mode footer {
     text-transform: uppercase;
   }
 
-  /**
-   * FEATURED CAR
-   */
-
   .featured-car-list {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
-  /**
-   * GET START
-   */
-
   .get-start-list {
     grid-template-columns: 1fr 1fr;
   }
-
-  /**
-   * FOOTER
-   */
 
   .footer-brand {
     width: 100%;
@@ -1558,7 +1563,7 @@ body.dark-mode footer {
 
   .footer-bottom {
     display: flex;
-    flex-direction: row-reverse;
+    flex-direction: row;
     justify-content: space-between;
     align-items: center;
     padding-block: 30px;
@@ -1568,287 +1573,157 @@ body.dark-mode footer {
   .social-list {
     margin-bottom: 0;
   }
-
-  .copyright {
-    font-size: var(--fs-6);
-  }
-
-  .copyright > a {
-    display: inline-block;
-  }
-
-  .copyright > a:is(:hover, :focus) {
-    color: var(--carolina-blue);
-  }
 }
 
-
 /**
- * responsive for large than 992px screen
- */
-
+* responsive for large than 992px screen
+*/
 @media (min-width: 992px) {
-  /**
-   * REUSED STYLE
-   */
-
   .container {
-    /* Removed max-width and margin-inline: auto */
-    padding-inline: 80px; /* Adjust padding for larger screens */
+    padding-inline: 80px;
   }
-
-
-  /**
-   * HEADER
-   */
-
-  .header .container {
-    /* Removed max-width and margin-inline: auto */
-  }
-
-  /**
-   * HERO
-   */
-
-  .hero .container {
-    width: 100%;
-  }
-
   .hero-form {
-    grid-template-columns: 1fr 1fr;
-    max-width: 600px; /* Keep it narrower */
-    margin-inline: 0; /* Align left */
-    justify-self: start;
     padding: 35px;
-    gap: 30px;
   }
-
-  /* Specific styling for input wrappers within hero-form */
   .hero-form .input-wrapper {
     padding: 0 20px;
-    border-right: 1px solid hsla(0, 0%, 0%, 0.08);
-    border-bottom: 1px solid hsla(0, 0%, 0%, 0.08);
   }
-
-  /* Remove border for elements at the end of a row */
-  .hero-form .input-wrapper:nth-child(2), /* Max Rent */
-  .hero-form .input-wrapper:nth-child(4) { /* Transmission */
-    border-right: none;
-  }
-
-  /* Remove bottom border from the last input-wrapper in the first row (Car Type) */
-  .hero-form .input-wrapper:nth-child(3),
-  .hero-form .input-wrapper:nth-child(4) {
-      border-bottom: 1px solid hsla(0, 0%, 0%, 0.08); /* Ensure consistent bottom border for the pair */
-  }
-
-
-  /* Force 'Fuel Type' to start on a new row and span both columns */
-  .hero-form .input-wrapper:nth-child(5) {
-    grid-column: 1 / -1;
-    border-right: none;
-    border-bottom: none;
-  }
-
   .hero-form .btn {
-    grid-column: 1 / -1;
     min-height: 60px;
     font-size: var(--fs-4);
     padding: 10px 30px;
     margin: 0 auto;
-    width: 100%;
   }
-
-  /**
-   * BLOG
-   */
-
   .blog .has-scrollbar {
     padding-bottom: 50px;
   }
-
   .blog .has-scrollbar > li {
     max-width: 450px;
   }
-
-  /**
-   * FOOTER
-   */
-
   .footer-list:not(:last-of-type) {
     width: 25%;
   }
-
   .footer-list:last-of-type {
-    width: 50%;
+    width: 17.33%;
   }
 }
 
-
 /**
- * responsive for large than 1200px screen
- */
-
+* responsive for large than 1200px screen
+*/
 @media (min-width: 1305px) {
-  /**
-   * CUSTOM PROPERTY
-   */
-
   :root {
-    /**
-     * typography
-     */
-
     --fs-1: 2.875rem;
     --fs-2: 2rem;
   }
-
-  /**
-   * REUSED STYLE
-   */
-
   .container {
-    /* Removed max-width and margin-inline: auto */
-    padding-inline: 120px; /* Adjust padding for very large screens */
+    padding-inline: 120px;
   }
-
-
-  /**
-   * HEADER
-   */
-
   .overlay,
   .nav-toggle-btn {
     display: none;
   }
-
-  .navbar,
+  .navbar{
+    background-color: white;
+  }
   .navbar.active {
     all: unset;
   }
-
   .navbar-link {
     margin-bottom: 0;
     font-weight: var(--fw-600);
   }
-
   .navbar-list {
     display: flex;
     gap: 50px;
   }
-
-  .header .container {
-    /* Removed specific max-width and margin for full width layout */
-  }
-
-
-  /**
-   * HERO
-   */
-
   .hero {
     min-height: 100vh;
   }
-
   .hero-banner {
     left: auto;
     right: 50px;
     width: 630px;
   }
-
   .hero-form {
-    grid-template-columns: 1fr 1fr;
-    max-width: 600px; /* Keep it narrower to match the reference image */
-    margin-inline: 0; /* Align left */
-    justify-self: start;
     padding: 40px;
-    gap: 30px;
   }
-
   .hero-form .input-wrapper {
     padding: 0 25px;
-    border-right: 1px solid hsla(0, 0%, 0%, 0.08);
-    border-bottom: 1px solid hsla(0, 0%, 0%, 0.08);
   }
-
-  /* Remove right border for second and fourth input-wrappers */
-  .hero-form .input-wrapper:nth-child(2),
-  .hero-form .input-wrapper:nth-child(4) {
-    border-right: none;
-  }
-
-  /* Ensure the last input-wrapper for 'Transmission' has a bottom border if it's the last in its pair */
-  .hero-form .input-wrapper:nth-child(4) {
-      border-bottom: 1px solid hsla(0, 0%, 0%, 0.08);
-  }
-
-
-  /* Force 'Fuel Type' to start on a new row and span all columns */
-  .hero-form .input-wrapper:nth-child(5) {
-    grid-column: 1 / -1;
-    border-right: none;
-    border-bottom: none;
-  }
-
   .hero-form .btn {
-    grid-column: 1 / -1;
     min-height: 65px;
     font-size: var(--fs-3);
     padding: 12px 40px;
-    margin: 0 auto;
-    width: 100%;
   }
-
-  /**
-   * FEATURED CAR
-   */
-
   .featured-car-list {
     grid-template-columns: repeat(3, minmax(0, 1fr));
   }
-
-  /**
-   * GET START
-   */
-
   .get-start-list {
     grid-template-columns: repeat(4, 1fr);
   }
-
-  /**
-   * BLOG
-   */
-
   .blog .has-scrollbar > li {
     max-width: 340px;
     scroll-snap-align: center;
   }
-
-  /**
-   * FOOTER
-   */
-
   .footer-brand {
     width: 33.33%;
   }
-
   .footer-text {
     max-width: 35ch;
   }
-
   .footer-list:not(:last-of-type) {
     width: 16.66%;
   }
-
   .footer-list:last-of-type {
-    width: 33.33%;
+    width: 15.33%;
   }
 }
 
-/* Additional style for select elements to ensure consistent height and look */
-.input-field select {
-  height: auto;
-  line-height: 1.5;
-  padding: 10px 35px 10px 0;
+.error-message {
+  color: red;
+  font-size: 12px;
+  margin-top: 4px;
+  display: block;
+}
 
+.input-error {
+  border: 2px solid red !important;
+}
+
+select.error-border {
+  border: 2px solid red;
+}
+
+.theme-switch:hover {
+  transform: scale(1.05);
+  transition: transform 0.2s ease;
+}
+
+@media (max-width: 768px) {
+  .theme-switch {
+    width: 50px;
+    height: 25px;
+    margin-left: 10px;
+  }
+  .slider:before {
+    height: 18px;
+    width: 18px;
+  }
+  input:checked+.slider:before {
+    transform: translateX(25px);
+  }
+  .slider .icon svg {
+    width: 16px;
+    height: 16px;
+  }
+}
+
+@media (max-width: 480px) {
+  .header-actions {
+    gap: 5px;
+  }
+  .theme-switch {
+    margin-left: 5px;
+  }
 }

@@ -11,7 +11,7 @@ h1, h2 {
 
 form {
   max-width: 500px;
-  margin: auto;
+  margin: 30px auto;
   background: #fff;
   padding: 50px;
   border-radius: 10px;
@@ -63,7 +63,8 @@ button:hover {
 }
 
 .btn {
-  background-color: #28a745;
+  background-color: #007BFF;
+  border-radius: 50px;
   color: white;
   border: none;
   cursor: pointer;
@@ -76,4 +77,22 @@ button:hover {
   justify-content: center;
   text-align: center;
   margin: 20px 0;
+}
+
+.buy-sell{
+   display: flex;
+   flex-direction: row;
+   gap: 20px;
+   align-content: center;
+   justify-content: center;
+}
+
+.buy-sell button {
+  max-width: 30%;
+  background-color: #007BFF;
+  padding: 20px;
+  color: white;
+  border: none;
+  cursor: pointer;
+  border-radius: 50px;
 }

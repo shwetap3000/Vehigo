@@ -1,0 +1,30 @@
+name: Auto Comment on PR
+
+on:
+  pull_request_target:
+    types: [opened]
+
+permissions:
+  issues: write
+  pull-requests: write
+
+jobs:
+  comment:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Comment on PR
+        uses: actions/github-script@v6
+        with:
+          script: |
+            const prNumber = context.issue.number;
+
+            const commentBody = `### 👋 Thank you for opening this Pull Request!\n\nYour contribution is much appreciated. Our team will review it shortly.\n\n🔎 In the meantime, please:\n- Ensure all **file changes** are correct.\n- Verify that your **commits are clean and meaningful**.\n- Address any **pending review comments** if applicable.\n\nWe look forward to collaborating with you. 🚀`;
+
+            await github.rest.issues.createComment({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: prNumber,
+              body: commentBody
+            });
+
+            console.log('Comment added successfully.');

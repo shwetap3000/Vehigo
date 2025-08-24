@@ -11,6 +11,9 @@ body {
   margin: 0;
 }
 
+.container{
+  padding-right:40px;
+}
 /* Style user-btn to match the "Explore cars" button from index page */
 .user-btn {
   --color: var(--white); /* White icon */
@@ -18,6 +21,112 @@ body {
   --shadow-2: var(--shadow-1);
   box-shadow: var(--shadow-1);
 }
+
+
+body.dark-mode header{
+  background-color: black;
+  color: white;
+}
+body.dark-mode .container{
+  background-color: black;
+  color: white;
+}
+
+body.dark-mode .contact-time{
+  color: white;
+}
+body.dark-mode .contact-link{
+  color: white;
+}
+.contact-link{
+  color: var(--carolina-blue);
+  text-decoration: none;
+  font-weight: bold;
+  white-space: nowrap;
+}
+.contact-time{
+  color: black;
+  white-space: nowrap;
+}
+
+body.dark-mode h2.section-title1 {
+  color: white;
+}
+
+body.dark-mode h2.section-title{
+  color: white;
+}
+body.dark-mode .social-link{
+  background-color: black;
+  color: white;
+}
+body.dark-mode .social-list{
+  background-color: black;
+  color: white;
+}
+
+body.dark-mode .container1{
+  background-color: black;
+  color: white;
+  padding: 55px;
+  border-radius: 10px;
+}
+
+body.dark-mode p{
+  color: white;
+}
+
+body.dark-mode .hero-text{
+  color: white;
+}
+
+body.dark-mode h1{
+  color: white;
+}
+
+body.dark-mode footer,
+body.dark-mode .footer,
+body.dark-mode .footer-top,
+body.dark-mode .footer-bottom,
+body.dark-mode .footer-brand,
+body.dark-mode .footer-list,
+body.dark-mode .footer-text,
+body.dark-mode .footer-link,
+body.dark-mode .footer-list-title,
+body.dark-mode .copyright {
+  background-color: black;
+  color: white;
+}
+/* Apply background and text color to the main footer containers */
+body.dark-mode .footer,
+body.dark-mode .footer-top,
+body.dark-mode .footer-bottom {
+  background-color: black !important;
+  color: white !important;
+  background-color: black;
+}
+
+/* Fix text color for titles, paragraphs, and links */
+body.dark-mode .footer-text,
+body.dark-mode .footer-link,
+body.dark-mode .footer-list-title,
+body.dark-mode .copyright {
+  color: white !important;
+}
+
+/* Optional: Fix icon color too */
+body.dark-mode .social-link ion-icon {
+  color: white !important;
+  stroke: white;
+  fill: white;
+}
+
+/* Remove the unwanted black background around inline elements */
+body.dark-mode .copyright a,
+body.dark-mode .footer-link {
+  background: transparent !important;
+}
+
 
 /* Navbar link styles */
 .navbar-list .navbar-link {
@@ -88,9 +197,10 @@ body {
   margin-right: 40px;
 }
 
+
 .about-content h1 {
   font-size: var(--fs-1);
-  color: var(--space-cadet);
+  /* color: var(--space-cadet); */
   font-family: var(--ff-nunito);
   text-transform: uppercase;
   margin-bottom: 15px;
@@ -98,13 +208,15 @@ body {
 
 .about-content .hero-text {
   color: var(--independence);
+  color: black;
   font-size: var(--fs-5);
   font-weight: var(--fw-600);
   margin-bottom: 20px;
 }
 
 .about-content p {
-  color: var(--independence);
+  /* color: var(--independence); */
+  color: green;
   font-size: var(--fs-6);
   line-height: 1.8;
   margin-bottom: 20px;
@@ -199,6 +311,16 @@ body {
 .reviews .section-title1 {
   margin-bottom: 20px;
   text-align: start;
+}
+
+.testinomals-list {
+  display: flex;
+  gap: 20px;
+  scroll-snap-type: inline mandatory;
+  overflow-x: auto  ;
+  overflow-y: hidden;
+  padding: 20px 0px;
+  padding-bottom: 40px;
 }
 
 /*-----------------------------------*\
@@ -353,9 +475,461 @@ body {
   text-decoration: underline;
 }
 
+
+::-webkit-scrollbar {
+  width: 15px;
+  height: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--white);
+}
+
+::-webkit-scrollbar-thumb {
+  background: hsla(219, 14%, 60%, 0.3);
+  border: 2px solid var(--white);
+}
+
+
+::-webkit-scrollbar-thumb:hover { background: hsla(219, 14%, 60%, 0.5); }
+
+
+
+/* Removed dark mode related CSS */
+
+#theme-toggle {
+  position: fixed;
+  top: 1rem;
+  right: 1rem;
+  font-size: 1.5rem;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
 /*-----------------------------------*\
-  #MEDIA QUERIES
+  #THEME SWITCH
 \*-----------------------------------*/
+
+.theme-switch {
+  position: relative;
+  display: inline-block;
+  width: 60px;
+  height: 30px;
+  margin-left: 15px;
+  z-index: 1000;
+}
+
+.theme-switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  transition: .4s;
+  border-radius: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 5px;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 22px;
+  width: 22px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  transition: .4s;
+  border-radius: 50%;
+  z-index: 2;
+}
+
+input:checked + .slider {
+  background-color: #2196F3;
+}
+
+input:checked + .slider:before {
+  transform: translateX(30px);
+}
+
+.slider .icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1;
+}
+
+.slider .icon.sun {
+  color: #f39c12;
+}
+
+.slider .icon.moon {
+  color: #f5f5f5;
+}
+
+
+/* Ensure theme switch doesn't interfere with navbar */
+.header-actions {
+  position: relative;
+  z-index: 1001;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 5px;
+}
+
+.theme-switch {
+  pointer-events: auto;
+  position: relative;
+  z-index: 1002;
+}
+
+
+/* .header-actions .btn {
+  margin-left: 10px;
+} */
+
+
+.header-actions > *:not(.theme-switch) {
+  position: relative;
+  z-index: 1000;
+}
+
+
+
+/* .btn {
+  position: relative;
+  background: var(--background, var(--carolina-blue));
+  color: var(--color, var(--white));
+  min-width: var(--width, 40px);
+  min-height: var(--height, 40px);
+  padding: 15px;
+  width: fit-content;
+  display: inline-grid;
+  
+  border-radius: var(--radius-14);
+  font-family: var(--ff-nunito);
+  font-size: var(--fs-6);
+  font-weight: var(--fw-600);
+  
+} */
+
+.btn ion-icon {
+  font-size: 22px;
+  --ionicon-stroke-width: 40px;
+}
+/* 
+.btn::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to right, hsla(0, 0%, 100%, 0.4), transparent);
+  opacity: 0;
+  pointer-events: none;
+  transition: var(--transition);
+}
+
+.btn:is(:hover, :focus) {
+  box-shadow: var(--shadow-2);
+}
+
+.btn:is(:hover, :focus)::before {
+  opacity: 1;
+} */
+
+
+::-webkit-scrollbar {
+  width: 15px;
+  height: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--white);
+}
+
+::-webkit-scrollbar-thumb {
+  background: hsla(219, 14%, 60%, 0.3);
+  border: 2px solid var(--white);
+}
+
+
+::-webkit-scrollbar-thumb:hover { background: hsla(219, 14%, 60%, 0.5); }
+
+
+
+/* Removed dark mode related CSS */
+
+#theme-toggle {
+  position: fixed;
+  top: 1rem;
+  right: 1rem;
+  font-size: 1.5rem;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+/*-----------------------------------*\
+  #THEME SWITCH
+\*-----------------------------------*/
+
+.theme-switch {
+  position: relative;
+  display: inline-block;
+  width: 60px;
+  height: 30px;
+  margin-left: 15px;
+  z-index: 1000;
+}
+
+.theme-switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  transition: .4s;
+  border-radius: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 5px;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 22px;
+  width: 22px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  transition: .4s;
+  border-radius: 50%;
+  z-index: 2;
+}
+
+input:checked + .slider {
+  background-color: #2196F3;
+}
+
+input:checked + .slider:before {
+  transform: translateX(30px);
+}
+
+.slider .icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1;
+}
+
+.slider .icon.sun {
+  color: #f39c12;
+}
+
+.slider .icon.moon {
+  color: #f5f5f5;
+}
+
+/* Ensure theme switch doesn't interfere with navbar */
+.header-actions {
+  position: relative;
+  z-index: 1001;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.theme-switch {
+  pointer-events: auto;
+  position: relative;
+  z-index: 1002;
+}
+
+
+
+
+.header-actions > *:not(.theme-switch) {
+  position: relative;
+  z-index: 1000;
+}
+
+
+.theme-switch {
+  position: relative;
+  display: inline-block;
+  width: 60px;
+  height: 30px;
+  margin-left: 15px;
+  z-index: 1000;
+}
+
+.theme-switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  transition: .4s;
+  border-radius: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 5px;
+}
+body.dark-mode {
+  background-color: #121212;
+  color: #ffffff;
+}
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 22px;
+  width: 22px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  transition: .4s;
+  border-radius: 50%;
+  z-index: 2;
+}
+
+input:checked + .slider {
+  background-color: #2196F3;
+}
+
+input:checked + .slider:before {
+  transform: translateX(30px);
+}
+
+.slider .icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1;
+}
+
+.slider .icon.sun {
+  color: #f39c12;
+}
+
+.slider .icon.moon {
+  color: #f5f5f5;
+}
+
+/* Ensure theme switch doesn't interfere with navbar */
+.header-actions {
+  position: relative;
+  z-index: 1001;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.theme-switch {
+  pointer-events: auto;
+  position: relative;
+  z-index: 1002;
+}
+
+
+
+
+
+.header-actions > *:not(.theme-switch) {
+  position: relative;
+  z-index: 1000;
+}
+
+
+
+/* .btn {
+  position: relative;
+  background: var(--background, var(--carolina-blue));
+  color: var(--color, var(--white));
+  min-width: var(--width, 40px);
+  min-height: var(--height, 40px);
+  padding: 5px;
+  display: grid;
+  place-items: center;
+  border-radius: var(--radius-14);
+  font-family: var(--ff-nunito);
+  font-size: var(--fs-6);
+  font-weight: var(--fw-600);
+  overflow: hidden;
+} */
+
+.btn_explore{
+  position: relative;
+  background: var(--background, var(--carolina-blue));
+  color: var(--color, var(--white));
+  /* min-width: var(--width, 40px); */
+  min-height: var(--height, 40px);
+  padding: 5px;
+  /* width:100px; */
+  display: grid;
+  place-items: center;
+  border-radius: var(--radius-14);
+  font-family: var(--ff-nunito);
+  font-size: var(--fs-6);
+  font-weight: var(--fw-600);
+  /* overflow: hidden; */
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.btn ion-icon {
+  font-size: 22px;
+  --ionicon-stroke-width: 40px;
+}
+
+/* .btn::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to right, hsla(0, 0%, 100%, 0.4), transparent);
+  opacity: 0;
+  pointer-events: none;
+  transition: var(--transition);
+}
+
+.btn:is(:hover, :focus) {
+  box-shadow: var(--shadow-2);
+}
+
+.btn:is(:hover, :focus)::before {
+  opacity: 1;
+} */
+
+
 
 @media (max-width: 767px) {
   .about-section {
@@ -471,4 +1045,106 @@ body {
   .about-banner {
     max-height: 500px;
   }
+}
+
+/* Footer */
+.vehigo-footer {
+  background-color: #1a1a1a;
+  color: #fff;
+  padding: 40px 20px;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+.footer-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 30px;
+  max-width: 1200px;
+  margin: auto;
+}
+
+.footer-brand {
+  flex: 1 1 250px;
+}
+.footer-logo {
+  width: 150px;
+  margin-bottom: 10px;
+}
+
+.footer-links,
+.footer-contact,
+.footer-cta {
+  flex: 1 1 200px;
+}
+.footer-links h4,
+.footer-contact h4,
+.footer-cta h4 {
+  margin-bottom: 10px;
+  color: #e3a815;
+}
+
+.footer-links ul {
+  list-style: none;
+  padding: 0;
+}
+.footer-links ul li {
+  margin-bottom: 8px;
+}
+.footer-links ul li a {
+  color: #fff;
+  text-decoration: none;
+}
+.footer-links ul li a:hover {
+  text-decoration: underline;
+}
+
+.footer-contact a {
+  color: #e3a815;
+  text-decoration: underline;
+}
+
+.footer-cta form {
+  display: flex;
+  flex-direction: column;
+}
+.footer-cta input[type="email"] {
+  padding: 10px;
+  margin-bottom: 10px;
+  border: none;
+  border-radius: 4px;
+}
+.footer-cta button {
+  background-color: #e3a815;
+  color: #111;
+  padding: 10px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+.footer-cta button:hover {
+  background-color: #f1c232;
+}
+
+.footer-bottom {
+  width: 100%;
+  margin-top: 40px;
+  text-align: center;
+}
+.footer-social a {
+  margin: 0 10px;
+  color: #fff;
+  font-size: 20px;
+}
+.footer-legal {
+  margin-top: 10px;
+  font-size: 14px;
+}
+.footer-legal a {
+  color: #aaa;
+  text-decoration: none;
+  margin: 0 5px;
+}
+.footer-legal a:hover {
+  text-decoration: underline;
 }

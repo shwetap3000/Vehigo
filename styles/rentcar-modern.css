@@ -1,0 +1,704 @@
+/* Modern Rentcar Page Animations & Styling */
+
+/* Root Variables for Modern Design */
+:root {
+  --primary-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  --secondary-gradient: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+  --success-gradient: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+  --card-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+  --card-shadow-hover: 0 20px 50px rgba(0, 0, 0, 0.25);
+  --border-radius: 15px;
+  --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Page Load Animation */
+@keyframes pageSlideIn {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Modern Container Styling */
+.rentcar-main-content {
+  animation: pageSlideIn 0.8s ease-out;
+  background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+  min-height: 100vh;
+  padding: 120px 20px 50px;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Modern Typography */
+.rentcar-main-content h1 {
+  text-align: center;
+  font-size: 2.5rem;
+  /* background: var(--primary-gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent; */
+  color: white;
+  background-clip: text;
+  animation: titleGlow 2s ease-in-out infinite alternate;  
+  margin: 2rem;
+  
+}
+
+@keyframes titleGlow {
+  from {
+    filter: drop-shadow(0 0 10px rgba(102, 126, 234, 0.3));
+  }
+  to {
+    filter: drop-shadow(0 0 20px rgba(102, 126, 234, 0.6));
+  }
+}
+
+/* Modern Message Box */
+#message {
+  background: rgb(255 255 255 / 55%);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: var(--border-radius);
+  padding: 1.1rem;
+  margin: 2rem 0;
+  text-align: center;
+  box-shadow: var(--card-shadow);
+  animation: cardFloat 3s ease-in-out infinite;
+  position: relative;
+  overflow: hidden;
+}
+
+.message-items{
+     display: flex;
+     flex-direction: row;
+     gap: 20px;
+     justify-content: center;
+     align-items: center;
+}
+
+#message::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+  animation: shimmer 2s infinite;
+}
+
+@keyframes cardFloat {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-5px);
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    left: -100%;
+  }
+  100% {
+    left: 100%;
+  }
+}
+
+#message h3 {
+  color: #e74c3c;
+  font-size: 1rem;
+}
+
+#message .btn {
+  background: var(--secondary-gradient);
+  color: white;
+  border: none;
+  padding: 12px 30px;
+  border-radius: 25px;
+  font-weight: 600;
+  transition: var(--transition);
+  box-shadow: 0 5px 15px rgba(245, 87, 108, 0.3);
+}
+
+#message .btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(245, 87, 108, 0.4);
+}
+
+/* Modern Form Styling */
+#carForm {
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(20px);
+  border-radius: var(--border-radius);
+  padding: 2.5rem;
+  margin: 2rem 0;
+  box-shadow: var(--card-shadow);
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  animation: formSlideUp 0.8s ease-out 0.3s both;
+}
+
+@keyframes formSlideUp {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+#carForm input {
+  border: 2px solid #e1e8ed;
+  border-radius: 10px;
+  padding: 15px 20px;
+  font-size: 1rem;
+  transition: var(--transition);
+  background: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(10px);
+}
+
+#carForm input:focus {
+  outline: none;
+  border-color: #667eea;
+  background: white;
+  box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+  transform: translateY(-2px);
+}
+
+#carForm input::placeholder {
+  color: #8e8e93;
+  font-weight: 500;
+}
+
+#carForm button[type="submit"] {
+  grid-column: 1 / -1;
+  background: var(--success-gradient);
+  color: white;
+  border: none;
+  padding: 18px 40px;
+  border-radius: 12px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: var(--transition);
+  box-shadow: 0 8px 25px rgba(79, 172, 254, 0.3);
+  position: relative;
+  overflow: hidden;
+}
+
+#carForm button[type="submit"]:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 35px rgba(13, 37, 57, 0.4);
+}
+
+#carForm button[type="submit"]::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: left 0.5s;
+}
+
+#carForm button[type="submit"]:hover::before {
+  left: 100%;
+}
+
+/* Modern Car List */
+#carList {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+  gap: 2rem;
+  margin: 2rem 0;
+}
+
+.car-card {
+  background: rgba(255, 218, 218, 0.95);
+  backdrop-filter: blur(20px);
+  border-radius: var(--border-radius);
+  padding: 1.5rem;
+  box-shadow: var(--card-shadow);
+  transition: var(--transition);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  animation: cardSlideIn 0.6s ease-out both;
+  position: relative;
+  overflow: hidden;
+}
+
+.car-card:nth-child(1) { animation-delay: 0.1s; }
+.car-card:nth-child(2) { animation-delay: 0.2s; }
+.car-card:nth-child(3) { animation-delay: 0.3s; }
+.car-card:nth-child(4) { animation-delay: 0.4s; }
+
+@keyframes cardSlideIn {
+  from {
+    opacity: 0;
+    transform: translateY(30px) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.car-card:hover {
+  transform: translateY(-10px);
+  box-shadow: var(--card-shadow-hover);
+}
+
+.car-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: var(--primary-gradient);
+  border-radius: var(--border-radius) var(--border-radius) 0 0;
+}
+
+.car-card img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 10px;
+  margin-bottom: 1rem;
+  transition: var(--transition);
+}
+
+.car-card:hover img {
+  transform: scale(1.05);
+}
+
+.car-card h3 {
+  color: #2c3e50;
+  margin-bottom: 0.5rem;
+  font-size: 1.3rem;
+}
+
+.car-card p {
+  color: #7f8c8d;
+  margin-bottom: 0.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.car-card .price {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: #27ae60;
+  background: rgba(39, 174, 96, 0.1);
+  padding: 8px 15px;
+  border-radius: 20px;
+  display: inline-block;
+  margin-top: 1rem;
+}
+
+/* Modern Buy/Sell Section */
+.buy-sell {
+  display: flex;
+  gap: 2rem;
+  justify-content: center;
+  margin: 3rem 0;
+  flex-wrap: wrap;
+}
+
+.btns {
+  background: var(--primary-gradient);
+  color: white;
+  border: none;
+  padding: 18px 40px;
+  border-radius: 25px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: var(--transition);
+  box-shadow: 0 8px 25px rgba(102, 126, 234, 0.3);
+  position: relative;
+  overflow: hidden;
+  min-width: 200px;
+}
+
+.btns:hover {
+  transform: translateY(-3px) scale(1.05);
+  box-shadow: 0 12px 35px rgba(102, 126, 234, 0.4);
+}
+
+.btns::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  transition: width 0.4s, height 0.4s;
+}
+
+.btns:hover::after {
+  width: 200%;
+  height: 200%;
+}
+
+/* Section Headers */
+.rentcar-main-content h2 {
+  font-size: 2rem;
+  color: #2c3e50;
+  text-align: center;
+  margin: 3rem 0 2rem;
+  position: relative;
+  animation: fadeInUp 0.8s ease-out;
+}
+
+.rentcar-main-content h2::after {
+  content: '';
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100px;
+  height: 4px;
+  background: var(--primary-gradient);
+  border-radius: 2px;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Modern HR Styling */
+hr {
+  border: none;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, #667eea, transparent);
+  margin: 3rem 0;
+  animation: lineExpand 1s ease-out;
+}
+
+@keyframes lineExpand {
+  from {
+    width: 0;
+    margin-left: 50%;
+  }
+  to {
+    width: 100%;
+    margin-left: 0;
+  }
+}
+
+/* Floating Action Button Enhancement */
+.floating-btn {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  background: var(--primary-gradient);
+  color: white;
+  border-radius: 50%;
+  width: 60px;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  box-shadow: 0 8px 25px rgba(102, 126, 234, 0.4);
+  z-index: 999;
+  transition: var(--transition);
+  animation: bounceIn 1s ease-out 2s both;
+}
+
+@keyframes bounceIn {
+  0% {
+    opacity: 0;
+    transform: scale(0.3);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.05);
+  }
+  70% {
+    transform: scale(0.9);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.floating-btn:hover {
+  transform: scale(1.1) rotate(5deg);
+  box-shadow: 0 12px 35px rgba(102, 126, 234, 0.6);
+}
+
+/* Dark Mode Support */
+.dark-theme .rentcar-main-content {
+  background: linear-gradient(135deg, #2c3e50 0%, #3498db 100%);
+}
+
+.dark-theme #message,
+.dark-theme #carForm,
+.dark-theme .car-card {
+  background: rgba(52, 73, 94, 0.95);
+  color: #ecf0f1;
+  border-color: rgba(255, 255, 255, 0.1);
+}
+
+.dark-theme #carForm input {
+  background: rgba(44, 62, 80, 0.8);
+  color: #ecf0f1;
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
+.dark-theme .car-card h3 {
+  color: #ecf0f1;
+}
+
+.dark-theme .car-card p {
+  color: #bdc3c7;
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+  .rentcar-main-content h1 {
+    font-size: 2rem;
+  }
+  
+  #carForm {
+    grid-template-columns: 1fr;
+    padding: 1.5rem;
+  }
+  
+  .buy-sell {
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .btns {
+    width: 100%;
+    max-width: 300px;
+  }
+  
+  #carList {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Loading Animation */
+.loading {
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-radius: 50%;
+  border-top-color: #fff;
+  animation: spin 1s ease-in-out infinite;
+  margin-right: 8px;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Success Message Animation */
+.success-message {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  background: linear-gradient(135deg, #4CAF50, #45a049);
+  color: white;
+  padding: 12px 24px;
+  border-radius: 12px;
+  box-shadow: 0 8px 32px rgba(76, 175, 80, 0.3);
+  backdrop-filter: blur(10px);
+  z-index: 1000;
+  animation: slideInRight 0.5s ease-out;
+  font-weight: 500;
+  font-size: 14px;
+}
+
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(100px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.success-message {
+  background: var(--success-gradient);
+  color: white;
+  padding: 1rem 2rem;
+  border-radius: 10px;
+  text-align: center;
+  animation: successSlide 0.5s ease-out;
+  margin: 1rem 0;
+}
+
+@keyframes successSlide {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Pulse Animation for Interactive Elements */
+.pulse {
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(102, 126, 234, 0.7);
+  }
+  70% {
+    box-shadow: 0 0 0 10px rgba(102, 126, 234, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(102, 126, 234, 0);
+  }
+}
+
+/* Additional Interactive Animations */
+.car-card {
+  position: relative;
+  overflow: hidden;
+}
+
+.car-card::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(102, 126, 234, 0.1), transparent);
+  transition: left 0.7s;
+}
+
+.car-card:hover::after {
+  left: 100%;
+}
+
+/* Form Input Focus Animation */
+#carForm input {
+  position: relative;
+}
+
+#carForm input:focus {
+  animation: inputFocus 0.3s ease-out;
+}
+
+@keyframes inputFocus {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.02);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+/* Button Click Animation */
+.btns:active,
+#carForm button[type="submit"]:active {
+  animation: buttonClick 0.2s ease-out;
+}
+
+@keyframes buttonClick {
+  0% {
+    transform: translateY(-3px) scale(1.05);
+  }
+  50% {
+    transform: translateY(-1px) scale(1.02);
+  }
+  100% {
+    transform: translateY(-3px) scale(1.05);
+  }
+}
+
+/* Scroll Reveal Animation */
+.scroll-reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.6s ease-out;
+}
+
+.scroll-reveal.revealed {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Gradient Background Animation */
+.rentcar-main-content {
+  background: linear-gradient(45deg, #f5f7fa, #c3cfe2, #667eea, #764ba2);
+  background-size: 400% 400%;
+  animation: gradientFlow 15s ease infinite;
+}
+
+@keyframes gradientFlow {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+/* Enhanced Floating Button Animation */
+.floating-btn {
+  animation: floatingBob 3s ease-in-out infinite;
+}
+
+@keyframes floatingBob {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+.floating-btn:hover {
+  animation: floatingHover 0.3s ease-out forwards;
+}
+
+@keyframes floatingHover {
+  to {
+    transform: scale(1.1) rotate(5deg) translateY(-5px);
+  }
+}

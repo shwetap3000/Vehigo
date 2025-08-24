@@ -4,6 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" href="favicon.svg">
   <title>Track Page</title>
   <link rel="stylesheet" href="./assets/css/carPage.css">
   <link rel="stylesheet" href="./assets/css/style.css">
@@ -12,7 +13,6 @@
   <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600&family=Open+Sans&display=swap"
     rel="stylesheet">
 
-  <link rel="shortcut icon" href="./favicon.svg" type="image/svg+xml">
   <!-- Add any necessary meta tags, CSS links, or other head content here -->
   <style>
     /* Center the section */
@@ -50,14 +50,14 @@
           <li>
             <a href="./index.html#featured-car" class="navbar-link" data-nav-link>Explore cars</a>
           </li>
-          
-          <li>
-              <a href="offline.html" class="navbar-link" data-nav-link>Offline Centers</a>
-            </li>
 
-             <li>
-              <a href="rentcar.html" class="navbar-link" data-nav-link>Rent Your Car</a>
-            </li>
+          <li>
+            <a href="offline.html" class="navbar-link" data-nav-link>Offline Centers</a>
+          </li>
+
+          <li>
+            <a href="rentcar.html" class="navbar-link" data-nav-link>Rent Your Car</a>
+          </li>
 
           <li>
             <a href="#" class="navbar-link" data-nav-link>About us</a>
@@ -84,7 +84,7 @@
           <span id="aria-label-txt">Explore cars</span>
         </a>
 
-        <a href="./login.html" class="btn user-btn" aria-label="Profile">
+        <a href="./src/pages/login.html" class="btn user-btn" aria-label="Profile">
           <ion-icon name="person-outline"></ion-icon>
         </a>
 
@@ -257,15 +257,19 @@
         </ul>
 
         <p class="copyright">
-          &copy; 2023 <a href="#">VehiGo</a> Contact us through
+          &copy; <span id="copyright-year"></span> <a href="#">VehiGo</a> Contact us through
         </p>
 
       </div>
 
     </div>
   </footer>
-</body>
 
+</body>
+<script>
+  const yearEl = document.getElementById('copyright-year');
+  if(yearEl) yearEl.textContent = new Date().getFullYear();
+</script>
 <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
 <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
 

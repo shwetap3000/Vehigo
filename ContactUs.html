@@ -1,12 +1,19 @@
- <!-- 
-    - favicon
-  -->
-    <link rel="shortcut icon" href="./favicon.svg" type="image/svg+xml" />
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="icon" href="favicon.svg">
+  <link rel="stylesheet" href="preloader.css"/>
+  <title>Contact Us - Vehigo</title>
+
 
     <!-- 
     - custom css link
   -->
-    <link rel="stylesheet" href="./assets/css/style.css" />
+    
+    <link rel="stylesheet" href="src/assets/styles/style.css" />
+    <link rel="stylesheet" href="./ContactUs.css" />
 
     <!-- 
     - google font link
@@ -18,101 +25,78 @@
       rel="stylesheet"
     />
 
-    <link rel="stylesheet" href="./ContactUs.css" />
-  <body>
+    
+</head>
+ <body>
+  
+    <div id="preloader">
+    <div class="spinner"></div>
+  </div>
+  <div id="app">
     <!-- 
     - #HEADER
   -->
 
+  <header class="header" data-header>
+    <div class="container">
 
-<header class="header" data-header>
-      <div class="container">
-        <div class="overlay" data-overlay></div>
+      <div class="overlay" data-overlay></div>
 
-        <a href="index.html" class="logo">
-          <img src="./assets/images/vehigologo.png" alt="VehiGo logo" />
+      <a href="index.html" class="logo">
+        <img src="./assets/images/vehigologo.png" alt="VehiGo logo">
+      </a>
+
+<nav class="navbar" data-navbar>
+  <ul class="navbar-list">
+
+    <li>
+      <a href="src/index.html" class="navbar-link" data-nav-link>Home</a>
+    </li>
+
+    <li>
+      <a href="featured-car.html" class="navbar-link" data-nav-link>Explore cars</a>
+    </li>
+
+    <li>
+      <a href="src/pages/about.html" class="navbar-link" data-nav-link>About us</a>
+    </li>
+
+    <li>
+      <a href="blog.html" class="navbar-link" data-nav-link>Blog</a>
+    </li>
+
+    <li>
+      <a href="src/pages/bill.html" class="navbar-link" data-nav-link>Fare Calculator</a>
+    </li>
+
+  </ul>
+</nav>
+
+
+      <div class="header-actions">
+
+        <div class="header-contact">
+          <a href="tel:1800100100" class="contact-link">1800-100-100</a>
+
+          <span class="contact-time">Mon - Sat: 9:00 am - 6:00 pm</span>
+        </div>
+
+        <a href="src/pages/login.html" class="btn user-btn" aria-label="Profile">
+          <ion-icon name="person-outline"></ion-icon>
         </a>
 
-        <nav class="navbar" data-navbar>
-          <ul class="navbar-list">
-            <li>
-              <a href="index.html" class="navbar-link" data-nav-link>Home</a>
-            </li>
+        <button class="nav-toggle-btn" data-nav-toggle-btn aria-label="Toggle Menu">
+          <span class="one"></span>
+          <span class="two"></span>
+          <span class="three"></span>
+        </button>
 
-            <li>
-              <a href="#featured-car" class="navbar-link" data-nav-link
-                >Explore cars</a
-              >
-            </li>
-
-            <li>
-              <a href="#" class="navbar-link" data-nav-link>About us</a>
-            </li>
-
-            <li>
-              <a href="#blog" class="navbar-link" data-nav-link>Blog</a>
-            </li>
-
-            <!-- 🌙 Dark Mode Toggle Button -->
-            <li>
-              <button id="dark-mode-toggle" class="dark-toggle">🌙</button>
-            </li>
-          </ul>
-        </nav>
-
-        <div class="header-actions">
-          <div class="header-contact">
-            <a href="tel:1800100100" class="contact-link">1800-100-100</a>
-
-            <span class="contact-time">Mon - Sat: 9:00 am - 6:00 pm</span>
-          </div>
-          
-
-          
-          <!-- home.html -->
-<button id="logoutBtn" style="display: none;">Logout</button>
-
-
-
-
-          <a href="#featured-car" class="btn" aria-labelledby="aria-label-txt">
-            <ion-icon name="car-outline"></ion-icon>
-
-            <span id="aria-label-txt">Explore cars</span>
-          </a>
-
-          <a href="./login.html" class="btn user-btn" aria-label="Profile">
-            <ion-icon name="person-outline"></ion-icon>
-          </a>
-
-          <button
-            class="nav-toggle-btn"
-            data-nav-toggle-btn
-            aria-label="Toggle Menu"
-          >
-            <span class="one"></span>
-            <span class="two"></span>
-            <span class="three"></span>
-          </button>
-        </div>
       </div>
-    </header>
 
+    </div>
+  </header>
 <!--Body-->
 
-    <!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Contact Us - Vehigo</title>
-  <link rel="stylesheet" href="style.css" />
-</head>
-<body>
-  <!-- Navbar -->
-  <nav class="navbar">
-    <h2>Vehigo</h2>
-  </nav>
 
 
 
@@ -136,13 +120,13 @@
         </div>
         <form id="form" class="form">
           <label>Your Name</label>
-          <input type="text" name="name" placeholder="Enter your full name" required />
+          <input type="text" name="name" placeholder="Enter your full name" minlength="3" required />
 
           <label>Email Address</label>
           <input type="email" name="email" placeholder="Enter your email address" required />
 
           <label>Message</label>
-          <textarea name="message" rows="6" placeholder="Tell us about your issue..." required></textarea>
+          <textarea name="message" rows="6" placeholder="Tell us about your issue..." minlength="10" required></textarea>
 
           <button type="submit">Send Message</button>
         </form>
@@ -178,19 +162,35 @@
             </li>
 
             <li>
-              <a href="#" class="footer-link">About us</a>
+
+              <a href="index.html" class="footer-link">About us</a>
             </li>
 
             <li>
-              <a href="#" class="footer-link">Pricing plans</a>
+              <a href="featured-car.html" class="footer-link">Pricing plans</a>
             </li>
 
             <li>
-              <a href="#" class="footer-link">Our blog</a>
+              <a href="blog.html" class="footer-link">Our blog</a>
             </li>
 
             <li>
-              <a href="#" class="footer-link">Contact Us</a>
+              <a href="ContactUs.html" class="footer-link">Contact Us</a>
+
+              <a href="./src/pages/about.html" class="footer-link">About us</a>
+            </li>
+
+            <li>
+              <a href="./src/pages/pricing.html" class="footer-link">Pricing plans</a>
+            </li>
+
+            <li>
+              <a href="./blog.html" class="footer-link">Our blog</a>
+            </li>
+
+            <li>
+              <a href="./ContactUs.html" class="footer-link">Contact Us</a>
+
             </li>
           </ul>
 
@@ -200,15 +200,15 @@
             </li>
 
             <li>
-              <a href="#" class="footer-link">Help center</a>
+              <a href="./src/pages/help-center.html" class="footer-link">Help center</a>
             </li>
 
             <li>
-              <a href="#" class="footer-link">Ask a question</a>
+              <a href="./src/pages/Askaques.html" class="footer-link">Ask a question</a>
             </li>
 
             <li>
-              <a href="#" class="footer-link">Privacy policy</a>
+              <a href="./privacypolicy.html" class="footer-link">Privacy policy</a>
             </li>
 
             <li>
@@ -228,38 +228,45 @@
         <div class="footer-bottom">
           <ul class="social-list">
             <li>
-              <a href="#" class="social-link">
+              <a href="https://www.facebook.com/" class="social-link">
                 <ion-icon name="logo-facebook"></ion-icon>
               </a>
             </li>
 
             <li>
-              <a href="#" class="social-link">
+              <a href="https://www.instagram.com/" class="social-link">
                 <ion-icon name="logo-instagram"></ion-icon>
               </a>
             </li>
 
             <li>
-              <a href="#" class="social-link">
+              <a href="https://x.com/" class="social-link">
                 <ion-icon name="logo-twitter"></ion-icon>
               </a>
             </li>
 
             <li>
-              <a href="#" class="social-link">
+              <a href="https://www.linkedin.com/feed/" class="social-link">
                 <ion-icon name="logo-linkedin"></ion-icon>
               </a>
             </li>
 
+
             <li>
               <a href="#" class="social-link">
+                <ion-icon name="logo-github"></ion-icon>
+              </a>
+            </li>
+
+            <li>
+              <a href="https://mail.google.com/" class="social-link">
                 <ion-icon name="mail-outline"></ion-icon>
               </a>
             </li>
           </ul>
 
           <p class="copyright">
-            &copy; 2023 <a href="#">VehiGo</a> Contact us through
+            &copy; <span id="copyright-year"></span> <a href="#">VehiGo</a> Contact us through
           </p>
         </div>
       </div>
@@ -279,8 +286,28 @@
 
 
   <!-- Back to Top Button -->
-<a href="#" class="back-to-top">
-  <ion-icon name="chevron-up-outline"></ion-icon>
-  <span>Back to Top</span>
+  <a href="./ContactUs.html" style="
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  background-color: #007BFF;
+  color: white;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  z-index: 999;
+  transition: background-color 0.3s;
+" onmouseover="this.style.backgroundColor='#0056b3'" onmouseout="this.style.backgroundColor='#007BFF'">
+  <ion-icon name="chevron-up-outline" style="font-size: 24px;"></ion-icon>
 </a>
+<script>
+  const yearEl = document.getElementById('copyright-year');
+  if(yearEl) yearEl.textContent = new Date().getFullYear();
+</script>
+<script src="preloader.js"></script>
 </body>

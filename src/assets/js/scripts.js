@@ -1,9 +1,11 @@
 const loginButton = document.getElementById("login-button");
 
 // Add a click event listener to the login button
-loginButton.addEventListener("click", function() {
+loginButton.addEventListener("click", function () {
   // Redirect to the login page
-  window.location.href = "login.html";
+  localStorage.clear();
+  sessionStorage.clear();
+  window.location.href = "pages/login.html";
 });
 //  Function to handle login
 // async function login(email, password) {
