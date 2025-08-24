@@ -1336,6 +1336,7 @@ font-weight: bolder;
   color: inherit;
 }
 
+
 .footer-top {
   padding-block: 60px;
   display: flex;
@@ -1383,6 +1384,11 @@ font-weight: bolder;
 
 .footer-link:hover {
   color: rgb(42, 21, 231);
+  transform: scale(1.1);
+}
+
+.iconss:hover{
+  transform: scale(1.2);
 }
 
 .footer-list:last-child > li:first-child {
