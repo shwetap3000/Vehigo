@@ -45,8 +45,8 @@
   -webkit-text-fill-color: transparent; */
   color: white;
   background-clip: text;
-  margin-bottom: 2rem;
-  animation: titleGlow 2s ease-in-out infinite alternate;
+  animation: titleGlow 2s ease-in-out infinite alternate;  
+  margin: 2rem;
   
 }
 
@@ -61,17 +61,25 @@
 
 /* Modern Message Box */
 #message {
-  background: rgba(255, 255, 255, 0.95);
+  background: rgb(255 255 255 / 55%);
   backdrop-filter: blur(20px);
   border: 1px solid rgba(255, 255, 255, 0.2);
   border-radius: var(--border-radius);
-  padding: 2rem;
+  padding: 1.1rem;
   margin: 2rem 0;
   text-align: center;
   box-shadow: var(--card-shadow);
   animation: cardFloat 3s ease-in-out infinite;
   position: relative;
   overflow: hidden;
+}
+
+.message-items{
+     display: flex;
+     flex-direction: row;
+     gap: 20px;
+     justify-content: center;
+     align-items: center;
 }
 
 #message::before {
@@ -105,8 +113,7 @@
 
 #message h3 {
   color: #e74c3c;
-  margin-bottom: 1rem;
-  font-size: 1.2rem;
+  font-size: 1rem;
 }
 
 #message .btn {
@@ -133,8 +140,8 @@
   padding: 2.5rem;
   margin: 2rem 0;
   box-shadow: var(--card-shadow);
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  display: flex;
+  flex-direction: column;
   gap: 1.5rem;
   animation: formSlideUp 0.8s ease-out 0.3s both;
 }
@@ -191,7 +198,7 @@
 
 #carForm button[type="submit"]:hover {
   transform: translateY(-3px);
-  box-shadow: 0 12px 35px rgba(79, 172, 254, 0.4);
+  box-shadow: 0 12px 35px rgba(13, 37, 57, 0.4);
 }
 
 #carForm button[type="submit"]::before {
@@ -218,7 +225,7 @@
 }
 
 .car-card {
-  background: rgba(255, 255, 255, 0.95);
+  background: rgba(255, 218, 218, 0.95);
   backdrop-filter: blur(20px);
   border-radius: var(--border-radius);
   padding: 1.5rem;
