@@ -597,6 +597,7 @@ font-weight: bolder;
 .first {
   max-width: 17ch;
 }
+/* form css */
 
 @keyframes hideRevel {
   0% {
@@ -636,13 +637,13 @@ font-weight: bolder;
   box-shadow: var(--shadow-1);
   border-radius: var(--radius-18);
   font-family: var(--ff-nunito);
-  padding: 25px;
+  padding: 28px;
   display: grid;
   gap: 20px;
 }
 
 .input-wrapper {
-  padding: 18px 25px;
+  padding: 18px 20px;
 }
 
 .input-wrapper:not(:last-of-type) {
@@ -650,9 +651,16 @@ font-weight: bolder;
 }
 
 .input-label {
+
+  color: var(--manatee); /* Keep original manatee, or adjust if needed */
+  font-size: var(--fs-4);
+  margin-bottom: 12px;
+  
+
   color: var(--manatee);
   font-size: var(--fs-6);
   margin-bottom: 12px;
+
 }
 
 .input-field {
@@ -662,7 +670,7 @@ font-weight: bolder;
   border-radius: 4px;
   transition: var(--transition);
   padding: 10px 0;
-  font-size: var(--fs-4);
+  font-size: var(--fs-6);
   appearance: none;
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%236c757d'%3E%3Cpath d='M7 10l5 5 5-5z'/%3E%3C/svg%3E");
   background-repeat: no-repeat;
@@ -682,6 +690,17 @@ font-weight: bolder;
   opacity: 1;
 }
 
+.hero-form #input-1 {
+  font-size: var(--fs-5);
+  color: var(--text-primary-dark); /* Ensure input text is dark */
+}
+
+.hero-form #input-2 {
+  font-size: var(--fs-5);
+  color: var(--text-primary-dark); /* Ensure input text is dark */
+}
+
+
 .input-field:focus {
   outline-color: var(--carolina-blue);
 }
@@ -695,6 +714,7 @@ font-weight: bolder;
   --height: 50px;
   margin: 20px;
   text-transform: uppercase;
+  background-color: #2a7fffed;
 }
 
 .featured-car .title-wrapper {
