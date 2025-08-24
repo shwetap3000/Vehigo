@@ -270,7 +270,7 @@ button, a { transition: var(--transition); }
   display: flex;
   align-items: center;
   gap: 20px;
-  width: 320px;
+  width: 35%;
 }
 
 .header-actions .btn span { display: none; }

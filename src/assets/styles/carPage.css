@@ -1,9 +1,71 @@
 .mainCar {
-    margin-top: 120px;
+    margin-top: 60px;
     display: flex;
-    margin-bottom: 120px;
+    margin-bottom: 50px;
     justify-content: center;
+    min-width: 100%;
 }
+
+#car-slide-section {
+  display: flex;
+  transition: transform 0.5s ease-in-out;
+  width: 100%;
+}
+
+
+.car-slider{
+  width: 97%;
+  margin: 50px auto;
+  position: relative;
+  overflow: hidden;
+}
+  
+.car-slide-button{
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: transparent;
+  border: none;
+  font-size: 2rem;
+  padding: 10px;
+  cursor: pointer;
+  z-index: 10;
+  opacity : 0.7 ;
+}
+
+.prevbutton{
+  left: 20px;
+}
+
+.nextbutton{
+  right: 20px;
+}
+
+
+.dots{
+  text-align: center;
+  margin-top: 10px;
+  display: flex;
+  justify-content: center;
+  
+}
+
+.dots button{
+  position: relative;
+  height: 12px;
+  width: 10px;
+  margin: 0px 5px;
+  border-radius: 50%;
+  border: none;
+  background-color: #ccc;
+  cursor: pointer;
+}
+
+.dots button.active{
+  background-color: hsl(204, 91%, 53%);;
+}
+
+
 
 .carPage1 img {
     /* margin-left: 5px;  */

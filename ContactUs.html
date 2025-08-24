@@ -4,6 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="icon" href="favicon.svg">
+  <link rel="stylesheet" href="preloader.css"/>
   <title>Contact Us - Vehigo</title>
 
 
@@ -27,6 +28,11 @@
     
 </head>
  <body>
+  
+    <div id="preloader">
+    <div class="spinner"></div>
+  </div>
+  <div id="app">
     <!-- 
     - #HEADER
   -->
@@ -260,7 +266,7 @@
           </ul>
 
           <p class="copyright">
-            &copy; 2023 <a href="#">VehiGo</a> Contact us through
+            &copy; <span id="copyright-year"></span> <a href="#">VehiGo</a> Contact us through
           </p>
         </div>
       </div>
@@ -299,5 +305,9 @@
 " onmouseover="this.style.backgroundColor='#0056b3'" onmouseout="this.style.backgroundColor='#007BFF'">
   <ion-icon name="chevron-up-outline" style="font-size: 24px;"></ion-icon>
 </a>
-
+<script>
+  const yearEl = document.getElementById('copyright-year');
+  if(yearEl) yearEl.textContent = new Date().getFullYear();
+</script>
+<script src="preloader.js"></script>
 </body>
