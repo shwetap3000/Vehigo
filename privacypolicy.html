@@ -1,135 +1,190 @@
-       <link rel="stylesheet" href="./assets/css/style.css" />
+<link rel="stylesheet" href="./assets/css/style.css" />
 <a href="index.html" class="logo">
-          <img src="./assets/images/vehigologo.png" alt="VehiGo logo" />
-        </a>
-
-   
-    <header class="header" data-header>
-      <div class="container">
-        <div class="overlay" data-overlay></div>
-
-        <a href="index.html" class="logo">
-          <img src="./assets/images/vehigologo.png" alt="VehiGo logo" />
-        </a>
-
-        <nav class="navbar" data-navbar>
-          <ul class="navbar-list">
-            <li>
-              <a href="index.html" class="navbar-link" data-nav-link>Home</a>
-            </li>
-
-            <li>
-              <a href="#featured-car" class="navbar-link" data-nav-link
-                >Explore cars</a
-              >
-            </li>
-
-            <li>
-              <a href="#" class="navbar-link" data-nav-link>About us</a>
-            </li>
-
-            <li>
-              <a href="#blog" class="navbar-link" data-nav-link>Blog</a>
-            </li>
-
-            <!-- 🌙 Dark Mode Toggle Button -->
-            <li>
-              <button id="dark-mode-toggle" class="dark-toggle">🌙</button>
-            </li>
-          </ul>
-        </nav>
-
-        <div class="header-actions">
-          <div class="header-contact">
-            <a href="tel:1800100100" class="contact-link">1800-100-100</a>
-
-            <span class="contact-time">Mon - Sat: 9:00 am - 6:00 pm</span>
-          </div>
-          <li>
-            <a href="./src/pages/about.html" class="navbar-link" data-nav-link>About us</a>
-          </li>
-
-          <li>
-            <a href="#blog" class="navbar-link" data-nav-link>Blog</a>
-          </li>
-          <!-- home.html -->
-<button id="logoutBtn" style="display: none;">Logout</button>
+  <img src="./assets/images/vehigologo.png" alt="VehiGo logo" />
+</a>
 
 
+<header class="header" data-header>
+  <div class="container">
+    <div class="overlay" data-overlay></div>
 
+    <a href="index.html" class="logo">
+      <img src="./assets/images/vehigologo.png" alt="VehiGo logo" />
+    </a>
 
-          <a href="#featured-car" class="btn" aria-labelledby="aria-label-txt">
-            <ion-icon name="car-outline"></ion-icon>
+    <nav class="navbar" data-navbar>
+      <ul class="navbar-list">
+        <li>
+          <a href="index.html" class="navbar-link" data-nav-link>Home</a>
+        </li>
 
-            <span id="aria-label-txt">Explore cars</span>
-          </a>
+        <li>
+          <a href="#featured-car" class="navbar-link" data-nav-link>Explore cars</a>
+        </li>
 
-          <a href="./login.html" class="btn user-btn" aria-label="Profile">
-            <ion-icon name="person-outline"></ion-icon>
-          </a>
+        <li>
+          <a href="#" class="navbar-link" data-nav-link>About us</a>
+        </li>
 
-          <button
-            class="nav-toggle-btn"
-            data-nav-toggle-btn
-            aria-label="Toggle Menu"
-          >
-            <span class="one"></span>
-            <span class="two"></span>
-            <span class="three"></span>
-          </button>
-        </div>
+        <li>
+          <a href="#blog" class="navbar-link" data-nav-link>Blog</a>
+        </li>
+
+      </ul>
+    </nav>
+
+    <div class="header-actions">
+      <div class="header-contact">
+        <a href="tel:1800100100" class="contact-link">1800-100-100</a>
+
+        <span class="contact-time">Mon - Sat: 9:00 am - 6:00 pm</span>
       </div>
-    </header>
+      <!-- Theme Toggle Switch with SVG icons -->
+      <label class="theme-switch" for="theme-toggle">
+        <input type="checkbox" id="theme-toggle" />
+        <span class="slider">
+          <span class="icon sun" aria-label="Light mode">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="orange" stroke-width="2"
+              stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="5" />
+              <line x1="12" y1="1" x2="12" y2="3" />
+              <line x1="12" y1="21" x2="12" y2="23" />
+              <line x1="4.22" y1="4.22" x2="5.64" y2="5.64" />
+              <line x1="18.36" y1="18.36" x2="19.78" y2="19.78" />
+              <line x1="1" y1="12" x2="3" y2="12" />
+              <line x1="21" y1="12" x2="23" y2="12" />
+              <line x1="4.22" y1="19.78" x2="5.64" y2="18.36" />
+              <line x1="18.36" y1="5.64" x2="19.78" y2="4.22" />
+            </svg>
+          </span>
+          <span class="icon moon" aria-label="Dark mode">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#f5f5f5" stroke-width="2"
+              stroke-linecap="round" stroke-linejoin="round">
+              <path d="M21 12.79A9 9 0 1 1 11.21 3a7 7 0 0 0 9.79 9.79z" />
+            </svg>
+          </span>
+        </span>
+      </label>
+      <li>
+        <a href="./src/pages/about.html" class="navbar-link" data-nav-link>About us</a>
+      </li>
+
+      <li>
+        <a href="#blog" class="navbar-link" data-nav-link>Blog</a>
+      </li>
+      <!-- home.html -->
+      <button id="logoutBtn" style="display: none;">Logout</button>
+
+
+
+
+      <a href="#featured-car" class="btn" aria-labelledby="aria-label-txt">
+        <ion-icon name="car-outline"></ion-icon>
+
+        <span id="aria-label-txt">Explore cars</span>
+      </a>
+
+      <a href="./src/pages/login.html" class="btn user-btn" aria-label="Profile">
+        <ion-icon name="person-outline"></ion-icon>
+      </a>
+
+      <button class="nav-toggle-btn" data-nav-toggle-btn aria-label="Toggle Menu">
+        <span class="one"></span>
+        <span class="two"></span>
+        <span class="three"></span>
+      </button>
+    </div>
+  </div>
+</header>
 
 
 <div style="margin-top: 30px; margin-left: 10px;margin-bottom: 10px;">
-    <h1 style="margin-top: 50px; text-align: center;">PRIVACY POLICY</h1>
-    <br>
-    <br>
-    <h2>1. Introduction</h2>
-<p>Welcome to vehigo. We are committed to protecting your privacy and handling your data in an open and transparent manner. This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you visit our website (the "Service"). Please read this policy carefully. If you do not agree with the terms of this privacy policy, please do not access the site.</p>
+  <h1 style="margin-top: 50px; text-align: center;">PRIVACY POLICY</h1>
+  <br>
+  <br>
+  <h2>1. Introduction</h2>
+  <p>Welcome to vehigo. We are committed to protecting your privacy and handling your data in an open and transparent
+    manner. This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you visit
+    our website (the "Service"). Please read this policy carefully. If you do not agree with the terms of this privacy
+    policy, please do not access the site.</p>
 
-<br>
+  <br>
 
-<h2>2. Information We Collect</h2>
-<p>We may collect information about you in a variety of ways. The information we may collect on the Site includes:</p>
+  <h2>2. Information We Collect</h2>
+  <p>We may collect information about you in a variety of ways. The information we may collect on the Site includes:</p>
 
-<p><strong>Personal Data:</strong> Personally identifiable information, such as your name, shipping address, email address, and telephone number, and demographic information, such as your age, gender, hometown, and interests, that you voluntarily give to us when you register with the Site or when you choose to participate in various activities related to the Site, such as online chat and message boards.</p>
+  <p><strong>Personal Data:</strong> Personally identifiable information, such as your name, shipping address, email
+    address, and telephone number, and demographic information, such as your age, gender, hometown, and interests, that
+    you voluntarily give to us when you register with the Site or when you choose to participate in various activities
+    related to the Site, such as online chat and message boards.</p>
 
-<p><strong>Derivative Data:</strong> Information our servers automatically collect when you access the Site, such as your IP address, your browser type, your operating system, your access times, and the pages you have viewed directly before and after accessing the Site.</p>
+  <p><strong>Derivative Data:</strong> Information our servers automatically collect when you access the Site, such as
+    your IP address, your browser type, your operating system, your access times, and the pages you have viewed directly
+    before and after accessing the Site.</p>
 
-<p><strong>Financial Data:</strong> Financial information, such as data related to your payment method (e.g., valid credit card number, card brand, expiration date) that we may collect when you purchase, order, return, exchange, or request information about our services from the Site.</p>
+  <p><strong>Financial Data:</strong> Financial information, such as data related to your payment method (e.g., valid
+    credit card number, card brand, expiration date) that we may collect when you purchase, order, return, exchange, or
+    request information about our services from the Site.</p>
 
-<br>
+  <br>
 
-<h2>3. How We Use Your Information</h2>
-<p>Having accurate information about you permits us to provide you with a smooth, efficient, and customized experience. Specifically, we may use information collected about you via the Site to:</p>
+  <h2>3. How We Use Your Information</h2>
+  <p>Having accurate information about you permits us to provide you with a smooth, efficient, and customized
+    experience. Specifically, we may use information collected about you via the Site to:</p>
 
-<ul>
-  <li>Create and manage your account.</li>
-  <li>Process your transactions and send you related information.</li>
-  <li>Enable user-to-user communications.</li>
-  <li>Request feedback and contact you about your use of the Site.</li>
-  <li>Deliver targeted advertising, coupons, newsletters, and other information regarding promotions and the Site to you.</li>
-  <li>Resolve disputes and troubleshoot problems.</li>
-  <li>Respond to product and customer service requests.</li>
-</ul>
+  <ul>
+    <li>Create and manage your account.</li>
+    <li>Process your transactions and send you related information.</li>
+    <li>Enable user-to-user communications.</li>
+    <li>Request feedback and contact you about your use of the Site.</li>
+    <li>Deliver targeted advertising, coupons, newsletters, and other information regarding promotions and the Site to
+      you.</li>
+    <li>Resolve disputes and troubleshoot problems.</li>
+    <li>Respond to product and customer service requests.</li>
+  </ul>
 
-<br>
+  <br>
 
-<h2>4. Disclosure of Your Information</h2>
-<p>We may share information we have collected about you in certain situations. Your information may be disclosed as follows:</p>
+  <h2>4. Disclosure of Your Information</h2>
+  <p>We may share information we have collected about you in certain situations. Your information may be disclosed as
+    follows:</p>
 
-<p><strong>By Law or to Protect Rights:</strong> If we believe the release of information about you is necessary to respond to legal process, to investigate or remedy potential violations of our policies, or to protect the rights, property, and safety of others, we may share your information as permitted or required by any applicable law, rule, or regulation.</p>
+  <p><strong>By Law or to Protect Rights:</strong> If we believe the release of information about you is necessary to
+    respond to legal process, to investigate or remedy potential violations of our policies, or to protect the rights,
+    property, and safety of others, we may share your information as permitted or required by any applicable law, rule,
+    or regulation.</p>
 
-<p><strong>Third-Party Service Providers:</strong> We may share your information with third parties that perform services for us or on our behalf, including payment processing, data analysis, email delivery, hosting services, customer service, and marketing assistance.</p>
+  <p><strong>Third-Party Service Providers:</strong> We may share your information with third parties that perform
+    services for us or on our behalf, including payment processing, data analysis, email delivery, hosting services,
+    customer service, and marketing assistance.</p>
 
-<p><strong>Marketing Communications:</strong> With your consent, or with an opportunity for you to withdraw consent, we may share your information with third parties for marketing purposes, as permitted by law.</p>
+  <p><strong>Marketing Communications:</strong> With your consent, or with an opportunity for you to withdraw consent,
+    we may share your information with third parties for marketing purposes, as permitted by law.</p>
 
-<br>
+  <br>
 
-<h2>5. Contact Us</h2>
-<p>If you have questions or comments about this Privacy Policy, please contact us at: <a href="mailto:privacy@travelgrid.com">privacy@vehigo.com</a></p>
+  <h2>5. Contact Us</h2>
+  <p>If you have questions or comments about this Privacy Policy, please contact us at: <a
+      href="mailto:privacy@travelgrid.com">privacy@vehigo.com</a></p>
+  <a href="./privacypolicy.html" style="
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  background-color: #007BFF;
+  color: white;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  z-index: 999;
+  transition: background-color 0.3s;
+" onmouseover="this.style.backgroundColor='#0056b3'" onmouseout="this.style.backgroundColor='#007BFF'">
+    <ion-icon name="chevron-up-outline" style="font-size: 24px;">Up</ion-icon>
+  </a>
 
 </div>
 
@@ -140,112 +195,116 @@
 
 
 
-     <footer class="footer">
-      <div class="container">
-        <div class="footer-top">
-          <div class="footer-brand">
-            <a href="#" class="logo">
-              <img src="./assets/images/vehigologo.png" alt="VehiGo logo" />
-            </a>
+<footer class="footer">
+  <div class="container">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <a href="#" class="logo">
+          <img src="./assets/images/vehigologo.png" alt="VehiGo logo" />
+        </a>
 
-            <p class="footer-text">
-              Search for cheap rental cars in Madhaya Pradesh. We offers our
-              customers an attractive and fun selection of vehicals as well as
-              an opportunity to rent thier cars when not in use.
-            </p>
-          </div>
+        <p class="footer-text">
+          Search for cheap rental cars in Madhaya Pradesh. We offers our
+          customers an attractive and fun selection of vehicals as well as
+          an opportunity to rent thier cars when not in use.
+        </p>
+      </div>
 
-          <ul class="footer-list">
-            <li>
-              <p class="footer-list-title">Company</p>
-            </li>
+      <ul class="footer-list">
+        <li>
+          <p class="footer-list-title">Company</p>
+        </li>
 
-            <li>
-              <a href="#" class="footer-link">About us</a>
-            </li>
+        <li>
+          <a href="#" class="footer-link">About us</a>
+        </li>
 
-            <li>
-              <a href="#" class="footer-link">Pricing plans</a>
-            </li>
+        <li>
+          <a href="#" class="footer-link">Pricing plans</a>
+        </li>
 
-            <li>
-              <a href="#" class="footer-link">Our blog</a>
-            </li>
+        <li>
+          <a href="#" class="footer-link">Our blog</a>
+        </li>
 
-            <li>
-              <a href="#" class="footer-link">Contacts</a>
-            </li>
-          </ul>
+        <li>
+          <a href="#" class="footer-link">Contacts</a>
+        </li>
+      </ul>
 
-          <ul class="footer-list">
-            <li>
-              <p class="footer-list-title">Support</p>
-            </li>
+      <ul class="footer-list">
+        <li>
+          <p class="footer-list-title">Support</p>
+        </li>
 
-            <li>
-              <a href="#" class="footer-link">Help center</a>
-            </li>
+        <li>
+          <a href="#" class="footer-link">Help center</a>
+        </li>
 
-            <li>
-              <a href="#" class="footer-link">Ask a question</a>
-            </li>
+        <li>
+          <a href="#" class="footer-link">Ask a question</a>
+        </li>
 
-            <li>
-              <a href="./privacypolicy.html" class="footer-link">Privacy policy</a>
-            </li>
+        <li>
+          <a href="./privacypolicy.html" class="footer-link">Privacy policy</a>
+        </li>
 
-            <li>
-              <a href="./tandc.html" class="footer-link">Terms & conditions</a>
-            </li>
-          </ul>
+        <li>
+          <a href="./tandc.html" class="footer-link">Terms & conditions</a>
+        </li>
+      </ul>
 
-          <!-- <ul class="footer-list">
+      <!-- <ul class="footer-list">
 
           <li>
             <p class="footer-list-title"> </p>
           </li>
 
         </ul> -->
-        </div>
+    </div>
 
-        <div class="footer-bottom">
-          <ul class="social-list">
-            <li>
-              <a href="#" class="social-link">
-                <ion-icon name="logo-facebook"></ion-icon>
-              </a>
-            </li>
+    <div class="footer-bottom">
+      <ul class="social-list">
+        <li>
+          <a href="#" class="social-link">
+            <ion-icon name="logo-facebook"></ion-icon>
+          </a>
+        </li>
 
-            <li>
-              <a href="#" class="social-link">
-                <ion-icon name="logo-instagram"></ion-icon>
-              </a>
-            </li>
+        <li>
+          <a href="#" class="social-link">
+            <ion-icon name="logo-instagram"></ion-icon>
+          </a>
+        </li>
 
-            <li>
-              <a href="#" class="social-link">
-                <ion-icon name="logo-twitter"></ion-icon>
-              </a>
-            </li>
+        <li>
+          <a href="#" class="social-link">
+            <ion-icon name="logo-twitter"></ion-icon>
+          </a>
+        </li>
 
-            <li>
-              <a href="#" class="social-link">
-                <ion-icon name="logo-linkedin"></ion-icon>
-              </a>
-            </li>
+        <li>
+          <a href="#" class="social-link">
+            <ion-icon name="logo-linkedin"></ion-icon>
+          </a>
+        </li>
 
-            <li>
-              <a href="#" class="social-link">
-                <ion-icon name="mail-outline"></ion-icon>
-              </a>
-            </li>
-          </ul>
+        <li>
+          <a href="#" class="social-link">
+            <ion-icon name="mail-outline"></ion-icon>
+          </a>
+        </li>
+      </ul>
 
-          <p class="copyright">
-            &copy; 2023 <a href="#">VehiGo</a> Contact us through
-          </p>
-        </div>
-      </div>
-    </footer>
- <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
-  <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+      <p class="copyright">
+        &copy; <span id="copyright-year"></span> <a href="#">VehiGo</a> Contact us through
+      </p>
+    </div>
+  </div>
+</footer>
+<script>
+  const yearEl = document.getElementById('copyright-year');
+  if(yearEl) yearEl.textContent = new Date().getFullYear();
+</script>
+<script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+<script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>

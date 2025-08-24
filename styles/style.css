@@ -128,6 +128,7 @@ ion-icon {
     pointer-events: none;
 }
 
+
 html {
     font-family: var(--ff-open-sans);
     color: var(--eerie-black);
@@ -273,6 +274,7 @@ a {
     justify-content: space-between;
 }
 
+
 .header.active {
     box-shadow: var(--shadow-1);
 }
@@ -283,12 +285,13 @@ a {
     justify-content: space-between;
     align-items: center;
 }
-
 .header-actions {
     display: flex;
     align-items: center;
     gap: 20px;
 }
+
+
 
 .header-actions .btn span {
     display: none;
@@ -801,12 +804,13 @@ body {
     margin-bottom: 0;
     overflow: auto;
     padding: 20px 0 20px 100px;
+   
 }
 
 .footer,
 .footer a {
     color: white;
-    font-size: 0.9rem;
+   font-size: 0.9rem;
 }
 
 .footer p {

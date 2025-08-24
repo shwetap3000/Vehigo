@@ -29,18 +29,18 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     try {
-      const response = await fetch("http://localhost:5000/api/auth/signup", {
+      const response = await fetch("http://localhost:4000/api/auth/signup", {
         method: "POST",
         headers: {
-          "Content-Type": "application/json"
+          "Content-Type": "application/json",
         },
         body: JSON.stringify({
           name,
           email,
           password,
           phone_number,
-          address
-        })
+          address,
+        }),
       });
 
       const data = await response.json();
@@ -50,14 +50,25 @@ document.addEventListener("DOMContentLoaded", () => {
       }
 
       successMessage.textContent = "Signup successful!";
-      // Optionally store JWT in localStorage:
+      // Store JWT in localStorage and set login status:
       localStorage.setItem("token", data.token);
+      localStorage.setItem("userToken", "logged-in");
+      localStorage.setItem(
+        "userInfo",
+        JSON.stringify({
+          username: data.user?.username || name,
+          email: data.user?.email || email,
+          id: data.user?._id,
+        })
+      );
 
-      // Redirect or do something else after signup
+      // Redirect to about page after signup
       setTimeout(() => {
-        window.location.href = "login.html"; // Redirect to login page
+        window.location.href =
+          "src/pages/about.html?message=" +
+          encodeURIComponent("Signup successful! Welcome to VehiGo!") +
+          "&type=success";
       }, 1500);
-
     } catch (error) {
       errorMessage.textContent = error.message;
     }

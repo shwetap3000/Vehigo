@@ -14,15 +14,20 @@ body.dark-mode {
   --text-color: #ffffff;
 }
 
-.dark-toggle {
-  position: fixed;
-  top: 1rem;
-  right: 1rem;
-  font-size: 1.5rem;
-  background: none;
-  border: none;
-  cursor: pointer;
+/* Dark mode body background for signup/login pages */
+body.dark-mode {
+  background: linear-gradient(135deg, #1a202c 0%, #2d3748 100%) !important;
 }
+
+/* Theme switch styling for dark mode */
+body.dark-mode .theme-switch .slider {
+  background-color: #555;
+}
+
+body.dark-mode .theme-switch input:checked + .slider {
+  background-color: #2196F3;
+}
+
 body.dark-mode .year{
     color: black;
 }
@@ -30,10 +35,197 @@ body.dark-mode .card-title{
     color: #000000;
 }
 
-body.dark-mode .contact-link{
-    color: white;
+/* body.dark-mode .contact-link{
+    color: white !important;
+} */
+
+/* body.dark-mode .contact-link {
+  color: #fff !important; /* white (readable) color on dark background */
+
+body.dark-mode .contact-link {
+  color: #ffffff !important;
 }
 
-.dark-toggle:hover {
-  font-size: 1.8rem; /* ✅ Correct hover effect */
+
+
+/* Dark mode styles for signup page */
+body.dark-mode .signup-form-container {
+  background: rgba(45, 45, 45, 0.95) !important;
+  border: 1px solid rgba(255, 255, 255, 0.2) !important;
+  color: #ffffff !important;
+}
+
+body.dark-mode .signup-header {
+  background: linear-gradient(135deg, #4a5568 0%, #2d3748 100%) !important;
+  color: #ffffff !important;
+}
+
+body.dark-mode .signup-header h2 {
+  color: #ffffff !important;
+}
+
+body.dark-mode .signup-header p {
+  color: #e2e8f0 !important;
+}
+
+body.dark-mode .field label {
+  color: #e2e8f0 !important;
+}
+
+body.dark-mode .input {
+  background: rgba(55, 55, 55, 0.8) !important;
+  border: 1px solid rgba(255, 255, 255, 0.2) !important;
+  color: #ffffff !important;
+}
+
+body.dark-mode .input:focus {
+  border-color: #4299e1 !important;
+  background: rgba(55, 55, 55, 0.9) !important;
+}
+
+body.dark-mode .input::placeholder {
+  color: #a0aec0 !important;
+}
+
+body.dark-mode .signup-btn {
+  background: linear-gradient(135deg, #4299e1 0%, #3182ce 100%) !important;
+  color: #ffffff !important;
+}
+
+body.dark-mode .signup-btn:hover {
+  background: linear-gradient(135deg, #3182ce 0%, #2c5282 100%) !important;
+}
+
+body.dark-mode .form-link a {
+  color: #4299e1 !important;
+}
+
+body.dark-mode .form-link a:hover {
+  color: #3182ce !important;
+}
+
+/* Additional dark mode styles for form elements */
+body.dark-mode .input.error {
+  border-color: #fc8181 !important;
+  background: rgba(252, 129, 129, 0.1) !important;
+}
+
+body.dark-mode .input.success {
+  border-color: #68d391 !important;
+  background: rgba(104, 211, 145, 0.1) !important;
+}
+
+body.dark-mode .error-message {
+  color: #fc8181 !important;
+}
+
+body.dark-mode .success-message {
+  color: #68d391 !important;
+}
+
+body.dark-mode .password-toggle {
+  color: #a0aec0 !important;
+}
+
+body.dark-mode .password-toggle:hover {
+  color: #4299e1 !important;
+}
+
+body.dark-mode .icon {
+  color: #a0aec0 !important;
+}
+
+body.dark-mode .field label svg {
+  color: #a0aec0 !important;
+}
+
+/* Override any internal signup page styles */
+body.dark-mode .signup-form-container {
+  background: rgba(45, 45, 45, 0.95) !important;
+  border: 1px solid rgba(255, 255, 255, 0.2) !important;
+  color: #ffffff !important;
+  backdrop-filter: blur(20px) !important;
+}
+
+body.dark-mode .signup-header {
+  background: linear-gradient(135deg, #4a5568 0%, #2d3748 100%) !important;
+  color: #ffffff !important;
+}
+
+body.dark-mode .signup-header::before {
+  background: none !important;
+}
+
+body.dark-mode .signup-icon {
+  background: rgba(255, 255, 255, 0.1) !important;
+}
+
+/* Dark mode styles for login page */
+body.dark-mode .login-container {
+  background: rgba(45, 45, 45, 0.95);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: #ffffff;
+}
+
+body.dark-mode .login-header {
+  background: linear-gradient(135deg, #4a5568 0%, #2d3748 100%) !important;
+  color: #ffffff !important;
+}
+
+body.dark-mode .login-header h2 {
+  color: #ffffff;
+}
+
+body.dark-mode .login-header p {
+  color: #e2e8f0;
+}
+
+body.dark-mode .field label {
+  color: #e2e8f0;
+}
+
+body.dark-mode .input {
+  background: rgba(55, 55, 55, 0.8);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: #ffffff;
+}
+
+body.dark-mode .input:focus {
+  border-color: #4299e1;
+  background: rgba(55, 55, 55, 0.9);
+}
+
+body.dark-mode .input::placeholder {
+  color: #a0aec0;
+}
+
+body.dark-mode .login-btn {
+  background: linear-gradient(135deg, #4299e1 0%, #3182ce 100%);
+  color: #ffffff;
+}
+
+body.dark-mode .login-btn:hover {
+  background: linear-gradient(135deg, #3182ce 0%, #2c5282 100%);
+}
+
+body.dark-mode .form-link a {
+  color: #4299e1;
+}
+
+body.dark-mode .form-link a:hover {
+  color: #3182ce;
+}
+
+/* Ensure theme switch is always visible and functional */
+.theme-switch {
+  position: relative;
+  z-index: 1002;
+  pointer-events: auto;
+  padding-left : 60px;
+  padding-top : 30px;
+}
+
+.theme-switch:hover {
+  transform: scale(1.05);
+  transition: transform 0.2s ease;
 }

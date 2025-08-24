@@ -4,10 +4,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="favicon.svg">
+    <link rel="stylesheet" href="preloader.css"/>
     <title>
         VehiGo-Host Page
     </title>
-    <link rel="icon" href="./favicon.svg" type="image/x-icon">
 
     <!-- 
     - custom css link
@@ -25,7 +26,10 @@
 </head>
 
 <body>
-
+    <div id="preloader">
+    <div class="spinner"></div>
+    </div>
+    <div class="app">
     <header class="header" data-header>
         <div class="container">
 
@@ -71,7 +75,7 @@
                     <span id="aria-label-txt">Explore cars</span>
                 </a>
 
-                <a href="./login.html" class="btn user-btn" aria-label="Profile">
+                <a href="./src/pages/login.html" class="btn user-btn" aria-label="Profile">
                     <ion-icon name="person-outline"></ion-icon>
                 </a>
 
@@ -86,32 +90,36 @@
         </div>
     </header>
     <div class="regform">
-    <main class="form">
-        <h1>Car Verification</h1>
-        <p>Please fill out this form with the required information for Verification process</p>
-        <form method="post">
-            <fieldset>
-                <label for="Car-company">Car Company: <input id="Car-company" name="Car-company" type="text"
-                        required /></label>
-                <label for="car-model">Car Model: <input id="car-model" name="car-model" type="text" required /></label>
-                <label for="car-number">Car Number: <input id="car-number" name="car-number" type="text"
-                        required /></label>
+        <main class="form">
+            <h1>Car Verification</h1>
+            <p>Please fill out this form with the required information for Verification process</p>
+            <form method="post">
+                <fieldset>
+                    <label for="Car-company">Car Company: <input id="Car-company" name="Car-company" type="text"
+                            required /></label>
+                    <label for="car-model">Car Model: <input id="car-model" name="car-model" type="text"
+                            required /></label>
+                    <label for="car-number">Car Number: <input id="car-number" name="car-number" type="text"
+                            required /></label>
 
 
-            </fieldset>
-            <fieldset>
-                <label for="RC">Upload RC Certificate: <input id="RC" type="file" name="file" class="field"
-                        class="custom-file-upload" /></label>
-                <label for="PUC">Upload PUC Certificate: <input id="PUC Certificate" type="file" name="file" /></label>
-                <label for="Insurance">Upload Vehicle's Insurance copy: <input id="Insurance" type="file"
-                        name="file" /></label>
-                <label for="Fitness">Upload Fitness Certificate: <input id="Fitness" type="file"
+                </fieldset>
+                <fieldset>
+                    <label for="RC">Upload RC Certificate: <input id="RC" type="file" name="file" class="field"
+                            class="custom-file-upload" /></label>
+                    <label for="PUC">Upload PUC Certificate: <input id="PUC Certificate" type="file"
                             name="file" /></label>
-            </fieldset>
-            <input type="submit" value="Submit" />
-        </form>
-    </main>
+                    <label for="Insurance">Upload Vehicle's Insurance copy: <input id="Insurance" type="file"
+                            name="file" /></label>
+                    <label for="Fitness">Upload Fitness Certificate: <input id="Fitness" type="file"
+                            name="file" /></label>
+                </fieldset>
+                <input type="submit" value="Submit" />
+            </form>
+        </main>
+    </div>
 </div>
+<script src="preloader.js"></script>
 </body>
 
 </html>
