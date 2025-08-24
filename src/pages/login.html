@@ -17,6 +17,11 @@
     />
   </head>
 
+
+<div id="spinnerOverlay" style="display: none;">
+    <span class="loader"></span>
+</div>
+
   <body>
     <header class="header" data-header>
       <div class="container">
@@ -237,6 +242,18 @@
             e.preventDefault();
             signupErrorMessage.textContent = "";
 
+            if (!signupForm.checkValidity()) {
+                signupForm.reportValidity();
+                return;
+            }
+9
+            const formData = {
+                username: String(document.getElementById('name').value.trim()),
+                email: String(document.getElementById('signupEmail').value.trim()),
+                password: String(document.getElementById('signupPassword').value),
+                number: String(document.getElementById('phone_number').value.trim()),
+                address: String(document.getElementById('address').value.trim() || '')
+            };
             const name = document.getElementById("name").value.trim();
             const email = document.getElementById("signupEmail").value.trim();
             const password = document.getElementById("signupPassword").value.trim();
@@ -270,12 +287,54 @@
           });
         }
 
+        
+        const loginForm = document.getElementById('loginForm');
+        loginForm.addEventListener('submit', async function (e) {
         // Handle Login Form Submission
         if (loginForm) {
           loginForm.addEventListener("submit", async (e) => {
+
             e.preventDefault();
             loginMessage.textContent = "";
 
+
+            const spinner = document.getElementById('spinnerOverlay');
+            spinner.style.display = 'flex'; // Show spinner
+
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+            console.log(email, password, "jiiiiiiiiiiiiiii")
+
+            try {
+                const res = await fetch('http://localhost:4000/login', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    credentials: 'include',
+                    body: JSON.stringify({ email, password })
+                    
+                });
+                console.log("res", res)
+                const result = await res.json();
+
+                if (res.ok && result.success) {
+                    localStorage.setItem('userToken', 'logged-in');
+                    localStorage.setItem('userInfo', JSON.stringify({
+                        username: result.user.username || result.user.email,
+                        email: result.user.email,
+                        id: result.user._id
+                    }));
+
+                    // Redirects — spinner can stay until redirect
+                    window.location.href = `./about.html?message=${encodeURIComponent(result.message || 'Login successful')}&type=success`;
+                } else {
+                    spinner.style.display = 'none'; // Hide spinner on error
+                    document.getElementById('loginMessage').textContent = result.message || 'Invalid credentials';
+                    document.getElementById('loginMessage').className = 'error';
+                }
+            } catch (err) {
+                spinner.style.display = 'none'; // Hide spinner on error
+                document.getElementById('loginMessage').textContent = 'Login failed';
+                document.getElementById('loginMessage').className = 'error';
             const email = document.getElementById("email").value.trim();
             const password = document.getElementById("password").value.trim();
 
@@ -284,6 +343,9 @@
               return;
             }
 
+
+        // Logout function
+        async function logout() {
             try {
               const res = await fetch("http://localhost:4000/api/auth/login", {
                 method: "POST",
