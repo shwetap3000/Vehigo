@@ -1,504 +1,538 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" href="favicon.svg">
-    <title>Explore cars</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
-    <link rel="stylesheet" href="assets/css/style.css" />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <link rel="icon" href="favicon.svg"/>
+  <title>Explore cars • VehiGo</title>
 
+  <!-- Fonts & Icons -->
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Nunito:wght@400;600;700&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"/>
+  <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+  <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
 
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600&family=Open+Sans&display=swap"
-        rel="stylesheet" />
+  <style>
+    :root{
+      --bg: #0b0c10;
+      --bg-soft:#0f1117;
+      --card:#0f1420;
+      --card-2:#121725;
+      --text:#e7ecf3;
+      --muted:#a7b0c0;
+      --brand:#7c3aed; /* violet-600 */
+      --brand-2:#22d3ee; /* cyan-400 */
+      --ring: 0 0 0 3px rgba(124,58,237,.25);
+      --shadow: 0 10px 30px rgba(2,10,24,.35);
+      --glass-bg: rgba(17, 25, 40, .6);
+      --glass-brd: rgba(255,255,255,.08);
+      --success:#10b981;
+    }
+
+    /* Light theme variables (applied via .light) */
+    .light{
+      --bg:#f8fafc;
+      --bg-soft:#eef2f7;
+      --card:#ffffff;
+      --card-2:#ffffff;
+      --text:#0b1324;
+      --muted:#5a6475;
+      --brand:#6d28d9;
+      --brand-2:#0891b2;
+      --glass-bg: rgba(255,255,255,.7);
+      --glass-brd: rgba(0,0,0,.06);
+      --shadow: 0 10px 30px rgba(2,10,24,.08);
+    }
+
+    *{ box-sizing: border-box; }
+    html,body{ height:100%; }
+    body{
+      margin:0;
+      font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial, "Noto Sans", "Apple Color Emoji","Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+      color:var(--text);
+      background: radial-gradient(1200px 600px at 10% -10%, rgba(124,58,237,.18), transparent 60%),
+                  radial-gradient(1000px 500px at 90% -20%, rgba(34,211,238,.18), transparent 60%),
+                  var(--bg);
+      line-height:1.6;
+    }
+
+    /* Header / Navbar */
+    .header{
+      position: sticky; top:0; z-index: 50;
+      backdrop-filter: blur(10px);
+      background: var(--glass-bg);
+      border-bottom: 1px solid var(--glass-brd);
+    }
+    .container{
+      max-width: 1200px; margin: 0 auto; padding: 16px 20px;
+    }
+    .nav{
+      display:flex; align-items:center; justify-content:space-between; gap:16px;
+    }
+    .logo{
+      display:flex; align-items:center; gap:10px; text-decoration:none; color:var(--text);
+      font-weight: 700;
+    }
+    .logo img{ height:36px; width:auto; }
+    .navbar-list{
+      display:flex; list-style:none; gap:14px; padding:0; margin:0; align-items:center;
+    }
+    .navbar-link, .nav-btn{
+      text-decoration:none; color:var(--text); padding:10px 12px; border-radius:10px; font-weight:600;
+      transition: all .25s ease;
+    }
+    .navbar-link:hover{ background: rgba(124,58,237,.12); }
+    .nav-btn{
+      display:flex; align-items:center; gap:8px; border:1px solid var(--glass-brd); background: linear-gradient(180deg, rgba(255,255,255,.02), rgba(255,255,255,0));
+      box-shadow: var(--shadow);
+    }
+    .theme-switch{
+      position:relative; display:inline-flex; align-items:center; gap:8px; cursor:pointer; user-select:none;
+      border:1px solid var(--glass-brd); padding:8px 10px; border-radius:999px;
+      background: linear-gradient(180deg, rgba(255,255,255,.02), rgba(255,255,255,0));
+    }
+    .theme-switch input{ appearance:none; width:0; height:0; position:absolute; }
+    .theme-switch .dot{
+      width:22px; height:22px; border-radius:999px; display:grid; place-items:center;
+      background: var(--card); border:1px solid var(--glass-brd); transition:transform .25s ease, background .25s ease;
+      box-shadow: var(--shadow);
+    }
+    .theme-switch .label{ font-weight:600; color:var(--muted); }
+
+    /* Hero */
+    .hero{
+      position:relative; overflow:hidden;
+      background: linear-gradient(135deg, rgba(124,58,237,.15), rgba(34,211,238,.12) 60%, transparent 100%);
+      border-bottom:1px solid var(--glass-brd);
+    }
+    .hero-inner{
+      display:grid; grid-template-columns: 1.2fr .8fr; gap:24px; align-items:center;
+      padding:48px 20px 34px;
+    }
+    .hero h1{
+      margin:0 0 10px; font-size: clamp(26px, 3.4vw, 44px); line-height:1.12;
+      letter-spacing:-.02em;
+    }
+    .hero p{ margin:0; color:var(--muted); }
+    .hero-badges{
+      margin-top:18px; display:flex; gap:10px; flex-wrap:wrap;
+    }
+    .chip{
+      border:1px solid var(--glass-brd); border-radius:999px; padding:8px 12px; font-weight:600;
+      background:linear-gradient(180deg, rgba(255,255,255,.02), rgba(255,255,255,0));
+    }
+
+    .blobs{
+      position:absolute; inset: -120px -80px auto auto; width: 500px; height: 500px; pointer-events:none; opacity:.8;
+      filter: blur(42px) saturate(110%);
+      transform: translate3d(0,0,0);
+      animation: float 10s ease-in-out infinite alternate;
+    }
+    @keyframes float{
+      0%{ transform: translate3d(0,0,0) rotate(0deg);}
+      100%{ transform: translate3d(10px, -10px, 0) rotate(3deg);}
+    }
+    .blob{
+      position:absolute; border-radius:50%;
+      mix-blend-mode: screen;
+    }
+    .blob.violet{ background: radial-gradient(circle at 30% 30%, rgba(124,58,237,.55), rgba(124,58,237,0) 60%); width:70%; height:70%; top:10%; left:5%;}
+    .blob.cyan{ background: radial-gradient(circle at 70% 70%, rgba(34,211,238,.55), rgba(34,211,238,0) 60%); width:60%; height:60%; bottom:5%; right:0;}
+
+    /* Featured Section */
+    .section{ padding: 26px 0 70px; }
+    .section-header{
+      display:flex; align-items:end; justify-content:space-between; gap:16px; margin-bottom:18px;
+    }
+    .section-title{
+      font-size: clamp(20px, 2.6vw, 32px); margin:0;
+      display:flex; align-items:center; gap:10px;
+    }
+    .section-title .pulse{
+      display:inline-block; width:10px; height:10px; border-radius:999px; background: var(--success);
+      box-shadow: 0 0 0 0 rgba(16,185,129,.7);
+      animation: pulse 2.2s infinite;
+    }
+    @keyframes pulse{
+      0%{ box-shadow: 0 0 0 0 rgba(16,185,129,.7); }
+      70%{ box-shadow: 0 0 0 12px rgba(16,185,129,0); }
+      100%{ box-shadow: 0 0 0 0 rgba(16,185,129,0); }
+    }
+
+    /* Grid Cards */
+    .featured-grid{
+      display:grid; grid-template-columns: repeat(12, 1fr); gap: 18px;
+    }
+    .featured-grid > li{ list-style:none; grid-column: span 6; }
+    @media (min-width: 900px){
+      .featured-grid > li{ grid-column: span 4; }
+    }
+    @media (max-width: 640px){
+      .hero-inner{ grid-template-columns: 1fr; }
+      .featured-grid{ gap:14px; }
+      .featured-grid > li{ grid-column: span 12; }
+    }
+
+    .card{
+      background: linear-gradient(180deg, var(--card), var(--card-2));
+      border:1px solid var(--glass-brd); border-radius:18px; overflow:hidden; position:relative;
+      transition: transform .25s ease, box-shadow .25s ease, border-color .25s ease;
+      box-shadow: var(--shadow);
+      transform-style: preserve-3d;
+      will-change: transform;
+    }
+    .card:hover{ transform: translateY(-6px) rotateX(0.4deg) rotateY(-0.4deg); border-color: rgba(124,58,237,.35); }
+    .card:focus-within{ outline: none; box-shadow: var(--ring); }
+
+    .card-banner{ position:relative; overflow:hidden; aspect-ratio: 16/10; }
+    .card-banner img{
+      width:100%; height:100%; object-fit:cover; display:block; transform:scale(1.02) translateZ(0);
+      transition: transform .5s ease;
+    }
+    .card:hover .card-banner img{ transform: scale(1.08); }
+
+    .badge-year{
+      position:absolute; top:12px; left:12px;
+      background: rgba(15, 15, 30, .65);
+      border:1px solid var(--glass-brd); color:#fff; font-weight:700; font-size:13px;
+      padding:6px 10px; border-radius:999px; backdrop-filter: blur(8px);
+    }
+    .badge-fuel{
+      position:absolute; bottom:12px; right:12px;
+      background: linear-gradient(135deg, rgba(124,58,237,.85), rgba(34,211,238,.85));
+      color:#fff; padding:6px 10px; border-radius:999px; font-weight:700; font-size:12px;
+    }
+
+    .card-content{ padding:14px 14px 16px; }
+    .card-title{
+      margin:0 0 6px; font-size:20px; letter-spacing:-.01em;
+    }
+    .specs{
+      display:flex; flex-wrap:wrap; gap:10px 14px; margin:10px 0 14px; color:var(--muted); font-weight:600;
+    }
+    .spec{ display:flex; align-items:center; gap:8px; }
+    .spec ion-icon{ font-size:18px; }
+
+    .card-foot{
+      display:flex; align-items:center; justify-content:space-between; gap:10px; margin-top:8px;
+    }
+    .price{
+      font-weight:800; letter-spacing:.01em;
+      background: linear-gradient(90deg, var(--brand), var(--brand-2));
+      -webkit-background-clip: text; background-clip: text; color: transparent;
+      position:relative;
+    }
+    .price::after{
+      content:""; position:absolute; inset:-2px 0 -6px 0;
+      background: linear-gradient(90deg, rgba(124,58,237,.12), rgba(34,211,238,.12));
+      filter: blur(12px); z-index:-1; border-radius: 10px;
+    }
+
+    .btn{
+      position:relative;
+      border:none; padding:10px 14px; border-radius:12px; font-weight:800; letter-spacing:.02em;
+      color:#fff; background: linear-gradient(135deg, var(--brand), var(--brand-2));
+      cursor:pointer; transition: transform .2s ease, box-shadow .2s ease;
+      box-shadow: 0 8px 20px rgba(124,58,237,.25);
+      overflow:hidden;
+    }
+    .btn:hover{ transform: translateY(-2px); }
+    .btn:active{ transform: translateY(0); }
+    .btn .ripple{
+      position:absolute; border-radius:50%; transform:scale(0); animation:ripple .6s ease-out; background: rgba(255,255,255,.6);
+    }
+    @keyframes ripple{
+      to{ transform: scale(12); opacity:0; }
+    }
+
+    /* Scroll reveal */
+    .reveal{ opacity:0; transform: translateY(14px); transition: opacity .6s ease, transform .6s ease; }
+    .reveal.show{ opacity:1; transform: translateY(0); }
+
+    /* Reduced motion */
+    @media (prefers-reduced-motion: reduce){
+      .blobs, .card:hover, .card-banner img, .btn, .reveal{
+        animation: none !important; transition: none !important; transform: none !important;
+      }
+    }
+  </style>
 </head>
-
 <body>
-    <header class="header" data-header>
-        <div class="container">
-            <div class="overlay" data-overlay></div>
+  <!-- Header -->
+  <header class="header" data-header>
+    <div class="container">
+      <nav class="nav">
+        <a href="index.html" class="logo" aria-label="VehiGo home">
+          <img src="./assets/images/vehigologo.png" alt="VehiGo logo" />
+          <span>VehiGo</span>
+        </a>
 
-            <a href="index.html" class="logo">
-                <img src="./assets/images/vehigologo.png" alt="VehiGo logo" />
-            </a>
+        <ul class="navbar-list" role="menubar" aria-label="Primary">
+          <li><a href="index.html" class="navbar-link" role="menuitem">Home</a></li>
+          <li><a href="#featured-car" class="navbar-link" role="menuitem">Explore cars</a></li>
+          <li><a href="./src/pages/about.html" class="navbar-link" role="menuitem">About us</a></li>
+          <li><a href="#blog" class="navbar-link" role="menuitem">Blog</a></li>
+          <li><a href="offline.html" class="navbar-link" role="menuitem">Offline Centers</a></li>
+          <li><a href="rentcar.html" class="navbar-link" role="menuitem">Rent Your Car</a></li>
+          <li>
+            <label class="theme-switch" for="theme-toggle" title="Toggle theme">
+              <input type="checkbox" id="theme-toggle" aria-label="Toggle dark mode"/>
+              <span class="dot"><ion-icon name="moon" aria-hidden="true"></ion-icon></span>
+              <span class="label">Theme</span>
+            </label>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </header>
 
-            <nav class="navbar" data-navbar>
-                <ul class="navbar-list">
-                    <li>
-                        <a href="index.html" class="navbar-link" data-nav-link>Home</a>
-                    </li>
+  <!-- Hero -->
+  <section class="hero">
+    <div class="container hero-inner">
+      <div>
+        <h1>Explore premium rides, <span style="color:var(--brand)">book in minutes</span>.</h1>
+        <p>Hand-picked cars with transparent pricing. Toggle dark mode, browse effortlessly, and enjoy silky-smooth animations.</p>
+        <div class="hero-badges">
+          <span class="chip"><ion-icon name="flash-outline"></ion-icon> Instant booking</span>
+          <span class="chip"><ion-icon name="shield-checkmark-outline"></ion-icon> Verified hosts</span>
+          <span class="chip"><ion-icon name="leaf-outline"></ion-icon> Eco options</span>
+        </div>
+      </div>
+      <!-- floating blobs -->
+      <div class="blobs" aria-hidden="true">
+        <span class="blob violet"></span>
+        <span class="blob cyan"></span>
+      </div>
+    </div>
+  </section>
 
-                    <li>
-                        <a href="#featured-car" class="navbar-link" data-nav-link>Explore cars</a>
-                    </li>
+  <main>
+    <section class="section" id="featured-car">
+      <div class="container">
+        <div class="section-header">
+          <h2 class="section-title"><span class="pulse"></span> Featured cars</h2>
+        </div>
 
-                    <li>
-                        <a href="./src/pages/about.html" class="navbar-link" data-nav-link>About us</a>
-                    </li>
-
-                    <li>
-                        <a href="#blog" class="navbar-link" data-nav-link>Blog</a>
-                    </li>
-
-                    <li>
-                        <a href="offline.html" class="navbar-link" data-nav-link>Offline Centers</a>
-                    </li>
-
-                    <li>
-                        <a href="rentcar.html" class="navbar-link" data-nav-link>Rent Your Car</a>
-                    </li>
-
-                    <!-- 🌙 Dark Mode Toggle Button -->
-                    <li>
-                        <button id="darkModeToggle" class="navbar-link" style="background:none;border:none;cursor:pointer;">
-                            <span class="fa fa-moon-o" aria-hidden="true"></span>
-                            <span style="margin-left:6px;">Dark Mode</span>
-                        </button>
-                    </li>
-                </ul>
-            </nav>
-
-            <div class="header-actions">
-                <div class="header-contact">
-                    <a href="tel:1800100100" class="contact-link">1800-100-100</a>
-
-                    <span class="contact-time">Mon - Sat: 9:00 am - 6:00 pm</span>
+        <ul class="featured-grid">
+          <!-- 1 -->
+          <li class="reveal">
+            <article class="card" tabindex="0" data-tilt>
+              <figure class="card-banner">
+                <img src="./assets/images/creta.jpeg" alt="Hyundai Creta silver on a scenic road"/>
+                <span class="badge-year">2022</span>
+                <span class="badge-fuel">Petrol</span>
+              </figure>
+              <div class="card-content">
+                <h3 class="card-title">Hyundai Creta</h3>
+                <div class="specs">
+                  <span class="spec"><ion-icon name="people-outline"></ion-icon>5 People</span>
+                  <span class="spec"><ion-icon name="speedometer-outline"></ion-icon>17.2 km/L</span>
+                  <span class="spec"><ion-icon name="hardware-chip-outline"></ion-icon>Manual</span>
                 </div>
-                <!-- Theme Toggle Switch with SVG icons -->
-                <label class="theme-switch" for="theme-toggle">
-                    <input type="checkbox" id="theme-toggle" />
-                    <span class="slider">
-                        <span class="icon sun" aria-label="Light mode">
-                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="orange" stroke-width="2"
-                                stroke-linecap="round" stroke-linejoin="round">
-                                <circle cx="12" cy="12" r="5" />
-                                <line x1="12" y1="1" x2="12" y2="3" />
-                                <line x1="12" y1="21" x2="12" y2="23" />
-                                <line x1="4.22" y1="4.22" x2="5.64" y2="5.64" />
-                                <line x1="18.36" y1="18.36" x2="19.78" y2="19.78" />
-                                <line x1="1" y1="12" x2="3" y2="12" />
-                                <line x1="21" y1="12" x2="23" y2="12" />
-                                <line x1="4.22" y1="19.78" x2="5.64" y2="18.36" />
-                                <line x1="18.36" y1="5.64" x2="19.78" y2="4.22" />
-                            </svg>
-                        </span>
-                        <span class="icon moon" aria-label="Dark mode">
-                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#f5f5f5"
-                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <path d="M21 12.79A9 9 0 1 1 11.21 3a7 7 0 0 0 9.79 9.79z" />
-                            </svg>
-                        </span>
-                    </span>
-                </label>
-            </div>
-    </header>
-    <br>
-    <main>
-        <article>
-            <section class="section featured-car" id="featured-car" style="margin-top: 30px;">
-                <div class="container">
-                    <div class="title-wrapper">
-                        <h2 class="section-title">Featured cars</h2>
-
-                        <!-- <a href="#" class="featured-car-link">
-                <span>View more</span>
-
-                <ion-icon name="arrow-forward-outline"></ion-icon>
-              </a> -->
-                    </div>
-
-                    <ul class="featured-car-list">
-                        <li>
-                            <div class="featured-car-card">
-                                <figure class="card-banner">
-                                    <img src="./assets/images/creta.jpeg" alt="Hyundai Creta" loading="lazy" width="440"
-                                        height="300" class="w-100" />
-                                </figure>
-
-                                <div class="card-content">
-                                    <div class="card-title-wrapper">
-                                        <h3 class="h3 card-title">
-                                            <a href="#">Hyundai Creta</a>
-                                        </h3>
-
-                                        <data class="year" value="2021">2022</data>
-                                    </div>
-
-                                    <ul class="card-list">
-                                        <li class="card-list-item">
-                                            <ion-icon name="people-outline"></ion-icon>
-
-                                            <span class="card-item-text">5 People</span>
-                                        </li>
-
-                                        <li class="card-list-item">
-                                            <ion-icon name="flash-outline"></ion-icon>
-            </nav>
-            <script>
-                // Dark mode toggle logic
-                (function() {
-                    const toggleBtn = document.getElementById('darkModeToggle');
-                    const themeToggle = document.getElementById('theme-toggle');
-                    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-                    const savedTheme = localStorage.getItem('theme');
-                    function setTheme(dark) {
-                        if (dark) {
-                            document.documentElement.classList.add('dark-mode');
-                            localStorage.setItem('theme', 'dark');
-                            if (themeToggle) themeToggle.checked = true;
-                        } else {
-                            document.documentElement.classList.remove('dark-mode');
-                            localStorage.setItem('theme', 'light');
-                            if (themeToggle) themeToggle.checked = false;
-                        }
-                    }
-                    // Initial theme
-                    if (savedTheme === 'dark' || (!savedTheme && prefersDark)) {
-                        setTheme(true);
-                    } else {
-                        setTheme(false);
-                    }
-                    // Navbar button
-                    if (toggleBtn) {
-                        toggleBtn.addEventListener('click', function() {
-                            setTheme(!document.documentElement.classList.contains('dark-mode'));
-                        });
-                    }
-                    // Header switch
-                    if (themeToggle) {
-                        themeToggle.addEventListener('change', function() {
-                            setTheme(themeToggle.checked);
-                        });
-                    }
-                })();
-            </script>
-            <style>
-                /* Basic dark mode styles */
-                .dark-mode {
-                    background: #181a1b !important;
-                    color: #f5f5f5 !important;
-                }
-                .dark-mode .header,
-                .dark-mode .navbar,
-                .dark-mode .featured-car-card,
-                .dark-mode .container,
-                .dark-mode main,
-                .dark-mode .card-price,
-                .dark-mode .card-content {
-                    background: #23272a !important;
-                    color: #f5f5f5 !important;
-                }
-                .dark-mode .navbar-link,
-                .dark-mode .btn,
-                .dark-mode .card-title,
-                .dark-mode .card-item-text {
-                    color: #f5f5f5 !important;
-                }
-                .dark-mode .btn {
-                    background: #444 !important;
-                    border-color: #888 !important;
-                }
-                .dark-mode .featured-car-card {
-                    box-shadow: 0 2px 8px rgba(0,0,0,0.7) !important;
-                }
-                .dark-mode .card-banner img {
-                    filter: brightness(0.85) contrast(1.1);
-                }
-                /* Optional: style the dark mode toggle button */
-                #darkModeToggle .fa-moon-o {
-                    color: #f5f5f5;
-                }
-                .dark-mode #darkModeToggle .fa-moon-o {
-                    color: orange;
-                }
-            </style>
-                                            <span class="card-item-text">Petrol</span>
-                                        </li>
-
-                                        <li class="card-list-item">
-                                            <ion-icon name="speedometer-outline"></ion-icon>
-
-                                            <span class="card-item-text">17.2km / 1-litre</span>
-                                        </li>
-
-                                        <li class="card-list-item">
-                                            <ion-icon name="hardware-chip-outline"></ion-icon>
-
-                                            <span class="card-item-text">Manual</span>
-                                        </li>
-                                    </ul>
-
-                                    <div class="card-price-wrapper">
-                                        <p class="card-price"><strong>₹283</strong> / hour</p>
-
-                                        <button class="btn">Rent now</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </li>
-
-                        <li>
-                            <div class="featured-car-card">
-                                <figure class="card-banner">
-                                    <img src="./assets/images/nexon.jpg" alt="nexon" loading="lazy" width="440"
-                                        height="300" class="w-100" />
-                                </figure>
-
-                                <div class="card-content">
-                                    <div class="card-title-wrapper">
-                                        <h3 class="h3 card-title">
-                                            <a href="#">Tata Nexon</a>
-                                        </h3>
-
-                                        <data class="year" value="2019">2019</data>
-                                    </div>
-
-                                    <ul class="card-list">
-                                        <li class="card-list-item">
-                                            <ion-icon name="people-outline"></ion-icon>
-
-                                            <span class="card-item-text">5 People</span>
-                                        </li>
-
-                                        <li class="card-list-item">
-                                            <ion-icon name="flash-outline"></ion-icon>
-
-                                            <span class="card-item-text">Petrol</span>
-                                        </li>
-
-                                        <li class="card-list-item">
-                                            <ion-icon name="speedometer-outline"></ion-icon>
-
-                                            <span class="card-item-text">17.4km / 1-litre</span>
-                                        </li>
-
-                                        <li class="card-list-item">
-                                            <ion-icon name="hardware-chip-outline"></ion-icon>
-
-                                            <span class="card-item-text">Manual</span>
-                                        </li>
-                                    </ul>
-
-                                    <div class="card-price-wrapper">
-                                        <p class="card-price"><strong>₹210</strong> / hour</p>
-
-                                        <button class="btn">Rent now</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </li>
-
-                        <li>
-                            <div class="featured-car-card">
-                                <figure class="card-banner">
-                                    <img src="./assets/images/swift desire.jpg" alt="Swift desire" loading="lazy"
-                                        width="440" height="300" class="w-100" />
-                                </figure>
-
-                                <div class="card-content">
-                                    <div class="card-title-wrapper">
-                                        <h3 class="h3 card-title">
-                                            <a href="#">Swift Desire</a>
-                                        </h3>
-
-                                        <data class="year" value="2020">2018</data>
-                                    </div>
-
-                                    <ul class="card-list">
-                                        <li class="card-list-item">
-                                            <ion-icon name="people-outline"></ion-icon>
-
-                                            <span class="card-item-text">5 People</span>
-                                        </li>
-
-                                        <li class="card-list-item">
-                                            <ion-icon name="flash-outline"></ion-icon>
-
-                                            <span class="card-item-text">Petrol</span>
-                                        </li>
-
-                                        <li class="card-list-item">
-                                            <ion-icon name="speedometer-outline"></ion-icon>
-
-                                            <span class="card-item-text">23.3km / 1-litre</span>
-                                        </li>
-
-                                        <li class="card-list-item">
-                                            <ion-icon name="hardware-chip-outline"></ion-icon>
-
-                                            <span class="card-item-text">Automatic</span>
-                                        </li>
-                                    </ul>
-
-                                    <div class="card-price-wrapper">
-                                        <p class="card-price"><strong>₹180</strong> / hour</p>
-
-                                        <button class="btn">Rent now</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </li>
-
-                        <li>
-                            <div class="featured-car-card">
-                                <figure class="card-banner">
-                                    <img src="./assets/images/fortuner.jpg" alt="Toyota Fortuner" loading="lazy"
-                                        width="440" height="300" class="w-100" />
-                                </figure>
-
-                                <div class="card-content">
-                                    <div class="card-title-wrapper">
-                                        <h3 class="h3 card-title">
-                                            <a href="#">Toyota Fortuner</a>
-                                        </h3>
-
-                                        <data class="year" value="2020">2020</data>
-                                    </div>
-
-                                    <ul class="card-list">
-                                        <li class="card-list-item">
-                                            <ion-icon name="people-outline"></ion-icon>
-
-                                            <span class="card-item-text">7 People</span>
-                                        </li>
-
-                                        <li class="card-list-item">
-                                            <ion-icon name="flash-outline"></ion-icon>
-
-                                            <span class="card-item-text">Diesel</span>
-                                        </li>
-
-                                        <li class="card-list-item">
-                                            <ion-icon name="speedometer-outline"></ion-icon>
-
-                                            <span class="card-item-text">12.9km / 1-litre</span>
-                                        </li>
-
-                                        <li class="card-list-item">
-                                            <ion-icon name="hardware-chip-outline"></ion-icon>
-
-                                            <span class="card-item-text">Automatic</span>
-                                        </li>
-                                    </ul>
-
-                                    <div class="card-price-wrapper">
-                                        <p class="card-price"><strong>₹490</strong> / hour</p>
-
-                                        <button class="btn">Rent now</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </li>
-
-                        <li>
-                            <div class="featured-car-card">
-                                <figure class="card-banner">
-                                    <img src="./assets/images/innova.jpeg" alt="Toyota Innova Crsyta" loading="lazy"
-                                        width="440" height="300" class="w-100" />
-                                </figure>
-
-                                <div class="card-content">
-                                    <div class="card-title-wrapper">
-                                        <h3 class="h3 card-title">
-                                            <a href="#">Toyota Innova Crsyta</a>
-                                        </h3>
-
-                                        <data class="year" value="2021">2021</data>
-                                    </div>
-
-                                    <ul class="card-list">
-                                        <li class="card-list-item">
-                                            <ion-icon name="people-outline"></ion-icon>
-
-                                            <span class="card-item-text">7 People</span>
-                                        </li>
-
-                                        <li class="card-list-item">
-                                            <ion-icon name="flash-outline"></ion-icon>
-
-                                            <span class="card-item-text">Diesel</span>
-                                        </li>
-
-                                        <li class="card-list-item">
-                                            <ion-icon name="speedometer-outline"></ion-icon>
-
-                                            <span class="card-item-text">14.3km / 1-litre</span>
-                                        </li>
-
-                                        <li class="card-list-item">
-                                            <ion-icon name="hardware-chip-outline"></ion-icon>
-
-                                            <span class="card-item-text">Automatic</span>
-                                        </li>
-                                    </ul>
-
-                                    <div class="card-price-wrapper">
-                                        <p class="card-price"><strong>₹355</strong> / hour</p>
-
-                                        <button class="btn">Rent now</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </li>
-
-                        <li>
-                            <div class="featured-car-card">
-                                <figure class="card-banner">
-                                    <img src="./assets/images/mahindra-scorpio.jpg" alt="Mahindra Scorpio"
-                                        loading="lazy" width="440" height="300" class="w-100" />
-                                </figure>
-
-                                <div class="card-content">
-                                    <div class="card-title-wrapper">
-                                        <h3 class="h3 card-title">
-                                            <a href="#">Mahindra Scorpio</a>
-                                        </h3>
-
-                                        <data class="year" value="2019">2019</data>
-                                    </div>
-
-                                    <ul class="card-list">
-                                        <li class="card-list-item">
-                                            <ion-icon name="people-outline"></ion-icon>
-
-                                            <span class="card-item-text">7 People</span>
-                                        </li>
-
-                                        <li class="card-list-item">
-                                            <ion-icon name="flash-outline"></ion-icon>
-
-                                            <span class="card-item-text">Diesel</span>
-                                        </li>
-
-                                        <li class="card-list-item">
-                                            <ion-icon name="speedometer-outline"></ion-icon>
-
-                                            <span class="card-item-text">14.6km / 1-litre</span>
-                                        </li>
-
-                                        <li class="card-list-item">
-                                            <ion-icon name="hardware-chip-outline"></ion-icon>
-
-                                            <span class="card-item-text">Manual</span>
-                                        </li>
-                                    </ul>
-
-                                    <div class="card-price-wrapper">
-                                        <p class="card-price"><strong>₹315</strong> / hour</p>
-
-                                        <button class="btn">Rent now</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </li>
-                    </ul>
+                <div class="card-foot">
+                  <div>
+                    <div class="price">₹283 / hour</div>
+                  </div>
+                  <button class="btn">Rent now</button>
                 </div>
-            </section>
-        </article>
-    </main>
+              </div>
+            </article>
+          </li>
+
+          <!-- 2 -->
+          <li class="reveal">
+            <article class="card" tabindex="0" data-tilt>
+              <figure class="card-banner">
+                <img src="./assets/images/nexon.jpg" alt="Tata Nexon blue parked in city"/>
+                <span class="badge-year">2019</span>
+                <span class="badge-fuel">Petrol</span>
+              </figure>
+              <div class="card-content">
+                <h3 class="card-title">Tata Nexon</h3>
+                <div class="specs">
+                  <span class="spec"><ion-icon name="people-outline"></ion-icon>5 People</span>
+                  <span class="spec"><ion-icon name="speedometer-outline"></ion-icon>17.4 km/L</span>
+                  <span class="spec"><ion-icon name="hardware-chip-outline"></ion-icon>Manual</span>
+                </div>
+                <div class="card-foot">
+                  <div class="price">₹210 / hour</div>
+                  <button class="btn">Rent now</button>
+                </div>
+              </div>
+            </article>
+          </li>
+
+          <!-- 3 -->
+          <li class="reveal">
+            <article class="card" tabindex="0" data-tilt>
+              <figure class="card-banner">
+                <img src="./assets/images/swift desire.jpg" alt="Maruti Swift Dzire white, side view"/>
+                <span class="badge-year">2018</span>
+                <span class="badge-fuel">Petrol</span>
+              </figure>
+              <div class="card-content">
+                <h3 class="card-title">Swift Dzire</h3>
+                <div class="specs">
+                  <span class="spec"><ion-icon name="people-outline"></ion-icon>5 People</span>
+                  <span class="spec"><ion-icon name="speedometer-outline"></ion-icon>23.3 km/L</span>
+                  <span class="spec"><ion-icon name="hardware-chip-outline"></ion-icon>Automatic</span>
+                </div>
+                <div class="card-foot">
+                  <div class="price">₹180 / hour</div>
+                  <button class="btn">Rent now</button>
+                </div>
+              </div>
+            </article>
+          </li>
+
+          <!-- 4 -->
+          <li class="reveal">
+            <article class="card" tabindex="0" data-tilt>
+              <figure class="card-banner">
+                <img src="./assets/images/fortuner.jpg" alt="Toyota Fortuner black SUV"/>
+                <span class="badge-year">2020</span>
+                <span class="badge-fuel">Diesel</span>
+              </figure>
+              <div class="card-content">
+                <h3 class="card-title">Toyota Fortuner</h3>
+                <div class="specs">
+                  <span class="spec"><ion-icon name="people-outline"></ion-icon>7 People</span>
+                  <span class="spec"><ion-icon name="speedometer-outline"></ion-icon>12.9 km/L</span>
+                  <span class="spec"><ion-icon name="hardware-chip-outline"></ion-icon>Automatic</span>
+                </div>
+                <div class="card-foot">
+                  <div class="price">₹490 / hour</div>
+                  <button class="btn">Rent now</button>
+                </div>
+              </div>
+            </article>
+          </li>
+
+          <!-- 5 -->
+          <li class="reveal">
+            <article class="card" tabindex="0" data-tilt>
+              <figure class="card-banner">
+                <img src="./assets/images/innova.jpeg" alt="Toyota Innova Crysta silver MPV"/>
+                <span class="badge-year">2021</span>
+                <span class="badge-fuel">Diesel</span>
+              </figure>
+              <div class="card-content">
+                <h3 class="card-title">Toyota Innova Crysta</h3>
+                <div class="specs">
+                  <span class="spec"><ion-icon name="people-outline"></ion-icon>7 People</span>
+                  <span class="spec"><ion-icon name="speedometer-outline"></ion-icon>14.3 km/L</span>
+                  <span class="spec"><ion-icon name="hardware-chip-outline"></ion-icon>Automatic</span>
+                </div>
+                <div class="card-foot">
+                  <div class="price">₹355 / hour</div>
+                  <button class="btn">Rent now</button>
+                </div>
+              </div>
+            </article>
+          </li>
+
+          <!-- 6 -->
+          <li class="reveal">
+            <article class="card" tabindex="0" data-tilt>
+              <figure class="card-banner">
+                <img src="./assets/images/mahindra-scorpio.jpg" alt="Mahindra Scorpio red SUV"/>
+                <span class="badge-year">2019</span>
+                <span class="badge-fuel">Diesel</span>
+              </figure>
+              <div class="card-content">
+                <h3 class="card-title">Mahindra Scorpio</h3>
+                <div class="specs">
+                  <span class="spec"><ion-icon name="people-outline"></ion-icon>7 People</span>
+                  <span class="spec"><ion-icon name="speedometer-outline"></ion-icon>14.6 km/L</span>
+                  <span class="spec"><ion-icon name="hardware-chip-outline"></ionicon>Manual</span>
+                </div>
+                <div class="card-foot">
+                  <div class="price">₹315 / hour</div>
+                  <button class="btn">Rent now</button>
+                </div>
+              </div>
+            </article>
+          </li>
+        </ul>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    // Theme toggle (persist)
+    (function(){
+      const root = document.documentElement;
+      const toggle = document.getElementById('theme-toggle');
+      const saved = localStorage.getItem('theme') || (matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark');
+      root.classList.toggle('light', saved === 'light');
+      if(toggle) toggle.checked = saved === 'light';
+
+      toggle?.addEventListener('change', ()=>{
+        const isLight = toggle.checked;
+        root.classList.toggle('light', isLight);
+        localStorage.setItem('theme', isLight ? 'light' : 'dark');
+      });
+    })();
+
+    // Scroll reveal
+    const io = new IntersectionObserver((entries)=>{
+      entries.forEach(e=>{
+        if(e.isIntersecting){
+          e.target.classList.add('show');
+          io.unobserve(e.target);
+        }
+      })
+    }, { threshold: .18, rootMargin: "0px 0px -20px 0px" });
+    document.querySelectorAll('.reveal').forEach(el=> io.observe(el));
+
+    // Button ripple
+    document.querySelectorAll('.btn').forEach(btn=>{
+      btn.addEventListener('click', function(e){
+        const rect = this.getBoundingClientRect();
+        const r = document.createElement('span');
+        r.className = 'ripple';
+        r.style.left = (e.clientX - rect.left) + 'px';
+        r.style.top = (e.clientY - rect.top) + 'px';
+        r.style.width = r.style.height = Math.max(rect.width, rect.height) + 'px';
+        this.appendChild(r);
+        setTimeout(()=> r.remove(), 600);
+      });
+    });
+
+    // Lightweight hover tilt (no lib)
+    const tiltCards = document.querySelectorAll('[data-tilt]');
+    tiltCards.forEach(card=>{
+      let rect;
+      function setTransform(x, y){
+        const cx = rect.width/2;
+        const cy = rect.height/2;
+        const dx = (x - rect.left) - cx;
+        const dy = (y - rect.top) - cy;
+        const rx = (dy / cy) * -3; // tilt limits
+        const ry = (dx / cx) * 3;
+        card.style.transform = `translateY(-6px) rotateX(${rx}deg) rotateY(${ry}deg)`;
+      }
+      card.addEventListener('mouseenter', ()=> { rect = card.getBoundingClientRect(); });
+      card.addEventListener('mousemove', (e)=> setTransform(e.clientX, e.clientY));
+      card.addEventListener('mouseleave', ()=> { card.style.transform=''; });
+      card.addEventListener('touchstart', ()=> { rect = card.getBoundingClientRect(); }, {passive:true});
+      card.addEventListener('touchmove', (e)=>{
+        const t = e.touches[0]; if(!t) return; setTransform(t.clientX, t.clientY);
+      }, {passive:true});
+      card.addEventListener('touchend', ()=> { card.style.transform=''; });
+    });
+
+    // Accessible keyboard focus ripple
+    document.querySelectorAll('.card').forEach(c=>{
+      c.addEventListener('keydown', (e)=>{
+        if(e.key === 'Enter' || e.key === ' '){
+          e.preventDefault();
+          c.querySelector('.btn')?.click();
+        }
+      });
+    });
+  </script>
 </body>
-
 </html>
