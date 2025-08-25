@@ -1,17 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" href="favicon.svg">
     <title>Vehigo - Buy Cars</title>
     <link rel="stylesheet" href="./assets/css/style.css" />
+    <link rel="stylesheet" href="src/assets/styles/style.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600&family=Open+Sans&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600&family=Open+Sans&display=swap"
+        rel="stylesheet" />
     <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
-    
+
     <style>
         * {
             margin: 0;
@@ -33,7 +36,7 @@
 
         .buy-container {
             max-width: 1400px;
-            margin: 0 auto;
+            margin: 70px auto;
             padding: 40px 20px;
         }
 
@@ -391,48 +394,51 @@
         }
     </style>
 </head>
+
 <body>
     <!-- Header -->
-   <header class="header" data-header>
-    <div class="container">
+    <header class="header" data-header>
+        <div class="container">
             <div class="overlay" data-overlay></div>
-      <a href="index.html" class="logo">
+            <a href="index.html" class="logo">
                 <img src="./assets/images/vehigologo.png" alt="VehiGo logo" />
-      </a>
-<nav class="navbar" data-navbar>
-  <ul class="navbar-list">
+            </a>
+            <nav class="navbar" data-navbar>
+                <ul class="navbar-list">
                     <li><a href="index.html" class="navbar-link" data-nav-link>Home</a></li>
                     <li><a href="featured-car.html" class="navbar-link" data-nav-link>Explore cars</a></li>
                     <li><a href="#" class="navbar-link" data-nav-link>About us</a></li>
                     <li><a href="blog.html" class="navbar-link" data-nav-link>Blog</a></li>
                     <li><a href="offline.html" class="navbar-link" data-nav-link>Offline Centers</a></li>
                     <li><a href="rentcar.html" class="navbar-link" data-nav-link>Rent Your Car</a></li>
-  </ul>
-</nav>
-      <div class="header-actions">
-        <div class="header-contact">
-          <a href="tel:1800100100" class="contact-link">1800-100-100</a>
-          <span class="contact-time">Mon - Sat: 9:00 am - 6:00 pm</span>
-        </div>
+                </ul>
+            </nav>
+            <div class="header-actions">
+                <div class="header-contact">
+                    <a href="tel:1800100100" class="contact-link">1800-100-100</a>
+                    <span class="contact-time">Mon - Sat: 9:00 am - 6:00 pm</span>
+                </div>
                 <label class="theme-switch" for="theme-toggle">
                     <input type="checkbox" id="theme-toggle" />
                     <span class="slider">
                         <span class="icon sun" aria-label="Light mode">
-                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="orange" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <circle cx="12" cy="12" r="5"/>
-                                <line x1="12" y1="1" x2="12" y2="3"/>
-                                <line x1="12" y1="21" x2="12" y2="23"/>
-                                <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/>
-                                <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/>
-                                <line x1="1" y1="12" x2="3" y2="12"/>
-                                <line x1="21" y1="12" x2="23" y2="12"/>
-                                <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/>
-                                <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="orange" stroke-width="2"
+                                stroke-linecap="round" stroke-linejoin="round">
+                                <circle cx="12" cy="12" r="5" />
+                                <line x1="12" y1="1" x2="12" y2="3" />
+                                <line x1="12" y1="21" x2="12" y2="23" />
+                                <line x1="4.22" y1="4.22" x2="5.64" y2="5.64" />
+                                <line x1="18.36" y1="18.36" x2="19.78" y2="19.78" />
+                                <line x1="1" y1="12" x2="3" y2="12" />
+                                <line x1="21" y1="12" x2="23" y2="12" />
+                                <line x1="4.22" y1="19.78" x2="5.64" y2="18.36" />
+                                <line x1="18.36" y1="5.64" x2="19.78" y2="4.22" />
                             </svg>
                         </span>
                         <span class="icon moon" aria-label="Dark mode">
-                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#f5f5f5" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <path d="M21 12.79A9 9 0 1 1 11.21 3a7 7 0 0 0 9.79 9.79z"/>
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#f5f5f5"
+                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M21 12.79A9 9 0 1 1 11.21 3a7 7 0 0 0 9.79 9.79z" />
                             </svg>
                         </span>
                     </span>
@@ -441,17 +447,17 @@
                     <ion-icon name="car-outline"></ion-icon>
                     <span id="aria-label-txt">Explore cars</span>
                 </a>
-                <a href="./login.html" class="btn user-btn" aria-label="Profile">
-          <ion-icon name="person-outline"></ion-icon>
-        </a>
-        <button class="nav-toggle-btn" data-nav-toggle-btn aria-label="Toggle Menu">
-          <span class="one"></span>
-          <span class="two"></span>
-          <span class="three"></span>
-        </button>
-      </div>
-    </div>
-  </header>
+                <a href="./src/pages/login.html" class="btn user-btn" aria-label="Profile">
+                    <ion-icon name="person-outline"></ion-icon>
+                </a>
+                <button class="nav-toggle-btn" data-nav-toggle-btn aria-label="Toggle Menu">
+                    <span class="one"></span>
+                    <span class="two"></span>
+                    <span class="three"></span>
+                </button>
+            </div>
+        </div>
+    </header>
 
     <div class="buy-container">
         <div class="buy-header">
@@ -485,7 +491,7 @@
                         <option value="1000000">Under ₹10 Lakh</option>
                         <option value="2000000">Under ₹20 Lakh</option>
                     </select>
-    </div>
+                </div>
                 <div class="filter-group">
                     <label for="searchYear">Year</label>
                     <select id="searchYear">
@@ -499,7 +505,7 @@
                         <option value="2018">2018</option>
                         <option value="2017">2017</option>
                     </select>
-        </div>
+                </div>
                 <div class="filter-group">
                     <label for="searchFuel">Fuel Type</label>
                     <select id="searchFuel">
@@ -510,8 +516,8 @@
                         <option value="electric">Electric</option>
                         <option value="hybrid">Hybrid</option>
                     </select>
-        </div>
-      </div>
+                </div>
+            </div>
             <button class="search-btn" onclick="filterCars()">Search Cars</button>
         </div>
 
@@ -525,7 +531,7 @@
             <h3>No cars available</h3>
             <p>Try adjusting your filters or check back later for new listings.</p>
         </div>
-      </div>
+    </div>
 
     <!-- Chat Modal -->
     <div id="chatModal" class="chat-modal">
@@ -536,24 +542,25 @@
             </div>
             <div id="chatMessages" class="chat-messages">
                 <!-- Messages will appear here -->
-        </div>
+            </div>
             <div class="chat-input">
-                <input type="text" id="messageInput" placeholder="Type your message..." onkeypress="sendMessageOnEnter(event)">
+                <input type="text" id="messageInput" placeholder="Type your message..."
+                    onkeypress="sendMessageOnEnter(event)">
                 <button class="send-btn" onclick="sendMessage()">Send</button>
+            </div>
         </div>
-      </div>
     </div>
 
     <script>
         // Dark mode toggle
-        document.addEventListener('DOMContentLoaded', function() {
+        document.addEventListener('DOMContentLoaded', function () {
             const themeToggle = document.getElementById('theme-toggle');
             if (themeToggle) {
                 if (localStorage.getItem('theme') === 'dark') {
                     document.body.classList.add('dark-mode');
                     themeToggle.checked = true;
                 }
-                themeToggle.addEventListener('change', function() {
+                themeToggle.addEventListener('change', function () {
                     if (this.checked) {
                         document.body.classList.add('dark-mode');
                         localStorage.setItem('theme', 'dark');
@@ -563,7 +570,7 @@
                     }
                 });
             }
-            
+
             // Load cars on page load
             loadCars();
         });
@@ -573,17 +580,17 @@
             const cars = JSON.parse(localStorage.getItem('vehigoCarsForSale') || '[]');
             const carsGrid = document.getElementById('carsGrid');
             const noCars = document.getElementById('noCars');
-            
+
             if (cars.length === 0) {
                 carsGrid.style.display = 'none';
                 noCars.style.display = 'block';
                 return;
             }
-            
+
             carsGrid.style.display = 'grid';
             noCars.style.display = 'none';
             carsGrid.innerHTML = '';
-            
+
             cars.forEach(car => {
                 if (car.status === 'available') {
                     const carCard = createCarCard(car);
@@ -637,7 +644,7 @@
             const price = document.getElementById('searchPrice').value;
             const year = document.getElementById('searchYear').value;
             const fuel = document.getElementById('searchFuel').value;
-            
+
             const cars = JSON.parse(localStorage.getItem('vehigoCarsForSale') || '[]');
             const filteredCars = cars.filter(car => {
                 if (car.status !== 'available') return false;
@@ -650,7 +657,7 @@
                 }
                 return true;
             });
-            
+
             displayFilteredCars(filteredCars);
         }
 
@@ -658,17 +665,17 @@
         function displayFilteredCars(cars) {
             const carsGrid = document.getElementById('carsGrid');
             const noCars = document.getElementById('noCars');
-            
+
             if (cars.length === 0) {
                 carsGrid.style.display = 'none';
                 noCars.style.display = 'block';
                 return;
             }
-            
+
             carsGrid.style.display = 'grid';
             noCars.style.display = 'none';
             carsGrid.innerHTML = '';
-            
+
             cars.forEach(car => {
                 const carCard = createCarCard(car);
                 carsGrid.appendChild(carCard);
@@ -680,16 +687,16 @@
             const chatModal = document.getElementById('chatModal');
             const chatTitle = document.getElementById('chatTitle');
             const chatMessages = document.getElementById('chatMessages');
-            
+
             chatTitle.textContent = `Chat with ${sellerName}`;
             chatMessages.innerHTML = `
                 <div class="message received">
                     <strong>${sellerName}:</strong> Hi! I'm interested in your car. Is it still available?
                 </div>
             `;
-            
+
             chatModal.style.display = 'block';
-            
+
             // Store current chat info
             localStorage.setItem('currentChat', JSON.stringify({
                 carId: carId,
@@ -706,17 +713,17 @@
         function sendMessage() {
             const messageInput = document.getElementById('messageInput');
             const message = messageInput.value.trim();
-            
+
             if (message) {
                 const chatMessages = document.getElementById('chatMessages');
                 const currentChat = JSON.parse(localStorage.getItem('currentChat') || '{}');
-                
+
                 chatMessages.innerHTML += `
                     <div class="message sent">
                         <strong>You:</strong> ${message}
                     </div>
                 `;
-                
+
                 // Simulate seller response
                 setTimeout(() => {
                     chatMessages.innerHTML += `
@@ -726,7 +733,7 @@
                     `;
                     chatMessages.scrollTop = chatMessages.scrollHeight;
                 }, 1000);
-                
+
                 messageInput.value = '';
                 chatMessages.scrollTop = chatMessages.scrollHeight;
             }
@@ -743,14 +750,14 @@
         function viewDetails(carId) {
             const cars = JSON.parse(localStorage.getItem('vehigoCarsForSale') || '[]');
             const car = cars.find(c => c.id == carId);
-            
+
             if (car) {
                 alert(`Car Details:\n\nBrand: ${car.brand}\nModel: ${car.model}\nYear: ${car.year}\nFuel: ${car.fuel}\nTransmission: ${car.transmission}\nKilometers: ${car.kms}\nPrice: ${car.estimatedPrice}\n\nDescription: ${car.description}`);
             }
         }
 
         // Close chat when clicking outside
-        window.onclick = function(event) {
+        window.onclick = function (event) {
             const chatModal = document.getElementById('chatModal');
             if (event.target === chatModal) {
                 closeChat();
@@ -759,4 +766,5 @@
     </script>
     <script src="./assets/js/script.js"></script>
 </body>
+
 </html>

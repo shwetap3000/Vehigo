@@ -270,6 +270,7 @@ button, a { transition: var(--transition); }
   display: flex;
   align-items: center;
   gap: 20px;
+  width: 35%;
 }
 
 .header-actions .btn span { display: none; }
@@ -389,9 +390,41 @@ button, a { transition: var(--transition); }
   font-family: var(--ff-nunito);
 }
 
-.input-wrapper { padding: 15px 20px; }
+.input-wrapper { 
+  padding: 15px 20px;
+  display: grid;
+  grid-template-columns: 35% 45%;
+  align-items: center;
+  width: 100%;
+ }
+
+
 
 .input-wrapper:not(:last-of-type) { border-bottom: 1px solid hsla(0, 0%, 0%, 0.08); }
+
+
+
+.filter-sort-section{
+  height: auto;
+  width: 95%;
+  margin: auto;
+  padding: 20px;
+  padding-top: 40px;
+  padding-bottom: 40px;
+  border: 2px solid #000000;
+  border-radius: 30px;
+
+}
+
+.grid-container{
+     display: grid;
+     grid-template-columns: repeat(2,1fr);
+     justify-items: baseline;
+}
+
+
+
+
 
 .input-label {
   color: var(--manatee);
@@ -1042,8 +1075,6 @@ button, a { transition: var(--transition); }
 
 
 
-
-
 /*-----------------------------------*\
   #FOOTER
 \*-----------------------------------*/
@@ -1051,6 +1082,8 @@ button, a { transition: var(--transition); }
 .footer {
   background: var(--alice-blue-4);
   color: var(--independence);
+  background-color: hsla(204, 91%, 53%, 0.34);
+  margin-top: 50px ;
 }
 
 .footer a { color: inherit; }
@@ -1102,9 +1135,6 @@ button, a { transition: var(--transition); }
 .footer-list:last-child > li:first-child { column-span: all; }
 
 .footer-bottom {
-  background: var(--gradient);
-  border: 1px solid var(--white);
-  border-radius: var(--radius-18) var(--radius-18) 0 0;
   padding: 20px;
 }
 
@@ -1275,7 +1305,6 @@ button, a { transition: var(--transition); }
 
   .input-wrapper:not(:last-of-type) {
     border-bottom: none;
-    border-right: 1px solid hsla(0, 0%, 0%, 0.08);
   }
 
   .input-label {
@@ -1335,7 +1364,6 @@ button, a { transition: var(--transition); }
     justify-content: space-between;
     align-items: center;
     padding-block: 30px;
-    box-shadow: var(--shadow-1);
   }
 
   .social-list { margin-bottom: 0; }
@@ -1533,7 +1561,7 @@ button, a { transition: var(--transition); }
 .user-btn ion-icon {
   display: inline-block !important;
   font-size: 1.8rem;
-  color: white; /* change to #fff if your header is dark */
+  color: rgb(0, 0, 0); /* change to #fff if your header is dark */
   opacity: 1 !important;
   visibility: visible !important;
 }

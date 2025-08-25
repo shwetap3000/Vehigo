@@ -1,218 +1,311 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" href="/Vehigo/public/favicon.svg" type="image/svg+xml">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" href="../assets/images/favicon.svg" type="image/svg+xml" />
 
     <title>Vehigo - Rent your favourite car</title>
 
-    <!-- CSS -->
-    <link rel="stylesheet" href="../assets/styles/loginstyle.css">
-    <link rel="stylesheet" href="../assets/styles/style.css">
+    <link rel="stylesheet" href="../assets/styles/loginstyle.css" />
+    <link rel="stylesheet" href="../assets/styles/style.css" />
 
-    <!-- Boxicons CSS -->
-    <link href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css' rel='stylesheet'>
+    <link
+      href="https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css"
+      rel="stylesheet"
+    />
+  </head>
 
-</head>
-
-<body>
+  <body>
     <header class="header" data-header>
-        <div class="container">
+      <div class="container">
+        <div class="overlay" data-overlay></div>
 
-            <div class="overlay" data-overlay></div>
+        <a href="../index.html" class="logo">
+          <img src="../assets/images/vehigologo.png" alt="VehiGo logo" />
+        </a>
 
-            <a href="/index.html" class="logo">
-                <img src="/assets/images/vehigologo.png" alt="VehiGo logo">
-            </a>
+        <nav class="navbar" data-navbar>
+          <ul class="navbar-list">
+            <li>
+              <a href="/index.html" class="navbar-link" data-nav-link>Home</a>
+            </li>
 
-            <nav class="navbar" data-navbar>
-                <ul class="navbar-list">
+            <li>
+              <a
+                href="/index.html#featured-car"
+                class="navbar-link"
+                data-nav-link
+                >Explore cars</a
+              >
+            </li>
 
-                    <li>
-                        <a href="/index.html" class="navbar-link" data-nav-link>Home</a>
-                    </li>
+            <li>
+              <a href="./about.html" class="navbar-link" data-nav-link
+                >About us</a
+              >
+            </li>
 
-                    <li>
-                        <a href="/index.html#featured-car" class="navbar-link" data-nav-link>Explore cars</a>
-                    </li>
+            <li>
+              <a href="/index.html#blog" class="navbar-link" data-nav-link
+                >Blog</a
+              >
+            </li>
+          </ul>
+        </nav>
 
-                    <li>
-                        <a href="/pages/about.html" class="navbar-link" data-nav-link>About us</a>
-                    </li>
+        <div class="header-actions">
+          <div class="header-contact">
+            <a href="tel:1800100100" class="contact-link">1800-100-100</a>
 
-                    <li>
-                        <a href="/index.html#blog" class="navbar-link" data-nav-link>Blog</a>
-                    </li>
-
-                </ul>
-            </nav>
-
-            <div class="header-actions">
-
-                <div class="header-contact">
-                    <a href="tel:1800100100" class="contact-link">1800-100-100</a>
-
-                    <span class="contact-time">Mon - Sat: 9:00 am - 6:00 pm</span>
-                </div>
-
-                <!-- <a href="#featured-car" class="btn" aria-labelledby="aria-label-txt">
-                    <ion-icon name="car-outline"></ion-icon>
-
-                    <span id="aria-label-txt">Explore cars</span>
-                </a>
-
-                <a href="./login.html" class="btn user-btn" aria-label="Profile">
-                    <ion-icon name="person-outline"></ion-icon>
-                </a>
-
-                <button class="nav-toggle-btn" data-nav-toggle-btn aria-label="Toggle Menu">
-                    <span class="one"></span>
-                    <span class="two"></span>
-                    <span class="three"></span>
-                </button> -->
-
-            </div>
-
+            <span class="contact-time">Mon - Sat: 9:00 am - 6:00 pm</span>
+          </div>
         </div>
+      </div>
     </header>
     <div class="body_tag">
-        <section class="container forms">
-        <div class="form login" id="loginForm">
-            <div class="form-content">
-                <header>Login</header>
-                <form action="" method="GET" id="loginForm">
-                    <div class="field input-field">
-                        <input id="email" name="login_email"  type="email" placeholder="Email" class="input" required >
-                    </div>
+      <section class="container forms">
+        <div class="form login">
+          <div class="form-content">
+            <header>Login</header>
+            <form id="loginForm" action="/login" method="POST">
+              <div class="field input-field">
+                <input
+                  id="email"
+                  name="email"
+                  type="email"
+                  placeholder="Email"
+                  class="input"
+                  required
+                />
+              </div>
 
-                    <div class="field input-field">
-                        <input id="password" type="password" placeholder="Password" class="password" required>
-                        <i class='bx bx-hide eye-icon'></i>
-                    </div>
-                    <!-- <div class="form-link">
-                        <a href="#" class="forgot-pass">Forgot password?</a>
-                    </div> -->
+              <div class="field input-field">
+                <input
+                  id="password"
+                  name="password"
+                  type="password"
+                  placeholder="Password"
+                  class="password"
+                  required
+                />
+                <i class="bx bx-hide eye-icon"></i>
+              </div>
+              <div class="form-link">
+                <a href="./forgot-password.html" class="forgot-pass"
+                  >Forgot password?</a
+                >
+              </div>
 
-                    <div class="field button-field">
-                        <button type="submit">Login</button>
-                    </div>
-                </form>
+              <div class="field button-field">
+                <button type="submit">Login</button>
+              </div>
+            </form>
 
-                <div class="form-link">
-                    <span>Don't have an account? <a href="#" class="link signup-link">Signup</a></span>
-                </div>
+            <div class="form-link">
+              <span
+                >Don't have an account?
+                <a href="#" class="link signup-link">Signup</a></span
+              >
             </div>
+          </div>
 
-            <div id="loginMessage"></div>
-
-            <!-- <div class="line"></div>
-
-            <div class="media-options">
-                <a href="#" class="field facebook">
-                    <i class='bx bxl-facebook-circle'></i>
-                    <span>Login with Facebook</span>
-                </a>
-                <a href="#" class="field google">
-                    <i class='bx bxl-google google-icon'></i>
-                    <span>Login with Google</span>
-                </a>
-            </div> -->
+          <div id="loginMessage"></div>
         </div>
 
-        <!-- Signup Form -->
-
         <div class="form signup">
-            <div class="form-content">
-                <header>Signup</header>
-                <form id="signupForm" action="#">
+          <div class="form-content">
+            <header>Signup</header>
+            <form id="signupForm" action="/signup" method="POST">
+              <div class="field input-field">
+                <input
+                  id="name"
+                  name="name"
+                  type="text"
+                  placeholder="Your Name"
+                  class="name"
+                  required
+                />
+              </div>
 
-                    <div class="field input-field">
-                        <input id="name" type="text" placeholder="Your Name" class="name" required>
-                    </div>
-                    
-                    <div class="field input-field">
-                        <input id="signupEmail" type="email" placeholder="Email" class="email" required autocomplete="off">
-                    </div>
+              <div class="field input-field">
+                <input
+                  id="signupEmail"
+                  name="email"
+                  type="email"
+                  placeholder="Email"
+                  class="email"
+                  required
+                  autocomplete="off"
+                />
+              </div>
 
-                    <div class="field input-field">
-                        <input  id="signupPassword" type="password" placeholder="Create password" class="password" required>
-                        <i class='bx bx-hide eye-icon'></i>
-                    </div>
+              <div class="field input-field">
+                <input
+                  id="signupPassword"
+                  name="password"
+                  type="password"
+                  placeholder="Create password"
+                  class="password"
+                  required
+                />
+                <i class="bx bx-hide eye-icon"></i>
+              </div>
 
-                    <div class="field input-field">
-                        <input id="phone_number" type="number" placeholder="Your Phone Number" class="ph-number" required>
-                    </div>
+              <div class="field input-field">
+                <input
+                  id="phone_number"
+                  name="number"
+                  type="text"
+                  placeholder="Your Phone Number"
+                  class="ph-number"
+                  required
+                />
+              </div>
 
-                    <div class="field input-field">
-                        <input id="address" type="text" placeholder="Your Address" class="address" required>
-                    </div>
+              <div class="field input-field">
+                <input
+                  id="address"
+                  name="address"
+                  type="text"
+                  placeholder="Your Address"
+                  class="address"
+                  required
+                />
+              </div>
 
-                    <div class="field button-field">
-                        <button type="submit">Signup</button>
-                    <div id="errorMessage"></div>
+              <div class="field button-field">
+                <button type="submit">Signup</button>
+              </div>
+            </form>
 
-                    <!-- <div id="successMessage"></div> -->
+            <div id="errorMessage"></div>
 
-                    <div class="form-link">
-                        <span>Already have an account? <a href="#" class="link login-link">Login</a></span>
-                    </div>
-                </form>
-
-                <div id="signinMessage"></div>
-
-
+            <div class="form-link">
+              <span
+                >Already have an account ?
+                <a href="#" class="link login-link">Login</a></span
+              >
             </div>
-<!-- 
-            <div class="line"></div> -->
 
-             <!-- <div class="media-options">
-                    <a href="#" class="field facebook">
-                        <i class='bx bxl-facebook-circle'></i>
-                        <span>Login with Facebook</span>
-                    </a>
-                    <a href="#" class="field google">
-                        <img src="#" alt="" class="google-img">
-                        <span>Login with Google</span>
-                    </a>
-                </div>
-             
-                <div class="media-options">
-                <a href="#" class="field facebook">
-                    <i class='bx bxl-facebook facebook-icon'></i>
-                    <span>Login with Facebook</span>
-                </a>
-            </div>
-
-            <div class="media-options">
-                <a href="#" class="field google">
-                    <img src="#" alt="" class="google-img">
-                    <span>Login with Google</span>
-                </a>
-            </div> 
-
-        </div> -->
-    </section>
+            <div id="signinMessage"></div>
+          </div>
+        </div>
+      </section>
     </div>
-    
 
-    <!-- JavaScript -->
-    <script src="../assets/js/login.js"></script>
     <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        const container = document.querySelector(".forms");
+        const signUpLink = document.querySelector(".signup-link");
+        const logInLink = document.querySelector(".login-link");
+        const eyeIcons = document.querySelectorAll(".eye-icon");
+        const signupForm = document.getElementById("signupForm");
+        const loginForm = document.getElementById("loginForm");
+        const signupErrorMessage = document.getElementById("errorMessage");
+        const loginMessage = document.getElementById("loginMessage");
 
-        
-        const form = document.getElementById('signupForm');
-        form.addEventListener('submit', function (e) {
-            if (!form.checkValidity()) {
-                form.reportValidity();
-                e.preventDefault();
-                return;
+        // Show/Hide password functionality
+        eyeIcons.forEach((eyeIcon) => {
+          eyeIcon.addEventListener("click", () => {
+            const passwordField = eyeIcon.previousElementSibling;
+            if (passwordField.type === "password") {
+              passwordField.type = "text";
+              eyeIcon.classList.replace("bx-hide", "bx-show");
+            } else {
+              passwordField.type = "password";
+              eyeIcon.classList.replace("bx-show", "bx-hide");
             }
-            e.preventDefault(); 
+          });
         });
-    </script>
-</body>
 
+        // Toggle between login and signup forms
+        signUpLink.addEventListener("click", (e) => {
+          e.preventDefault();
+          container.classList.add("show-signup");
+        });
+
+        logInLink.addEventListener("click", (e) => {
+          e.preventDefault();
+          container.classList.remove("show-signup");
+        });
+
+        // Handle Signup Form Submission
+        if (signupForm) {
+          signupForm.addEventListener("submit", async (e) => {
+            e.preventDefault();
+            signupErrorMessage.textContent = "";
+
+            const name = document.getElementById("name").value.trim();
+            const email = document.getElementById("signupEmail").value.trim();
+            const password = document.getElementById("signupPassword").value.trim();
+            const phone_number = document.getElementById("phone_number").value.trim();
+            const address = document.getElementById("address").value.trim();
+
+            if (!name || !email || !password || !phone_number || !address) {
+              signupErrorMessage.textContent = "Please fill in all required fields.";
+              return;
+            }
+
+            try {
+              const res = await fetch("http://localhost:4000/api/auth/signup", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ name, email, password, phone_number, address, auth_provider: "email" }),
+              });
+              const result = await res.json();
+              
+              if (res.ok) {
+                localStorage.setItem("userToken", result.token);
+                localStorage.setItem("userInfo", JSON.stringify(result.user));
+                window.location.href = `./about.html?message=Signup successful! Welcome to VehiGo!&type=success`;
+              } else {
+                signupErrorMessage.textContent = result.message || "Signup failed. Please try again.";
+              }
+            } catch (err) {
+              console.error("Frontend error:", err);
+              signupErrorMessage.textContent = "Error connecting to the server.";
+            }
+          });
+        }
+
+        // Handle Login Form Submission
+        if (loginForm) {
+          loginForm.addEventListener("submit", async (e) => {
+            e.preventDefault();
+            loginMessage.textContent = "";
+
+            const email = document.getElementById("email").value.trim();
+            const password = document.getElementById("password").value.trim();
+
+            if (!email || !password) {
+              loginMessage.textContent = "Please fill in all fields.";
+              return;
+            }
+
+            try {
+              const res = await fetch("http://localhost:4000/api/auth/login", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ email, password, auth_provider: "email" }),
+              });
+              const result = await res.json();
+
+              if (res.ok) {
+                localStorage.setItem("userToken", result.token);
+                localStorage.setItem("userInfo", JSON.stringify(result.user));
+                window.location.href = `./about.html?message=Login successful&type=success`;
+              } else {
+                loginMessage.textContent = result.message || "Invalid credentials";
+              }
+            } catch (err) {
+              console.error("Frontend error:", err);
+              loginMessage.textContent = "Error connecting to server.";
+            }
+          });
+        }
+      });
+    </script>
+  </body>
 </html>

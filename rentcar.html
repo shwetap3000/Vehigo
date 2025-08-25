@@ -1,22 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link
-    rel="stylesheet"
-    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
-  />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
   <link rel="icon" href="favicon.svg">
+  <link rel="stylesheet" href="preloader.css"/>
+
   <title>Add Your Car for Rent - Vehigo</title>
-  
-    
+
+
   <!-- custom css links -->
   <link rel="stylesheet" href="assets/css/style.css" />
-  <link rel="stylesheet" href="assets/css/dark.css" />
-  <link rel="stylesheet" href="src/assets/styles/style.css">
-  <link rel="stylesheet" href="./styles/rentcar.css">
+  
   <link rel="stylesheet" href="./styles/rentcar-modern.css">
 
   <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
@@ -25,12 +23,15 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link
-    href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600&family=Open+Sans&display=swap"
-    rel="stylesheet"
-  />
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600&family=Open+Sans&display=swap"
+    rel="stylesheet" />
 </head>
+
 <body>
+    <div id="preloader">
+    <div class="spinner"></div>
+  </div>
+  <div id="app">
   <header class="header" data-header>
     <div class="container">
       <div class="overlay" data-overlay></div>
@@ -40,7 +41,7 @@
       </a>
 
       <nav class="navbar" data-navbar>
-        <ul class="navbar-list">
+        <ul class="navbar-list" style="height: 4rem;">
           <li>
             <a href="src/index.html" class="navbar-link" data-nav-link>Home</a>
           </li>
@@ -75,16 +76,30 @@
           <a href="tel:1800100100" class="contact-link">1800-100-100</a>
           <span class="contact-time">Mon - Sat: 9:00 am - 6:00 pm</span>
         </div>
-        
+
         <!-- Theme Toggle Switch with SVG icons -->
         <label class="theme-switch" for="theme-toggle">
           <input type="checkbox" id="theme-toggle" />
           <span class="slider">
             <span class="icon sun" aria-label="Light mode">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="orange" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="orange" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="5" />
+                <line x1="12" y1="1" x2="12" y2="3" />
+                <line x1="12" y1="21" x2="12" y2="23" />
+                <line x1="4.22" y1="4.22" x2="5.64" y2="5.64" />
+                <line x1="18.36" y1="18.36" x2="19.78" y2="19.78" />
+                <line x1="1" y1="12" x2="3" y2="12" />
+                <line x1="21" y1="12" x2="23" y2="12" />
+                <line x1="4.22" y1="19.78" x2="5.64" y2="18.36" />
+                <line x1="18.36" y1="5.64" x2="19.78" y2="4.22" />
+              </svg>
             </span>
             <span class="icon moon" aria-label="Dark mode">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#f5f5f5" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3a7 7 0 0 0 9.79 9.79z"/></svg>
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#f5f5f5" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round">
+                <path d="M21 12.79A9 9 0 1 1 11.21 3a7 7 0 0 0 9.79 9.79z" />
+              </svg>
             </span>
           </span>
         </label>
@@ -99,15 +114,11 @@
 
           <span id="aria-label-txt">Explore cars</span>
         </a>
-        <a href="./login.html" class="btn user-btn" aria-label="Profile">
+        <a href="./src/pages/login.html" class="btn user-btn" aria-label="Profile">
           <ion-icon name="person-outline"></ion-icon>
         </a>
 
-        <button
-          class="nav-toggle-btn"
-          data-nav-toggle-btn
-          aria-label="Toggle Menu"
-        >
+        <button class="nav-toggle-btn" data-nav-toggle-btn aria-label="Toggle Menu">
           <span class="one"></span>
           <span class="two"></span>
           <span class="three"></span>
@@ -118,13 +129,13 @@
 
   <main class="rentcar-main-content">
     <div class="container">
-      <h1>🚗 Add Your Car for Rent</h1>
-      
+      <h1>Rent you Car</h1>
+
       <div id="message" class="message">
-        <h3><b>⚠️ BEFORE ADDING CAR PLEASE CHECK AVAILABILITY OF OUR OFFLINE CENTERS</b></h3>
-        <button class="btn pulse" onclick="window.location.href='offline.html'">🏢 Check Availability</button>
+        <div class="message-items"><h3>⚠️ BEFORE ADDING CAR PLEASE CHECK AVAILABILITY OF OUR OFFLINE CENTERS : </h3>
+        <button class="btn pulse" onclick="window.location.href='offline.html'">🏢 Check Availability</button></div>
       </div>
-      
+
       <form id="carForm">
         <input type="text" id="carName" placeholder="🚗 Car Make & Model" required />
         <input type="number" id="year" placeholder="📅 Year of Registration" required />
@@ -138,10 +149,10 @@
       <div id="carList" class="car-list"></div>
 
       <h2>💼 BUY OR SELL</h2>
-      <p style="text-align: center; font-size: 1.1rem; color: #7f8c8d; margin-bottom: 1rem;">
+      <p style="text-align: center; font-size: 1.1rem; color: #272828; margin-bottom: 1rem;">
         Looking to buy or sell a car? Check out our dedicated pages:
       </p>
-      <p style="text-align: center; font-size: 1rem; color: #27ae60; font-weight: 600; margin-bottom: 2rem;">
+      <p style="text-align: center; font-size: 1rem; color: #0b3804; font-weight: 600; margin-bottom: 2rem;">
         ✨ Get great deals like never before only on Vehigo
       </p>
 
@@ -154,29 +165,44 @@
         </button>
       </div>
     </div>
-    
+
     <a href="#" class="floating-btn" onclick="window.scrollTo({top: 0, behavior: 'smooth'}); return false;">
       <ion-icon name="chevron-up-outline" style="font-size: 24px;"></ion-icon>
     </a>
   </main>
+  </div>
 
   <style>
     .rentcar-main-content {
-      padding-top: 80px; /* Add top padding to account for fixed navbar */
+      padding-top: 80px;
+      /* Add top padding to account for fixed navbar */
       position: relative;
-      z-index: 1; /* Reduced z-index to allow navbar to be clickable */
+      z-index: 1;
+      /* Reduced z-index to allow navbar to be clickable */
     }
-    
+
     /* Ensure navbar is accessible */
-    .header { z-index: 1000 !important; }
-    .navbar { z-index: 1001 !important; }
-    .overlay { z-index: 999 !important; }
-    .nav-toggle-btn { z-index: 1002 !important; }
-    
+    .header {
+      z-index: 1000 !important;
+    }
+
+    .navbar {
+      z-index: 1001 !important;
+    }
+
+    .overlay {
+      z-index: 999 !important;
+    }
+
+    .nav-toggle-btn {
+      z-index: 1002 !important;
+    }
+
     /* Responsive adjustments for smaller screens */
     @media (max-width: 768px) {
       .rentcar-main-content {
-        padding-top: 100px; /* Slightly less padding on mobile */
+        padding-top: 100px;
+        /* Slightly less padding on mobile */
         padding: 20px 15px;
       }
     }
@@ -186,37 +212,37 @@
   <script src="./assets/js/script.js"></script>
   <script src="./scripts/logout.js"></script>
   <script src="./scripts/rentcar.js"></script>
-  
+
   <!-- Modern Interactions Script -->
   <script>
     // Enhanced form submission with animations
-    document.getElementById('carForm').addEventListener('submit', function(e) {
+    document.getElementById('carForm').addEventListener('submit', function (e) {
       e.preventDefault();
-      
+
       const submitBtn = this.querySelector('button[type="submit"]');
       const originalText = submitBtn.textContent;
-      
+
       // Add loading animation
       submitBtn.innerHTML = '<span class="loading"></span> Adding Car...';
       submitBtn.disabled = true;
-      
+
       // Simulate API call delay
       setTimeout(() => {
         // Reset button
         submitBtn.textContent = originalText;
         submitBtn.disabled = false;
-        
+
         // Show success message
         const successMsg = document.createElement('div');
         successMsg.className = 'success-message';
         successMsg.textContent = '✅ Car added successfully!';
         document.body.appendChild(successMsg);
-        
+
         // Remove success message after 3 seconds
         setTimeout(() => {
           successMsg.remove();
         }, 3000);
-        
+
         // Reset form with animation
         this.style.animation = 'formReset 0.5s ease-out';
         setTimeout(() => {
@@ -257,7 +283,7 @@
         input.addEventListener('focus', () => {
           input.style.animation = 'inputFocus 0.3s ease-out';
         });
-        
+
         input.addEventListener('blur', () => {
           input.style.animation = '';
         });
@@ -269,7 +295,7 @@
         btn.addEventListener('mouseenter', () => {
           btn.classList.add('pulse');
         });
-        
+
         btn.addEventListener('mouseleave', () => {
           btn.classList.remove('pulse');
         });
@@ -302,7 +328,7 @@
             behavior: 'smooth',
             block: 'start'
           });
-          
+
           // Add highlight animation to target
           target.style.animation = 'highlightTarget 1s ease-out';
           setTimeout(() => {
@@ -320,7 +346,7 @@
           card.style.transform = 'translateY(-10px) scale(1.02)';
           card.style.transition = 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)';
         });
-        
+
         card.addEventListener('mouseleave', () => {
           card.style.transform = 'translateY(0) scale(1)';
         });
@@ -353,13 +379,9 @@
     `;
     document.head.appendChild(style);
   </script>
-  <script
-    type="module"
-    src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"
-  ></script>
-  <script
-    nomodule
-    src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"
-  ></script>
+  <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+  <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+  <script src="preloader.js"></script>
 </body>
+
 </html>
