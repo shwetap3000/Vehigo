@@ -9,7 +9,7 @@
     /* background:url(../images/blog-3.jpg); */
 }
 .body_tag {
-  background:linear-gradient(rgb(0,0,0,0.5),rgba(0, 0, 0, 0.5)) ,url(../images/hero_banner_mustang.png) no-repeat center center;
+  background:linear-gradient(rgba(0, 0, 0, 0.884),rgba(0, 0, 0, 0.87)) ,url(../images/hero_banner_mustang.png) no-repeat center center;
   background-size: cover;
   min-height: 100vh;
 }
@@ -23,6 +23,7 @@
     justify-content: center;
     /* background-color: hsl(216, 38%, 95%); */
     column-gap: 30px;
+    /* border-radius: 90px; */
     
 }
 
@@ -32,16 +33,17 @@
     width: 100%;
     padding: 30px;
     
-    border-radius: 6px;
+    border-radius: 20px;
     background: #ffffff;
-    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    border: #3232f8 solid 2px;
+    box-shadow: rgba(7, 62, 225, 0.808) 0px 7px 29px 0px;
     margin: 50px;
     border: 2px black solid;
     
 }
 .form:hover{
     /* transform: translateY(8px) */
-    transform: scale(1.2);
+    /* transform: scale(1.2); */
 }
 
 .form.signup {
@@ -66,9 +68,20 @@ header {
     font-weight: 600;
     /* color: #232836; */
     color: #0171d3;
+    text-decoration: underline;
     text-align: center;
     background-color: white;
 }
+/* header::after{
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -3px;
+    width: 120%;
+    height:3px;
+    background: black;
+} */
+
 
 form {
     margin-top: 30px;
