@@ -1,170 +1,414 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-     <link rel="icon" href="favicon.svg">
-     <title>Car Rental Service Feedback</title>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600&family=Open+Sans&display=swap">
-    <link rel="stylesheet" href="./assets/css/feebackForm.css">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <link rel="icon" href="favicon.svg" />
+  <title>Car Rental Service — Feedback</title>
 
+  <!-- Professional, legible type -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      --bg:#f7f7f9;
+      --card:#ffffff;
+      --text:#0f1720;
+      --muted:#5b6776;
+      --line:#e6e8ee;
+      --brand:#2563eb;      /* calm blue */
+      --ok:#16a34a;
+      --error:#e11d48;
+      --radius:14px;
+      --shadow:0 6px 20px rgba(15,23,32,.06);
+      --ring:0 0 0 4px rgba(37,99,235,.12);
+    }
+
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      background:var(--bg);
+      color:var(--text);
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      line-height:1.6;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    /* Header — understated */
+    .header{
+      background:var(--card);
+      border-bottom:1px solid var(--line);
+    }
+    .container{
+      max-width:960px; margin-inline:auto;
+      padding:12px 20px; display:flex; align-items:center; justify-content:space-between;
+    }
+    .logo img{height:36px}
+    .navbar-list{display:flex; gap:18px; list-style:none; margin:0; padding:0}
+    .navbar-link{
+      text-decoration:none; color:var(--muted); font-weight:600; font-size:.95rem;
+      padding:6px 8px; border-radius:8px; transition: color .2s ease, background .2s ease;
+    }
+    .navbar-link:hover{ color:var(--text); background:#f1f5f9 }
+
+    .header-contact{display:flex; align-items:center; gap:10px; color:var(--muted); font-weight:600}
+    .contact-link{color:var(--text); text-decoration:none}
+
+    /* Main */
+    main{ padding: 40px 16px }
+    .shell{
+      max-width:820px; margin: 0 auto;
+    }
+
+    .title{
+      margin: 4px 0 16px;
+      font-weight:700; letter-spacing:.2px;
+      line-height:1.2;
+      font-size: clamp(1.4rem, 2.2vw, 2rem);
+    }
+    .subtitle{
+      margin:0 0 20px; color:var(--muted); font-weight:500;
+      font-size: 1rem;
+    }
+
+    .card{
+      background:var(--card);
+      border:1px solid var(--line);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 20px;
+      animation: fadeIn .35s ease both;
+    }
+
+    fieldset{
+      border:1px solid var(--line);
+      border-radius:12px;
+      padding:16px;
+      margin:16px 0;
+      transition: border-color .2s ease, box-shadow .2s ease, transform .2s ease;
+    }
+    fieldset:hover{ border-color:#d9dce3; transform: translateY(-1px) }
+    legend{ padding:0 6px; font-weight:700; font-size:.95rem }
+
+    label{ display:block; margin:12px 2px 8px; font-weight:600; color:#1f2a37 }
+    .row{ display:grid; gap:12px }
+    .row.cols-2{ grid-template-columns:1fr 1fr }
+    @media (max-width: 760px){ .row.cols-2{ grid-template-columns:1fr } }
+
+    input, select, textarea{
+      width:100%;
+      appearance: none;
+      border:1px solid var(--line);
+      background: #fbfbfd;
+      border-radius: 10px;
+      padding: 12px 14px;
+      font-size: 1rem; color:var(--text);
+      outline: none;
+      transition: border-color .15s ease, box-shadow .15s ease, background .15s ease;
+    }
+    input:focus, select:focus, textarea:focus{
+      border-color: #c8d0e1; box-shadow: var(--ring); background:#fff;
+    }
+    input::placeholder, textarea::placeholder{ color:#9aa6b2 }
+
+    .hint{ color:var(--muted); font-size:.92rem; margin:2px 0 10px }
+
+    /* Ratings grid — TWO COLUMNS */
+    .ratings-grid{
+      display:grid; gap:12px; margin-top:8px;
+      grid-template-columns: 1fr 1fr;
+    }
+    @media (max-width: 760px){
+      .ratings-grid{ grid-template-columns: 1fr; }
+    }
+
+    /* Rating items */
+    .question{
+      padding:12px 12px;
+      border:1px dashed var(--line);
+      border-radius:10px;
+      background:#fff;
+    }
+
+    /* Stars — calm, keyboard accessible */
+    .stars{ display:inline-flex; gap:6px; direction: rtl }
+    .stars input{ display:none }
+    .stars label{
+      cursor:pointer; font-size:24px; line-height:1; color:#cfd6e4; transition: transform .12s ease, color .12s ease;
+    }
+    .stars label:hover,
+    .stars label:hover ~ label{ color:#94a3b8; transform: translateY(-1px) }
+    .stars input:checked ~ label{ color:#fbbf24 } /* amber */
+
+    textarea{ min-height:110px; resize: vertical }
+
+    .actions{ display:flex; gap:12px; align-items:center; margin-top:12px }
+    .btn{
+      border:0; border-radius:10px; padding:12px 16px; font-weight:700; cursor:pointer;
+      background: var(--brand); color:white;
+      transition: transform .12s ease, box-shadow .2s ease, filter .2s ease;
+      box-shadow: 0 8px 18px rgba(37,99,235,.22);
+    }
+    .btn:hover{ transform: translateY(-1px); filter: brightness(1.03) }
+    .btn:active{ transform: translateY(0) scale(.99) }
+
+    /* Toast — understated */
+    .toast{
+      position: fixed; right: 20px; bottom: 20px; z-index: 1000;
+      background: #0f1720; color: #fff; border:1px solid #263040;
+      border-radius: 12px; padding: 12px 14px; box-shadow: var(--shadow);
+      transform: translateY(12px); opacity:0; pointer-events:none;
+    }
+    .toast.show{ animation: toastIn .25s ease forwards }
+    .toast.hide{ animation: toastOut .2s ease forwards }
+
+    @keyframes fadeIn{ from{opacity:0; transform: translateY(8px)} to{opacity:1; transform:none} }
+    @keyframes toastIn{ to{ transform:none; opacity:1; pointer-events:auto } }
+    @keyframes toastOut{ to{ transform: translateY(12px); opacity:0; pointer-events:none } }
+
+    @media (prefers-reduced-motion: reduce){
+      *,*::before,*::after{ animation:none !important; transition:none !important }
+    }
+  </style>
 </head>
-
 <body>
-    <header class="header" data-header>
-        <div class="container">
-            <a href="index.html" class="logo">
-                <img src="./assets/images/vehigologo.png" alt="VehiGo logo">
-            </a>
-            <nav class="navbar" data-navbar>
-                <ul class="navbar-list">
-                    <li><a href="index.html" class="navbar-link" data-nav-link>Home</a></li>
-                    <li><a href="index.html#featured-car" class="navbar-link" data-nav-link>Explore cars</a></li>
-                    <li><a href="./src/pages/about.html" class="navbar-link" data-nav-link>About us</a></li>
-                    <li><a href="#blog" class="navbar-link" data-nav-link>Blog</a></li>
-                </ul>
-            </nav>
-            <div class="header-contact">
-                <a href="tel:1800100100" class="contact-link">1800-100-100</a>
-                <span class="contact-time">Mon - Sat: 9:00 am - 6:00 pm</span>
+  <header class="header">
+    <div class="container">
+      <a class="logo" href="index.html" aria-label="VehiGo Home">
+        <img src="./assets/images/vehigologo.png" alt="VehiGo" />
+      </a>
+      <nav aria-label="Primary">
+        <ul class="navbar-list">
+          <li><a class="navbar-link" href="index.html">Home</a></li>
+          <li><a class="navbar-link" href="index.html#featured-car">Explore cars</a></li>
+          <li><a class="navbar-link" href="./src/pages/about.html">About us</a></li>
+          <li><a class="navbar-link" href="#blog">Blog</a></li>
+        </ul>
+      </nav>
+      <div class="header-contact">
+        <a class="contact-link" href="tel:1800100100">1800-100-100</a>
+        <span aria-label="Support hours">Mon–Sat · 9:00–18:00</span>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <div class="shell">
+      <h1 class="title">Feedback</h1>
+      <p class="subtitle">Your experience helps us improve. This takes less than a minute.</p>
+
+      <section class="card" aria-labelledby="formTitle">
+        <form id="feedbackForm" novalidate>
+          <fieldset>
+            <legend>Customer</legend>
+            <div class="row cols-2">
+              <div>
+                <label for="name">Name</label>
+                <input id="name" name="name" type="text" placeholder="Jane Doe" required />
+              </div>
+              <div>
+                <label for="email">Email</label>
+                <input id="email" name="email" type="email" placeholder="jane@domain.com" required />
+              </div>
             </div>
-        </div>
-    </header>
+            <div class="row cols-2">
+              <div>
+                <label for="phone">Phone</label>
+                <input id="phone" name="phone" type="tel" inputmode="tel" pattern="[0-9+\-\s]{7,15}" placeholder="+91 98765 43210" required />
+                <div class="hint">Digits, spaces, +, and - are allowed.</div>
+              </div>
+              <div>
+                <label for="reservationNumber">Reservation Number</label>
+                <input id="reservationNumber" name="reservationNumber" type="text" placeholder="e.g. VG-34218" required />
+              </div>
+            </div>
+          </fieldset>
 
-    <main class="feedback">
-        <h1 class="feedbackCustom">Car Rental Service Feedback Form</h1>
-        <div class="feedbackFor">
-            <form id="feedbackForm" action="#" method="post" autocomplete="on">
-                <fieldset>
-                    <legend>Customer Information:</legend>
-                    <label for="name">Name:</label>
-                    <input type="text" id="name" name="name" placeholder="Enter your name" required>
+          <fieldset>
+            <legend>Rental</legend>
+            <div class="row cols-2">
+              <div>
+                <label for="location">Location</label>
+                <input id="location" name="location" type="text" placeholder="Pune Airport" required />
+              </div>
+              <div class="row">
+                <div>
+                  <label for="rentalDatesFrom">From</label>
+                  <input id="rentalDatesFrom" name="rentalDatesFrom" type="date" required />
+                </div>
+                <div>
+                  <label for="rentalDatesTo">To</label>
+                  <input id="rentalDatesTo" name="rentalDatesTo" type="date" required />
+                </div>
+              </div>
+            </div>
+          </fieldset>
 
-                    <label for="email">Email:</label>
-                    <input type="email" id="email" name="email" placeholder="Enter your email" required>
+          <fieldset>
+            <legend>Ratings</legend>
 
-                    <label for="phone">Phone Number:</label>
-                    <input type="tel" id="phone" name="phone" placeholder="Enter your phone number" required pattern="[0-9+\-\s]{7,15}">
-                </fieldset>
+            <!-- TWO-COLUMN GRID -->
+            <div class="ratings-grid">
+              <div class="question">
+                <label for="r1_5">Overall Experience</label>
+                <div class="stars" role="radiogroup" aria-label="Overall Experience">
+                  <input id="r1_5" type="radio" name="rating1" value="5" required>
+                  <label for="r1_5" aria-label="5 stars">★</label>
+                  <input id="r1_4" type="radio" name="rating1" value="4">
+                  <label for="r1_4" aria-label="4 stars">★</label>
+                  <input id="r1_3" type="radio" name="rating1" value="3">
+                  <label for="r1_3" aria-label="3 stars">★</label>
+                  <input id="r1_2" type="radio" name="rating1" value="2">
+                  <label for="r1_2" aria-label="2 stars">★</label>
+                  <input id="r1_1" type="radio" name="rating1" value="1">
+                  <label for="r1_1" aria-label="1 star">★</label>
+                </div>
+              </div>
 
-                <fieldset>
-                    <legend>Rental Details:</legend>
-                    <label for="reservationNumber">Rental Reservation Number:</label>
-                    <input type="text" id="reservationNumber" name="reservationNumber" placeholder="Enter reservation number" required>
+              <div class="question">
+                <label for="r2_5">Vehicle Quality</label>
+                <div class="stars" role="radiogroup" aria-label="Vehicle Quality">
+                  <input id="r2_5" type="radio" name="rating2" value="5" required><label for="r2_5">★</label>
+                  <input id="r2_4" type="radio" name="rating2" value="4"><label for="r2_4">★</label>
+                  <input id="r2_3" type="radio" name="rating2" value="3"><label for="r2_3">★</label>
+                  <input id="r2_2" type="radio" name="rating2" value="2"><label for="r2_2">★</label>
+                  <input id="r2_1" type="radio" name="rating2" value="1"><label for="r2_1">★</label>
+                </div>
+              </div>
 
-                    <label for="location">Rental Location:</label>
-                    <input type="text" id="location" name="location" placeholder="Enter rental location" required>
+              <div class="question">
+                <label for="r3_5">Reservation Process</label>
+                <div class="stars" role="radiogroup" aria-label="Reservation Process">
+                  <input id="r3_5" type="radio" name="rating3" value="5" required><label for="r3_5">★</label>
+                  <input id="r3_4" type="radio" name="rating3" value="4"><label for="r3_4">★</label>
+                  <input id="r3_3" type="radio" name="rating3" value="3"><label for="r3_3">★</label>
+                  <input id="r3_2" type="radio" name="rating3" value="2"><label for="r3_2">★</label>
+                  <input id="r3_1" type="radio" name="rating3" value="1"><label for="r3_1">★</label>
+                </div>
+              </div>
 
-                    <div class="legendary">
-                        <label for="rentalDatesFrom">Rental Dates: From</label>
-                        <input type="date" id="rentalDatesFrom" name="rentalDatesFrom" required>
-                        <label for="rentalDatesTo">to</label>
-                        <input type="date" id="rentalDatesTo" name="rentalDatesTo" required>
-                    </div>
-                </fieldset>
+              <div class="question">
+                <label for="r4_5">Pickup Process</label>
+                <div class="stars" role="radiogroup" aria-label="Pickup Process">
+                  <input id="r4_5" type="radio" name="rating4" value="5" required><label for="r4_5">★</label>
+                  <input id="r4_4" type="radio" name="rating4" value="4"><label for="r4_4">★</label>
+                  <input id="r4_3" type="radio" name="rating4" value="3"><label for="r4_3">★</label>
+                  <input id="r4_2" type="radio" name="rating4" value="2"><label for="r4_2">★</label>
+                  <input id="r4_1" type="radio" name="rating4" value="1"><label for="r4_1">★</label>
+                </div>
+              </div>
 
-                <fieldset class="project">
-                    <legend>Ratings:</legend>
+              <div class="question">
+                <label for="r5_5">Return Process</label>
+                <div class="stars" role="radiogroup" aria-label="Return Process">
+                  <input id="r5_5" type="radio" name="rating5" value="5" required><label for="r5_5">★</label>
+                  <input id="r5_4" type="radio" name="rating5" value="4"><label for="r5_4">★</label>
+                  <input id="r5_3" type="radio" name="rating5" value="3"><label for="r5_3">★</label>
+                  <input id="r5_2" type="radio" name="rating5" value="2"><label for="r5_2">★</label>
+                  <input id="r5_1" type="radio" name="rating5" value="1"><label for="r5_1">★</label>
+                </div>
+              </div>
 
-                    <div class="question">
-                        <h4>1. Overall Experience:</h4>
-                        <h5>Please rate your overall experience with our car rental service.</h5>
-                        <div class="star-rating">
-                            <input type="radio" id="star5_1" name="rating1" value="5" required><label for="star5_1">&#9733;</label>
-                            <input type="radio" id="star4_1" name="rating1" value="4"><label for="star4_1">&#9733;</label>
-                            <input type="radio" id="star3_1" name="rating1" value="3"><label for="star3_1">&#9733;</label>
-                            <input type="radio" id="star2_1" name="rating1" value="2"><label for="star2_1">&#9733;</label>
-                            <input type="radio" id="star1_1" name="rating1" value="1"><label for="star1_1">&#9733;</label>
-                        </div>
-                    </div>
+              <div class="question">
+                <label for="r6_5">Cleanliness</label>
+                <div class="stars" role="radiogroup" aria-label="Cleanliness">
+                  <input id="r6_5" type="radio" name="rating6" value="5" required><label for="r6_5">★</label>
+                  <input id="r6_4" type="radio" name="rating6" value="4"><label for="r6_4">★</label>
+                  <input id="r6_3" type="radio" name="rating6" value="3"><label for="r6_3">★</label>
+                  <input id="r6_2" type="radio" name="rating6" value="2"><label for="r6_2">★</label>
+                  <input id="r6_1" type="radio" name="rating6" value="1"><label for="r6_1">★</label>
+                </div>
+              </div>
+            </div>
 
-                    <div class="question">
-                        <h4>2. Vehicle Quality:</h4>
-                        <h5>How would you rate the quality and condition of the rental vehicle?</h5>
-                        <div class="star-rating">
-                            <input type="radio" id="star5_2" name="rating2" value="5" required><label for="star5_2">&#9733;</label>
-                            <input type="radio" id="star4_2" name="rating2" value="4"><label for="star4_2">&#9733;</label>
-                            <input type="radio" id="star3_2" name="rating2" value="3"><label for="star3_2">&#9733;</label>
-                            <input type="radio" id="star2_2" name="rating2" value="2"><label for="star2_2">&#9733;</label>
-                            <input type="radio" id="star1_2" name="rating2" value="1"><label for="star1_2">&#9733;</label>
-                        </div>
-                    </div>
+            <label for="comments" style="margin-top:14px">Additional Comments</label>
+            <textarea id="comments" name="comments" placeholder="What went well? What could be better?"></textarea>
 
-                    <div class="question">
-                        <h4>3. Reservation Process:</h4>
-                        <h5>How easy was it to make a reservation with us?</h5>
-                        <div class="star-rating">
-                            <input type="radio" id="star5_3" name="rating3" value="5" required><label for="star5_3">&#9733;</label>
-                            <input type="radio" id="star4_3" name="rating3" value="4"><label for="star4_3">&#9733;</label>
-                            <input type="radio" id="star3_3" name="rating3" value="3"><label for="star3_3">&#9733;</label>
-                            <input type="radio" id="star2_3" name="rating3" value="2"><label for="star2_3">&#9733;</label>
-                            <input type="radio" id="star1_3" name="rating3" value="1"><label for="star1_3">&#9733;</label>
-                        </div>
-                    </div>
+            <label for="overallExperience">Would you recommend us?</label>
+            <select id="overallExperience" name="overallExperience" required>
+              <option disabled selected value="">Select an option</option>
+              <option value="Yes, definitely">Yes, definitely</option>
+              <option value="Yes, maybe">Yes, maybe</option>
+              <option value="No, probably not">No, probably not</option>
+              <option value="No, definitely not">No, definitely not</option>
+            </select>
+          </fieldset>
 
-                    <div class="question">
-                        <h4>4. Vehicle Pickup Process:</h4>
-                        <h5>How smooth was the vehicle pickup process?</h5>
-                        <div class="star-rating">
-                            <input type="radio" id="star5_4" name="rating4" value="5" required><label for="star5_4">&#9733;</label>
-                            <input type="radio" id="star4_4" name="rating4" value="4"><label for="star4_4">&#9733;</label>
-                            <input type="radio" id="star3_4" name="rating4" value="3"><label for="star3_4">&#9733;</label>
-                            <input type="radio" id="star2_4" name="rating4" value="2"><label for="star2_4">&#9733;</label>
-                            <input type="radio" id="star1_4" name="rating4" value="1"><label for="star1_4">&#9733;</label>
-                        </div>
-                    </div>
+          <div class="actions">
+            <button type="submit" class="btn">Submit Feedback</button>
+          </div>
+        </form>
+      </section>
+    </div>
+  </main>
 
-                    <div class="question">
-                        <h4>5. Vehicle Return Process:</h4>
-                        <h5>How smooth was the vehicle return process?</h5>
-                        <div class="star-rating">
-                            <input type="radio" id="star5_5" name="rating5" value="5" required><label for="star5_5">&#9733;</label>
-                            <input type="radio" id="star4_5" name="rating5" value="4"><label for="star4_5">&#9733;</label>
-                            <input type="radio" id="star3_5" name="rating5" value="3"><label for="star3_5">&#9733;</label>
-                            <input type="radio" id="star2_5" name="rating5" value="2"><label for="star2_5">&#9733;</label>
-                            <input type="radio" id="star1_5" name="rating5" value="1"><label for="star1_5">&#9733;</label>
-                        </div>
-                    </div>
+  <div id="toast" class="toast" role="status" aria-live="polite">Thank you — feedback submitted.</div>
 
-                    <div class="question">
-                        <h4>6. Cleanliness:</h4>
-                        <h5>Was the rental vehicle clean and well-maintained when you received it?</h5>
-                        <div class="star-rating">
-                            <input type="radio" id="star5_6" name="rating6" value="5" required><label for="star5_6">&#9733;</label>
-                            <input type="radio" id="star4_6" name="rating6" value="4"><label for="star4_6">&#9733;</label>
-                            <input type="radio" id="star3_6" name="rating6" value="3"><label for="star3_6">&#9733;</label>
-                            <input type="radio" id="star2_6" name="rating6" value="2"><label for="star2_6">&#9733;</label>
-                            <input type="radio" id="star1_6" name="rating6" value="1"><label for="star1_6">&#9733;</label>
-                        </div>
-                    </div>
+  <script>
+    const form = document.getElementById('feedbackForm');
+    const toast = document.getElementById('toast');
+    const dateFrom = document.getElementById('rentalDatesFrom');
+    const dateTo   = document.getElementById('rentalDatesTo');
+    const phone    = document.getElementById('phone');
 
-                    <label for="Additional-Comments"><h4>Additional Comments:</h4></label>
-                    <h5>Please provide any additional comments or suggestions for improvement:</h5>
-                    <textarea id="Additional-Comments" name="Additional-Comments" placeholder="Additional Comments"></textarea>
+    function showToast(msg){
+      toast.textContent = msg;
+      toast.classList.remove('hide'); toast.classList.add('show');
+      clearTimeout(showToast._t);
+      showToast._t = setTimeout(()=>{ toast.classList.remove('show'); toast.classList.add('hide'); }, 2200);
+    }
 
-                    <label for="overallExperience"><h4>Would You Recommend Us?</h4></label>
-                    <h5>Would you recommend our car rental service to friends or family?</h5>
-                    <select id="overallExperience" name="overallExperience" required>
-                        <option disabled selected value="">Select an option</option>
-                        <option value="Yes, definitely">Yes, definitely</option>
-                        <option value="Yes, maybe">Yes, maybe</option>
-                        <option value="No, probably not">No, probably not</option>
-                        <option value="No, definitely not">No, definitely not</option>
-                    </select>
-                </fieldset>
-                <button type="submit" class="submit-btn">Submit</button>
-            </form>
-        </div>
-    </main>
+    function validateDates(){
+      if(!dateFrom.value || !dateTo.value) return true;
+      const from = new Date(dateFrom.value);
+      const to = new Date(dateTo.value);
+      if (to < from){
+        dateTo.setCustomValidity('End date must be on or after the start date.');
+        dateTo.reportValidity();
+        return false;
+      }
+      dateTo.setCustomValidity('');
+      return true;
+    }
 
-    <script>
-        // Optional: Show a thank you message on submit
-        document.getElementById('feedbackForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            this.reset();
-            alert('Thank you for your feedback!');
-        });
-    </script>
+    dateFrom?.addEventListener('change', validateDates);
+    dateTo?.addEventListener('change', validateDates);
+
+    phone.addEventListener('input', () => {
+      phone.value = phone.value.replace(/[^\d+\-\s]/g, '');
+    });
+
+    // Keyboard support for star groups
+    document.querySelectorAll('.stars').forEach(group=>{
+      group.tabIndex = 0;
+      group.addEventListener('keydown', e=>{
+        const radios = Array.from(group.querySelectorAll('input[type="radio"]')).reverse(); // logical LTR
+        const idx = radios.findIndex(r=>r.checked);
+        if(['ArrowLeft','ArrowDown'].includes(e.key)){
+          e.preventDefault();
+          const i = Math.max(0, idx - 1);
+          (radios[i] || radios[0]).checked = true;
+        }else if(['ArrowRight','ArrowUp'].includes(e.key)){
+          e.preventDefault();
+          const i = Math.min(radios.length-1, idx + 1);
+          (radios[i] || radios[radios.length-1]).checked = true;
+        }
+      });
+    });
+
+    form.addEventListener('submit', (e)=>{
+      e.preventDefault();
+      if(!validateDates()) return;
+      if(!form.checkValidity()){
+        showToast('Please complete required fields.');
+        return;
+      }
+      // simulate submit
+      form.reset();
+      showToast('Thank you — feedback submitted.');
+    });
+  </script>
 </body>
 </html>
