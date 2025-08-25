@@ -22,7 +22,7 @@
     align-items: center;
     justify-content: center;
     /* background-color: hsl(216, 38%, 95%); */
-    column-gap: 30px;
+    /* column-gap: 30px; */
     /* border-radius: 90px; */
     
 }
@@ -62,9 +62,9 @@
     max-width: 430px;
     width: 100%;
     padding: 30px;
-    
+    background: #f8f9fb;  
     border-radius: 20px;
-    background: #ffffff;
+    /* background: #ffffff; */
     border: #3232f8 solid 2px;
     box-shadow: rgba(7, 62, 225, 0.808) 0px 7px 29px 0px;
     margin: 50px;
@@ -114,7 +114,7 @@ header {
 
 
 form {
-    margin-top: 30px;
+    /* margin-top: 30px; */
 }
 
 .form .field {
