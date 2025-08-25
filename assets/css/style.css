@@ -1172,6 +1172,7 @@ font-weight: bolder;
   left: 20px;
   --height: 30px;
   --width: 92px;
+  color: black;
 }
 
 .blog-card .card-content {
@@ -1180,10 +1181,12 @@ font-weight: bolder;
 
 .blog-card .card-title {
   margin-bottom: 20px;
+  color: black;
 }
 
 .blog-card .card-title > a {
   color: inherit;
+  /* color: #0e0e0e; */
 }
 
 .blog-card .card-title > a:is(:hover, :focus) {
@@ -1264,6 +1267,7 @@ font-weight: bolder;
 .blog-card :is(.publish-date, .comments) ion-icon {
   font-size: 15px;
   --ionicon-stroke-width: 50px;
+  color: #0e0e0e;
 }
 
 .blog .has-scrollbar {
