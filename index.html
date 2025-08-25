@@ -5,10 +5,12 @@
   <meta charset="UTF-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
   <link rel="stylesheet" href=" https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
   <!-- Bootstrap CSS -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
   <link rel="icon" href="favicon.svg" />
+  <link rel="stylesheet" href="preloader.css"/>
   <title>Vehigo - Rent your favourite car</title>
 
   <!--
@@ -25,9 +27,15 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600&family=Open+Sans&display=swap"
     rel="stylesheet" />
+  
 </head>
 
 <body class="dark-mode">
+
+    <div id="preloader">
+    <div class="spinner"></div>
+  </div>
+  <div id="app">
   <header class="header" data-header>
     <div class="container" style="background-color: #4e7fb4">
       <div class="overlay" data-overlay></div>
@@ -190,18 +198,18 @@
       -->
 
       <section class="hero section" id="home" style="padding-left: 40px">
-        <div class="container">
+        <div data-aos="fade-up" class="container">
           <div class="hero-content">
             <div class="curr-hero">
-              <h2 class="h1 hero-title first">Seamless rentals</h2>
-              <h2 class="h1 hero-title second">Endless Adventures!</h2>
+              <h2 data-aos="fade-up" class="h1 hero-title first">Seamless rentals</h2>
+              <h2 data-aos="fade-up" class="h1 hero-title second">Endless Adventures!</h2>
             </div>
-            <p class="hero-text">Live in Bhopal, Indore and Ujjain!</p>
+            <p data-aos="fade-right" data-aos-delay="500" class="hero-text">Live in Bhopal, Indore and Ujjain!</p>
           </div>
 
-          <div class="hero-banner"></div>
+          <div data-aos-delay="500" class="hero-banner"></div>
 
-          <form action="" id="searchForm" class="hero-form">
+          <form zdata-aos="fade-up" data-aos-delay="500" action="" id="searchForm" class="hero-form">
             <div class="input-wrapper">
               <label for="input-1" class="input-label">Location</label>
               <input type="text" name="car-model" id="input-1" class="input-field" placeholder="Enter your Location" />
@@ -247,9 +255,9 @@
       <section class="section featured-car" id="featured-car">
         <div class="container">
           <div class="title-wrapper">
-            <h2 class="h2 section-title">Featured cars</h2>
+            <h2 data-aos="fade-up" class="h2 section-title">Featured cars</h2>
           </div>
-          <div id="carList" class="featured-car-list">
+          <div data-aos="zoom-in" id="carList" class="featured-car-list">
             <!-- Car results will be rendered here by JavaScript -->
           </div>
         </div>
@@ -257,16 +265,16 @@
 
       <section class="section get-start">
         <div class="container">
-          <h2 class="h2 section-title">Get started with 4 simple steps</h2>
+          <h2 data-aos="fade-up" class="h2 section-title">Get started with 4 simple steps</h2>
 
           <ul class="get-start-list">
             <li>
-              <div class="get-start-card">
+              <div data-aos="fade-up" class="get-start-card">
                 <div class="card-icon icon-1">
                   <ion-icon name="person-add-outline"></ion-icon>
                 </div>
                 <h3 class="card-title">Create a profile</h3>
-                <p class="card-text">
+                <p data-aos="fade-up" class="card-text">
                   If you are going to use a passage of Lorem Ipsum, you need
                   to be sure.
                 </p>
@@ -274,36 +282,36 @@
               </div>
             </li>
             <li>
-              <div class="get-start-card">
+              <div data-aos="fade-up" class="get-start-card">
                 <div class="card-icon icon-2">
                   <ion-icon name="car-outline"></ion-icon>
                 </div>
                 <h3 class="card-title">Tell us your location</h3>
-                <p class="card-text">
+                <p data-aos="fade-up" class="card-text">
                   Just enter your location with one click from the comfort of
                   your home and we will do the rest.
                 </p>
               </div>
             </li>
             <li>
-              <div class="get-start-card">
+              <div data-aos="fade-up" class="get-start-card">
                 <div class="card-icon icon-3">
                   <ion-icon name="person-outline"></ion-icon>
                 </div>
                 <h3 class="card-title">Match with seller</h3>
-                <p class="card-text">
+                <p data-aos="fade-up" class="card-text">
                   It to make a type specimen book. It has survived not only
                   five centuries, but also the leap into electronic
                 </p>
               </div>
             </li>
             <li>
-              <div class="get-start-card">
+              <div data-aos="fade-up" class="get-start-card">
                 <div class="card-icon icon-4">
                   <ion-icon name="card-outline"></ion-icon>
                 </div>
                 <h3 class="card-title">Make a deal</h3>
-                <p class="card-text">
+                <p data-aos="fade-up" class="card-text">
                   There are many variations of passages of Lorem available,
                   but the majority have suffered alteration
                 </p>
@@ -313,9 +321,9 @@
         </div>
       </section>
 
-      <section class="reviews" id="reviews">
+      <section data-aos="fade-up" class="reviews" id="reviews">
         <div class="contain container">
-          <h2>Reviews</h2>
+          <h2 data-aos="fade-up">Reviews</h2>
           <div class="outerdiv">
             <div class="innerdiv">
               <div class="div1 eachdiv">
@@ -331,13 +339,13 @@
                   </div>
                 </div>
                 <div class="review">
-                  <h4>
+                  <h4 data-aos="fade-up">
                     "I recently rented a car from Vehigo, and I couldn't be
                     happier with the experience. The staff was incredibly
                     friendly and helpful, guiding me through the rental
                     process and answering all of my questions. "
                   </h4>
-                  <p>
+                  <p data-aos="fade-up">
                     “The car I rented was in excellent condition and drove
                     smoothly throughout my entire trip. I highly recommend
                     Vehigo to anyone in need of a reliable and hassle-free car
@@ -358,8 +366,8 @@
                   </div>
                 </div>
                 <div class="review">
-                  <h4>Renting a car from Vehigo was a breeze!</h4>
-                  <p>
+                  <h4 data-aos="fade-up">Renting a car from Vehigo was a breeze!</h4>
+                  <p data-aos="fade-up">
                     “ The staff was friendly, the car was clean and
                     well-maintained, and the whole process was quick and
                     hassle-free. I'll definitely be renting from Vehigo again
@@ -380,11 +388,11 @@
                   </div>
                 </div>
                 <div class="review dark">
-                  <h4>
+                  <h4 data-aos="fade-up">
                     Vehigo is my top choice for renting a car whenever I
                     travel.
                   </h4>
-                  <p>
+                  <p data-aos="fade-up">
                     “ Their service is consistently outstanding, and I
                     appreciate their attention to detail. The vehicles are
                     always clean, and the rental process is quick and
@@ -413,8 +421,8 @@
                   </div>
                 </div>
                 <div class="review dark">
-                  <h4>Overall a wonderful & rewarding experience</h4>
-                  <p>
+                  <h4 data-aos="fade-up">Overall a wonderful & rewarding experience</h4>
+                  <p data-aos="fade-up">
                     “ Thank you for the wonderful experience! The car we
                     rented was spacious, comfortable, and fuel-efficient,
                     making our journey enjoyable. The team at Vehigo was
@@ -436,11 +444,11 @@
                   </div>
                 </div>
                 <div class="review">
-                  <h4>
+                  <h4 data-aos="fade-up">
                     I have been a loyal customer of Vehigo for several years
                     now, and they have consistently exceeded my expectations.
                   </h4>
-                  <p>
+                  <p data-aos="fade-up">
                     “ Their rental fleet is diverse, offering a wide range of
                     vehicles to choose from, whether I need a compact car for
                     a city trip or a spacious SUV for a family vacation. The
@@ -459,22 +467,22 @@
         - #BLOG
       -->
 
-      <section class="section blog" id="blog">
+      <section data-aos="fade-up" class="section blog" id="blog">
         <div class="container">
           <div class="blog-wrapper">
-            <h2 class="h2 section-title">Our Blog</h2>
+            <h2 data-aos="fade-up" class="h2 section-title">Our Blog</h2>
             <button class="left-arrow">❮</button>
             <ul class="blog-list has-scrollbar">
               <li>
-                <div class="blog-card">
-                  <figure class="card-banner">
+                <div data-aos="fade-up" class="blog-card">
+                  <figure data-aos="zoom-in" class="card-banner">
                     <a href="blogs/blog1.html">
                       <img src="./assets/images/blog-1.jpg" alt="Opening of new offices of the company" loading="lazy"
                         class="w-100" />
                     </a>
                     <a href="blogs/blog1.html" class="btn card-badge">Company</a>
                   </figure>
-                  <div class="card-content">
+                  <div data-aos="fade-up" class="card-content">
                     <h3 class="h3 card-title">
                       <a href="blogs/blog1.html">Opening of new offices of the company</a>
                     </h3>
@@ -496,15 +504,15 @@
                 </div>
               </li>
               <li>
-                <div class="blog-card">
-                  <figure class="card-banner">
+                <div data-aos="fade-up" class="blog-card">
+                  <figure data-aos="zoom-in" class="card-banner">
                     <a href="blogs/blog2.html">
                       <img src="./assets/images/blog-2.jpg" alt="What cars are most vulnerable" loading="lazy"
                         class="w-100" />
                     </a>
                     <a href="blogs/blog2.html" class="btn card-badge">Repair</a>
                   </figure>
-                  <div class="card-content">
+                  <div data-aos="fade-up" class="card-content">
                     <h3 class="h3 card-title">
                       <a href="blogs/blog2.html">What cars are most vulnerable</a>
                     </h3>
@@ -526,15 +534,15 @@
                 </div>
               </li>
               <li>
-                <div class="blog-card">
-                  <figure class="card-banner">
+                <div data-aos="fade-up" class="blog-card">
+                  <figure data-aos="zoom-in" class="card-banner">
                     <a href="blogs/blog3.html">
                       <img src="./assets/images/blog-3.jpg" alt="Statistics showed which average age" loading="lazy"
                         class="w-100" />
                     </a>
                     <a href="blogs/blog3.html" class="btn card-badge">Cars</a>
                   </figure>
-                  <div class="card-content">
+                  <div data-aos="fade-up" class="card-content">
                     <h3 class="h3 card-title">
                       <a href="blogs/blog3.html">Statistics showed which average age</a>
                     </h3>
@@ -626,8 +634,8 @@
   <!--
     - #FOOTER
   -->
-  <footer class="footer" style="width:100vw">
-    <div class="container" style="max-width: 1200px; margin: auto">
+  <footer data-aos="fade-up" class="footer" style="width:100vw">
+    <div data-aos="fade-up" class="container" style="max-width: 1200px; margin: auto">
       <!-- Top Section -->
       <div class="footer-top" style="
             display: flex;
@@ -638,9 +646,9 @@
         <!-- Brand Section -->
         <div class="footer-brand" style="flex: 1 1 300px">
           <a href="#" class="logo">
-            <img src="./assets/images/vehigologo.png" alt="VehiGo logo" style="width: 160px" />
+            <img data-aos="fade-up" src="./assets/images/vehigologo.png" alt="VehiGo logo" style="width: 160px" />
           </a>
-          <p class="footer-text" style="margin-top: 1rem; line-height: 1.6">
+          <p data-aos="fade-up" class="footer-text" style="margin-top: 1rem; line-height: 1.6">
             🚗 <strong>Find affordable rental cars across Madhya Pradesh!</strong><br />
             Choose from a wide range of vehicles, or rent out your own when
             not in use. We make car rental easy, accessible, and efficient for
@@ -651,43 +659,43 @@
         <!-- Company Section -->
         <ul class="footer-list">
           <li>
-            <p class="footer-list-title">Company</p>
+            <p data-aos="fade-up" class="footer-list-title">Company</p>
           </li>
           <li>
-            <a href="./src/pages/about.html" class="footer-link">About Us</a>
+            <a data-aos="fade-up" href="./src/pages/about.html" class="footer-link">About Us</a>
           </li>
           <li>
-            <a href="./src/pages/pricing.html" class="footer-link">Pricing Plans</a>
+            <a data-aos="fade-up" href="./src/pages/pricing.html" class="footer-link">Pricing Plans</a>
           </li>
-          <li><a href="./blog.html" class="footer-link">Our Blog</a></li>
+          <li><a data-aos="fade-up" href="./blog.html" class="footer-link">Our Blog</a></li>
           <li>
-            <a href="./ContactUs.html" class="footer-link">Contact Us</a>
+            <a data-aos="fade-up" href="./ContactUs.html" class="footer-link">Contact Us</a>
           </li>
         </ul>
 
         <!-- Support Section -->
         <ul class="footer-list">
           <li>
-            <p class="footer-list-title">Support</p>
+            <p data-aos="fade-up" class="footer-list-title">Support</p>
           </li>
           <li>
-            <a href="./src/pages/help-center.html" class="footer-link">Help Center</a>
+            <a data-aos="fade-up" href="./src/pages/help-center.html" class="footer-link">Help Center</a>
           </li>
           <li>
-            <a href="./src/pages/Askaques.html" class="footer-link">Ask a Question</a>
+            <a data-aos="fade-up" href="./src/pages/Askaques.html" class="footer-link">Ask a Question</a>
           </li>
           <li>
-            <a href="./privacypolicy.html" class="footer-link">Privacy Policy</a>
+            <a data-aos="fade-up" href="./privacypolicy.html" class="footer-link">Privacy Policy</a>
           </li>
           <li>
-            <a href="./tandc.html" class="footer-link">Terms & Conditions</a>
+            <a data-aos="fade-up" href="./tandc.html" class="footer-link">Terms & Conditions</a>
           </li>
         </ul>
       </div>
 
       <!-- Bottom Section -->
       <div class="footer-bottom" style="display: flex;flex-direction:row;gap:2px;">
-        <div class="social-icons" style="text-align: center; margin-bottom: 10px;display: flex;flex-direction:row;gap:2px;">
+        <div data-aos="fade-up" class="social-icons" style="text-align: center; margin-bottom: 10px;display: flex;flex-direction:row;gap:2px;">
           <a href="https://www.linkedin.com" target="_blank" style="margin: 0 10px; font-size: 24px; color: #0077b5"><i
               class="fab fa-linkedin"></i></a>
           <a href="https://www.twitter.com" target="_blank" style="margin: 0 10px; font-size: 24px; color: #1da1f2"><i
@@ -701,12 +709,20 @@
           © <span id="copyright-year">2023</span> Vehigo — All rights
           reserved.
         </p>
+
+        <!-- logic for dynamic year -->
+        <script>
+          document.getElementById("copyright-year").textContent = new Date().getFullYear();
+        </script>
+        
       </div>
     </div>
   </footer>
+  </div>
 
   <script src="./assets/js/script.js"></script>
   <style>
+    
     #carList { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 16px; list-style: none; padding: 0;}
     .car-card { border: 1px solid #e2e8f0; border-radius: 10px; overflow: hidden; background: #fff; }
     body.dark-theme .car-card { background: #1f2937; border-color: #374151; }
@@ -743,11 +759,11 @@
       }
       container.innerHTML = list.map(car => `
         <li>
-          <div class="featured-car-card">
+          <div data-aos="fade-up" data-aos-delay="500" class="featured-car-card">
             <figure class="card-banner">
-              <img src="${car.image}" alt="${car.name}" loading="lazy" width="440" height="300" class="w-100" />
+              <img  data-aos="zoom-in" src="${car.image}" alt="${car.name}" loading="lazy" width="440" height="300" class="w-100" />
             </figure>
-            <div class="card-content">
+            <div data-aos="fade-up" class="card-content">
               <div class="card-title-wrapper">
                 <h3 class="h3 card-title"><a href="#" style="color:black">${car.name}</a></h3>
                 <data class="year" value="${car.year}" style="color:black">${car.year}</data>
@@ -802,6 +818,7 @@
 
       renderCars(filtered);
     }
+
 
     document.addEventListener('DOMContentLoaded', function() {
       const form = document.getElementById('searchForm');
@@ -860,6 +877,15 @@
     topBtn.addEventListener("click", () => window.scrollTo({ top: 0, behavior: "smooth" }));
     bottomBtn.addEventListener("click", () => window.scrollTo({ top: document.body.scrollHeight, behavior: "smooth" }));
   </script>
+<script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+  <script>
+    AOS.init({
+      duration: 650,
+      easing: 'ease-in-out', 
+      once: true,
+    });
+  </script>
+  <script src="preloader.js"></script>
 </body>
 
 </html>```

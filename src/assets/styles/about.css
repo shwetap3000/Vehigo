@@ -192,13 +192,15 @@ body.dark-mode .footer-link {
 
 .about-content {
   text-align: left;
-  padding-right: 20px; /* Space between text and image */
+  padding-right: 40px; /* Space between text and image */
+  margin-left: 20px;
+  margin-right: 40px;
 }
 
 
 .about-content h1 {
   font-size: var(--fs-1);
-  color: var(--space-cadet);
+  /* color: var(--space-cadet); */
   font-family: var(--ff-nunito);
   text-transform: uppercase;
   margin-bottom: 15px;
@@ -206,16 +208,19 @@ body.dark-mode .footer-link {
 
 .about-content .hero-text {
   color: var(--independence);
+  color: black;
   font-size: var(--fs-5);
   font-weight: var(--fw-600);
   margin-bottom: 20px;
 }
 
 .about-content p {
-  color: var(--independence);
+  /* color: var(--independence); */
+  color: green;
   font-size: var(--fs-6);
   line-height: 1.8;
   margin-bottom: 20px;
+  
 }
 
 .about-content .btn {
@@ -225,15 +230,16 @@ body.dark-mode .footer-link {
 }
 
 .about-banner {
-  border-radius: var(--radius-18);
+  border-radius: var(--radius-14);
   overflow: hidden;
   max-height: 400px;
+  margin-left: 104px;
 }
 
 .about-banner img {
-  width: 100%;
+  width: 120%;
   height: 100%;
-  object-fit: cover;
+
 }
 
 /*-----------------------------------*\

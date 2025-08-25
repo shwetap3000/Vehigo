@@ -1,14 +1,59 @@
 <!DOCTYPE html>
 <html lang="en">
 
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>About Us | VehiGo</title>
+
+    <!-- favicon -->
+    <link
+      rel="shortcut icon"
+      href="../../public/favicon.svg"
+      type="image/svg+xml"
+    />
+
+    <!-- custom css link -->
+    <!-- <link rel="stylesheet" href="../assets/styles/style.css" /> -->
+    <link rel="stylesheet" href="../assets/styles/about.css" />
+
+    <!-- google font link -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600&family=Open+Sans&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- ionicon link -->
+    <script
+      type="module"
+      src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"
+    ></script>
+    <script
+      nomodule
+      src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"
+    ></script>
+  </head>
+  <body>
+    <header class="header" data-header>
+      <div class="container">
+        <div class="overlay" data-overlay></div>
+        <a href="../index.html" class="logo">
+          <img src="../assets/images/vehigologo.png" alt="VehiGo logo" />
+
+
 <head>
   <meta charset="UTF-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="../../preloader.css"/>
+  <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
   <title>About Us | VehiGo</title>
 
   <!-- favicon -->
-  <link rel="shortcut icon" href="../../public/favicon.svg" type="image/svg+xml" />
+  <link rel="shortcut icon" href=".../public/favicon.svg" type="image/svg+xml" />
 
   <!-- custom css link -->
   <link rel="stylesheet" href="../assets/styles/style.css" />
@@ -85,7 +130,7 @@
       top: 0;
       left: 0;
       right: 0;
-      bottom: 0;
+      bottom : 0;
       background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="50" cy="50" r="1" fill="rgba(255,255,255,0.1)"/></pattern></defs><rect width="100" height="100" fill="url(%23grain)"/></svg>') repeat;
       opacity: 0.3;
       animation: float 20s ease-in-out infinite;
@@ -115,9 +160,6 @@
       z-index: 2;
     }
 
-    .about-content {
-      animation: slideInLeft 1s ease-out;
-    }
 
     .about-content h1 {
       font-size: 3.5rem;
@@ -228,9 +270,9 @@
     }
 
     .why-section .container {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 0 20px;
+      max-width: 12000px;
+      
+      padding:30px;
       position: relative;
       z-index: 2;
     }
@@ -904,6 +946,11 @@
 </head>
 
 <body>
+  
+    <div id="preloader">
+    <div class="spinner"></div>
+  </div>
+  <div id="app">
   <!-- Message Display for Login Success -->
   <div id="messageDisplay" style="
       position: fixed;
@@ -971,11 +1018,7 @@
         <div class="header-contact">
           <a href="tel:1800100100" class="contact-link">1800-100-100</a>
           <span class="contact-time">Mon - Sat: 9:00 am - 6:00 pm</span>
-          
-        </div>
-        <div>
-          
-        </div>
+
         <label class="theme-switch" for="theme-toggle" style="margin: auto;padding:0 30px ;">
           <input type="checkbox" id="theme-toggle" />
           <span class="slider">
@@ -1003,6 +1046,7 @@
         <a href="#featured-car" class="btn_explore" aria-labelledby="aria-label-txt">
           <!-- <ion-icon name="car-outline"></ion-icon> -->
           <span id="aria-label-txt">Explore cars</span>
+
         </a>
         <a href="./login.html" class="btn user-btn" id="loginBtn" aria-label="Profile">
           <ion-icon name="person-outline"></ion-icon>
@@ -1044,8 +1088,8 @@
       <!-- WHY SECTION -->
       <section class="section why-section modern-section">
         <div class="container">
-          <h2 class="h2 section-title gradient-text">🚗 Why Choose VehiGo?</h2>
-          <ul class="why-list">
+          <h2 data-aos="fade-up" data-aos-delay="100" class="h2 section-title gradient-text">🚗 Why Choose VehiGo?</h2>
+          <ul data-aos="fade-up" data-aos-delay="100" class="why-list">
             <li class="why-card modern-card animate-card">
               <div class="card-icon"><ion-icon name="car-outline"></ion-icon></div>
               <h3 class="h3 card-title">Diverse Fleet</h3>
@@ -1073,11 +1117,11 @@
       <!-- TESTIMONIALS SECTION -->
       <section class="section reviews modern-section" id="reviews">
         <div class="container">
-          <h2 class="h2 section-title gradient-text">💬 What Our Customers Say</h2>
-          <div class="testimonials-carousel">
+          <h2 data-aos="fade-up" class="h2 section-title gradient-text">💬 What Our Customers Say</h2>
+          <div data-aos="fade-up" data-aos-delay="100" class="testimonials-carousel">
             <button class="carousel-btn prev-btn" id="prevBtn"><ion-icon
                 name="chevron-back-outline"></ion-icon></button>
-            <div class="testimonials-container">
+            <div data-aos="fade-up" data-aos-delay="100" class="testimonials-container">
               <div class="testimonial-card modern-card animate-card">
                 <div class="testimonial-header">
                   <div class="customer-avatar"><img src="https://placehold.co/60x60/007BFF/white?text=RS"
@@ -1186,9 +1230,9 @@
       <!-- TEAM SECTION -->
       <section class="section team-section modern-section">
         <div class="container">
-          <h2 class="h2 section-title gradient-text">👥 Meet Our Team</h2>
+          <h2 data-aos="fade-up" class="h2 section-title gradient-text">👥 Meet Our Team</h2>
           <ul class="team-list has-scrollbar">
-            <li>
+            <li data-aos="fade-up">
               <div class="team-member modern-card animate-card">
                 <img src="../assets/images/guy1.jpg" alt="John, Financial Head" class="team-img w-100" />
                 <h3 class="h3 card-title">John</h3>
@@ -1197,7 +1241,7 @@
                   accessible and seamless.</p>
               </div>
             </li>
-            <li>
+            <li data-aos="fade-up">
               <div class="team-member modern-card animate-card">
                 <img src="../assets/images/girl1.jpg" alt="Janice, Executive Head" class="team-img w-100" />
                 <h3 class="h3 card-title">Janice</h3>
@@ -1206,7 +1250,7 @@
                   top-quality service.</p>
               </div>
             </li>
-            <li>
+            <li data-aos="fade-up">
               <div class="team-member modern-card animate-card">
                 <img src="../assets/images/girl2.jpg" alt="Amrita, Team Manager" class="team-img w-100" />
                 <h3 class="h3 card-title">Amrita</h3>
@@ -1221,7 +1265,7 @@
 
       <!-- LOCATIONS SECTION -->
       <section class="section locations-section modern-section">
-        <div class="container">
+        <div data-aos="flip-right" data-aos-delay="50" class="container">
           <h2 class="h2 section-title gradient-text">🗺️ Where We Operate</h2>
           <div class="locations-list">
             <a href="../index.html#home" class="location-card modern-card animate-card">
@@ -1274,35 +1318,35 @@
       <div class="footer-top">
         <div class="footer-brand">
           <a href="#" class="logo">
-            <img src="../assets/images/vehigologo.png" alt="VehiGo logo" />
+            <img  data-aos="fade-up" src="../assets/images/vehigologo.png" alt="VehiGo logo" />
           </a>
-          <p class="footer-text">
+          <p data-aos="fade-up" class="footer-text">
             Search for cheap rental cars in Madhya Pradesh. We offer our
             customers an attractive and fun selection of vehicles as well as
             an opportunity to rent their cars when not in use.
           </p>
         </div>
         <ul class="footer-list">
-          <li>
+          <li  data-aos="fade-up">
             <p class="footer-list-title">Company</p>
           </li>
-          <li><a href="about.html" class="footer-link">About us</a></li>
-          <li><a href="pricing.html" class="footer-link">Pricing plans</a></li>
-          <li><a href="../blog.html" class="footer-link">Our blog</a></li>
-          <li><a href="../ContactUs.html" class="footer-link">Contacts</a></li>
+          <li  data-aos="fade-up"><a href="about.html" class="footer-link">About us</a></li>
+          <li  data-aos="fade-up"><a href="pricing.html" class="footer-link">Pricing plans</a></li>
+          <li  data-aos="fade-up"><a href="../blog.html" class="footer-link">Our blog</a></li>
+          <li  data-aos="fade-up"><a href="../../ContactUs.html" class="footer-link">Contact Us</a></li>
         </ul>
         <ul class="footer-list">
-          <li>
+          <li  data-aos="fade-up">
             <p class="footer-list-title">Support</p>
           </li>
-          <li><a href="help-center.html" class="footer-link">Help center</a></li>
-          <li><a href="Askaques.html" class="footer-link">Ask a question</a></li>
-          <li><a href="../privacypolicy.html" class="footer-link">Privacy policy</a></li>
-          <li><a href="tandc.html" class="footer-link">Terms & conditions</a></li>
+          <li  data-aos="fade-up"><a href="help-center.html" class="footer-link">Help center</a></li>
+          <li  data-aos="fade-up"><a href="Askaques.html" class="footer-link">Ask a question</a></li>
+          <li  data-aos="fade-up"><a href="../../privacypolicy.html" class="footer-link">Privacy policy</a></li>
+          <li  data-aos="fade-up"><a href="tandc.html" class="footer-link">Terms & conditions</a></li>
         </ul>
       </div>
       <div class="footer-bottom">
-        <ul class="social-list">
+        <ul  data-aos="fade-up" class="social-list">
           <li><a href="#" class="social-link"><ion-icon name="logo-facebook"></ion-icon></a></li>
           <li><a href="#" class="social-link"><ion-icon name="logo-instagram"></ion-icon></a></li>
           <li><a href="#" class="social-link"><ion-icon name="logo-twitter"></ion-icon></a></li>
@@ -1316,6 +1360,7 @@
       </div>
     </div>
   </footer>
+</div>
   <script>
     document.addEventListener('DOMContentLoaded', function () {
       const themeToggle = document.getElementById('theme-toggle');
@@ -1422,7 +1467,7 @@
   <script src="../assets/js/script.js"></script>
 </body>
 
- navigation-enhancement
+
     <script src="../assets/js/script.js"></script>
 
       <!-- Scroll Buttons -->
@@ -1455,7 +1500,15 @@
     window.scrollTo({ top: document.body.scrollHeight, behavior: "smooth" });
   });
 </script>
-
+<script src="../../preloader.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+  <script>
+    AOS.init({
+      duration: 650,
+      easing: 'ease-in-out', 
+      once: true,
+    });
+  </script>
   </body>
 
  main
