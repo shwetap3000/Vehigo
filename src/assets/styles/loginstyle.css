@@ -26,7 +26,37 @@
     /* border-radius: 90px; */
     
 }
+.message{
+    text-align: center;
+    color: #0171d3;
+    padding: 5px;
+    background: #f8f9fb;  
+    /* background-color: ; */
+    border-radius: 1rem;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.135);
+    max-width: 400px;
+    /* justify-content: center; */
+    margin:auto;
+    margin-bottom: 10px;
+}
 
+
+.title{
+    font-size: 2rem;
+    font-weight: bold;
+    color: #0171d3;
+    margin-bottom: 0.5rem;
+}
+
+.subtitle{
+    font-size: 1.2rem;
+    color: #555;
+}
+
+.brand{
+    font-weight: 600;
+    color: #0077ff;
+}
 .form {
     position: absolute;
     max-width: 430px;
