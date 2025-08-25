@@ -9,7 +9,7 @@
     /* background:url(../images/blog-3.jpg); */
 }
 .body_tag {
-  background:linear-gradient(rgba(0, 0, 0, 0.884),rgba(0, 0, 0, 0.87)) ,url(../images/hero_banner_mustang.png) no-repeat center center;
+  background:linear-gradient(rgba(0, 0, 0, 0.884),rgba(0, 0, 0, 0.719)) ,url(../images/hero_banner_mustang.png) no-repeat center center;
   background-size: cover;
   min-height: 100vh;
 }
@@ -93,6 +93,10 @@ form {
     width: 100%;
     margin-top: 20px;
     border-radius: 6px;
+    border: #3842c7 1px solid;
+}
+.header-contact{
+    text-decoration: none;
 }
 
 .field input,
