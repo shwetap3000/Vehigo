@@ -11,9 +11,9 @@ body {
   margin: 0;
 }
 
-.container{
+/* .container{
   padding-right:40px;
-}
+} */
 /* Style user-btn to match the "Explore cars" button from index page */
 .user-btn {
   --color: var(--white); /* White icon */
@@ -21,7 +21,10 @@ body {
   --shadow-2: var(--shadow-1);
   box-shadow: var(--shadow-1);
 }
-
+.header{
+  display: flex;
+  flex-direction: row;
+}
 
 body.dark-mode header{
   background-color: black;
@@ -1067,9 +1070,20 @@ input:checked + .slider:before {
 .footer-brand {
   flex: 1 1 250px;
 }
+.logo_header{
+  top: 1px;
+  left:5px;
+}
 .footer-logo {
   width: 150px;
   margin-bottom: 10px;
+  
+}
+
+.header_nav{
+  display: flex;
+  flex-direction: row;
+  gap: 5px;
 }
 
 .footer-links,
