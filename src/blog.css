@@ -1,7 +1,6 @@
 *{
     margin:0;
     padding:0;
-
 }
 
 body{
@@ -11,54 +10,102 @@ body{
 }
 
 .container{
-
     width: 1200px;
     height: 950px;
     margin: 20px 20px ;
     background-color: rgb(1, 28, 28);
     border: 8px solid rgb(4, 4, 17);
-    border-radius: 0.%;
+    border-radius: 0%;
+    /* Add smooth transition */
+    transition: all 0.3s ease;
 }
 
+/* Container hover effect */
+.container:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.5);
+    border-color: #4a90e2;
+    background-color: rgb(2, 35, 35);
+}
 
 #blog-title{
-   
     color: white; 
     text-align: center;
     margin: 5px;
+    /* Add smooth transition */
+    transition: color 0.3s ease, text-shadow 0.3s ease;
+}
+
+/* Blog title hover effect */
+#blog-title:hover {
+    color: #4a90e2;
+    text-shadow: 0 0 10px rgba(74, 144, 226, 0.5);
+    cursor: pointer;
 }
 
 #blog-author{
     color: white;
     text-align: left;
     margin: 5px 5px ;
+    /* Add smooth transition */
+    transition: color 0.3s ease;
+}
+
+/* Blog author hover effect */
+#blog-author:hover {
+    color: #4a90e2;
+    cursor: pointer;
 }
 
 #blog-date{
     color: white;
     text-align: left;
     margin: 5px 5px;
+    /* Add smooth transition */
+    transition: color 0.3s ease;
+}
+
+/* Blog date hover effect */
+#blog-date:hover {
+    color: #4a90e2;
+    cursor: pointer;
 }
 
 #blog-image{
-    
     display: block;
     margin: 30px auto;
     width: 300px;
     height: auto;
     border-radius: 10px;
     box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+    /* Add smooth transition */
+    transition: transform 0.3s ease, box-shadow 0.3s ease, filter 0.3s ease;
+    cursor: pointer;
+}
 
+/* Blog image hover effect */
+#blog-image:hover {
+    transform: scale(1.05);
+    box-shadow: 0 10px 25px rgba(74, 144, 226, 0.3);
+    filter: brightness(1.1) contrast(1.1);
 }
 
 #blog-content{
     margin : 20px 5px;
     color: white;
+    /* Add smooth transition */
+    transition: color 0.3s ease;
+}
 
+/* Blog content hover effect */
+#blog-content:hover {
+    color: #f0f0f0;
 }
 
 p{
     text-align: center;
     justify-content: center;
     padding: 20px 20px;
+    /* Add smooth transition */
+    transition: color 0.3s ease, transform 0.2s ease;
 }
