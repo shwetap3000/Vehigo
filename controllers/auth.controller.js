@@ -137,9 +137,6 @@ const logoutController = async (req, res) => {
 };
 
 const crypto = require("crypto");
-const User = require("../models/auth.model.js");
-const bcrypt = require("bcrypt");
-const jwt = require("jsonwebtoken");
 const nodemailer = require("nodemailer");
 
 // Forgot Password request (send reset link)

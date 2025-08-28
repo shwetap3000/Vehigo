@@ -2,601 +2,577 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Vehigo — Explore Cars</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="icon" href="favicon.svg">
 
-    <link rel="icon" href="favicon.svg">
-    <title>Car Page</title>
-    <link rel="stylesheet" href="./assets/css/carPage.css">
-    <link rel="stylesheet" href="./assets/css/style.css">
-    <link rel="stylesheet" href="src/assets/styles/carPage.css">
-    <link rel="stylesheet" href="src/assets/styles/style.css">
+  <style>
+    :root {
+      --bg: #0b0c10;
+      --panel: #101218;
+      --panel-2: #141823;
+      --text: #e8eef7;
+      --muted: #9fb0c9;
+      --brand: #4f8cff;
+      --brand-2: #7aa5ff;
+      --accent: #22c55e;
+      --danger: #ef4444;
+      --ring: rgba(79, 140, 255, 0.4);
+      --card: #0f131b;
+      --border: rgba(255, 255, 255, 0.06);
+      --shadow: 0 10px 30px rgba(0, 0, 0, .35);
+      --radius-xl: 24px;
+      --radius-lg: 16px;
+      --radius: 12px;
+      --radius-sm: 10px;
+      --container: 1180px;
+    }
 
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600&family=Open+Sans&display=swap"
-        rel="stylesheet">
+    @media (prefers-color-scheme: light) {
+      :root {
+        --bg: #f7f9fc;
+        --panel: #ffffff;
+        --panel-2: #f3f6fb;
+        --text: #0f172a;
+        --muted: #475569;
+        --brand: #2563eb;
+        --brand-2: #3b82f6;
+        --card: #ffffff;
+        --border: rgba(15, 23, 42, 0.08);
+        --shadow: 0 10px 30px rgba(2, 6, 23, .08);
+      }
+    }
 
+    * {
+      box-sizing: border-box;
+    }
+
+    html, body {
+      margin: 0;
+      padding: 0;
+      background: radial-gradient(1200px 600px at 10% -10%, rgba(79, 140, 255, 0.12), transparent 40%),
+                  radial-gradient(1100px 600px at 100% 10%, rgba(34, 197, 94, 0.09), transparent 45%),
+                  var(--bg);
+      color: var(--text);
+      font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial, "Noto Sans", "Apple Color Emoji", "Segoe UI Emoji";
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    a { color: inherit; text-decoration: none; }
+    img { max-width: 100%; display: block; }
+    .container { width: min(100%, var(--container)); margin-inline: auto; padding-inline: 20px; }
+
+    /* Header */
+    .header {
+      position: sticky; top: 0; z-index: 50; backdrop-filter: saturate(140%) blur(8px);
+  background: #fff;
+      border-bottom: 1px solid var(--border);
+    }
+    .header .row { display:flex; align-items: center; justify-content: space-between; gap: 16px; padding: 14px 0; }
+  .logo { display:flex; align-items:center; gap:10px; font-weight: 800; letter-spacing: .3px; color: #2563eb; }
+  .logo img { height: 36px; width:auto; }
+
+    nav ul { list-style: none; display:flex; gap: 18px; padding:0; margin:0; }
+    .navbar-link { padding:10px 14px; border-radius: 999px; color: var(--muted); font-weight: 600; }
+  .navbar-link:hover, .navbar-link.active { color: #fff; background: #2563eb; box-shadow: inset 0 0 0 1px var(--border); }
+
+    .header-actions { display:flex; align-items:center; gap:10px; }
+    .btn { display:inline-flex; align-items:center; gap:10px; padding:10px 16px; border-radius: 999px; border:1px solid var(--border); background: var(--panel-2); color: var(--text); font-weight:700; box-shadow: var(--shadow); transition: transform .15s ease, box-shadow .2s ease, background .2s ease; }
+    .btn:hover { transform: translateY(-1px); box-shadow: 0 14px 35px rgba(79,140,255,.25); }
+    .btn.primary { background: linear-gradient(90deg, var(--brand), var(--brand-2)); border-color: transparent; }
+
+    .nav-toggle-btn { display:none; flex-direction:column; gap:4px; border:0; background:transparent; cursor:pointer; padding:8px; }
+    .nav-toggle-btn span { width:22px; height:2px; background: var(--text); display:block; border-radius: 2px; }
+
+    @media (max-width: 950px) {
+      nav { position: fixed; inset: 64px 16px auto 16px; background: var(--panel); border:1px solid var(--border); border-radius: var(--radius-lg); padding: 14px; display:none; }
+      nav.open { display:block; }
+      nav ul { flex-direction: column; gap: 6px; }
+      .nav-toggle-btn { display:flex; }
+    }
+
+    /* Hero / Title */
+    .page-hero { padding: 28px 0 8px; }
+    .page-hero h1 { font-size: clamp(28px, 3vw, 40px); margin: 0 0 6px; font-weight: 800; letter-spacing: -.02em; }
+    .page-hero p { margin: 0; color: var(--muted); }
+
+    /* Carousel */
+    .carousel-wrap { position: relative; margin: 22px 0 8px; }
+    .carousel { overflow: hidden; border-radius: var(--radius-xl); background: linear-gradient(180deg, rgba(255,255,255,.02), rgba(255,255,255,0)); border: 1px solid var(--border); }
+    .track { display:flex; transition: transform .5s cubic-bezier(.22,.61,.36,1); }
+
+    .slide { width: 100%; flex: 0 0 100%; display:grid; grid-template-columns: 1.2fr 1fr; gap: 22px; padding: 22px; align-items: stretch; }
+    @media (max-width: 900px) { .slide { grid-template-columns: 1fr; } }
+
+    .car-media { position: relative; border-radius: var(--radius-lg); overflow:hidden; background: var(--card); border:1px solid var(--border); }
+    .car-media img { width:100%; height: 420px; object-fit: cover; }
+    .media-badge { position:absolute; top:12px; left:12px; display:flex; gap:8px; }
+    .badge { padding:6px 10px; border-radius: 999px; border:1px solid var(--border); background: rgba(0,0,0,.35); backdrop-filter: blur(6px); font-size: 12px; font-weight: 700; }
+
+    .car-panel { display:flex; flex-direction: column; gap: 16px; border-radius: var(--radius-lg); border:1px solid var(--border); background: linear-gradient(180deg, var(--panel), var(--panel-2)); padding: 20px; }
+    .car-title { display:flex; align-items: center; justify-content: space-between; gap: 12px; }
+    .car-title h2 { margin:0; font-size: clamp(22px, 2.6vw, 28px); letter-spacing: -.02em; }
+    .meta { color: var(--muted); font-weight: 600; }
+
+    .features { display:grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap: 12px; }
+    .chip { display:flex; align-items:center; gap: 8px; padding: 10px 12px; border:1px solid var(--border); border-radius: var(--radius); background: var(--card); }
+    .chip ion-icon { font-size: 18px; }
+
+    .divider { height:1px; background: var(--border); border:0; }
+
+    .cta-row { display:flex; align-items:center; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
+    .price { font-size: 20px; font-weight: 800; }
+    .actions { display:flex; gap:10px; }
+
+    .ghost { background: transparent; }
+    .ghost:hover { background: var(--panel-2); }
+
+    /* Controls */
+    .ctrl { position:absolute; inset: 0; pointer-events:none; }
+    .ctrl button { pointer-events: auto; position:absolute; top:50%; transform: translateY(-50%); border:1px solid var(--border); background: rgba(16,18,24,.7); backdrop-filter: blur(6px); width:44px; height:44px; border-radius: 999px; display:grid; place-items:center; cursor:pointer; box-shadow: var(--shadow); }
+    .ctrl button:hover { background: rgba(16,18,24,.9); }
+    .ctrl .prev { left: 10px; }
+    .ctrl .next { right: 10px; }
+
+    .dots { display:flex; gap:8px; justify-content:center; margin: 14px 0 0; }
+    .dot { width:10px; height:10px; border-radius:999px; border:1px solid var(--border); background: #0000; cursor:pointer; }
+    .dot.active { background: var(--brand); border-color: transparent; box-shadow: 0 0 0 6px var(--ring); }
+
+    /* Reviews */
+    .reviews { padding: 36px 0 60px; }
+    .section-head { display:flex; align-items: end; justify-content: space-between; gap: 16px; margin-bottom: 16px; }
+    .section-head h3 { margin:0; font-size: clamp(22px, 2.6vw, 28px); }
+    .grid { display:grid; grid-template-columns: repeat(12, 1fr); gap: 16px; }
+    .card { background: var(--panel); border:1px solid var(--border); border-radius: var(--radius-lg); padding: 18px; box-shadow: var(--shadow); }
+
+    .review-card { grid-column: span 4; display:flex; flex-direction: column; gap: 12px; }
+    .review-head { display:flex; align-items:center; gap: 12px; }
+    .avatar { width: 44px; height: 44px; border-radius: 50%; overflow:hidden; border:1px solid var(--border); }
+    .who { display:flex; flex-direction:column; line-height: 1.1; }
+    .who .name { font-weight: 800; }
+    .who .tag { color: var(--muted); font-size: 12px; font-weight: 700; }
+    .review-card h4 { margin: 4px 0 0; font-size: 16px; }
+    .review-card p { margin: 0; color: var(--muted); }
+
+    @media (max-width: 1024px) {
+      .review-card { grid-column: span 6; }
+    }
+    @media (max-width: 640px) {
+      .review-card { grid-column: span 12; }
+    }
+
+    /* Footer */
+    footer { border-top: 1px solid var(--border); background: linear-gradient(180deg, var(--panel), var(--panel-2)); }
+    .foot { display:grid; grid-template-columns: 2fr 1fr 1fr; gap: 20px; padding: 32px 0 18px; }
+    .foot p { color: var(--muted); }
+    .f-title { font-weight: 800; margin-bottom: 8px; letter-spacing: .2px; }
+    .f-links { display:grid; gap: 8px; }
+    .f-links a { color: var(--muted); }
+    .f-links a:hover { color: var(--text); }
+    .foot-bottom { display:flex; align-items:center; justify-content: space-between; gap: 16px; padding: 14px 0 24px; color: var(--muted); border-top: 1px solid var(--border); }
+    .social { display:flex; gap: 10px; }
+    .social a { width:36px; height:36px; display:grid; place-items:center; border:1px solid var(--border); border-radius: 999px; background: var(--panel); }
+  </style>
 </head>
 
 <body>
+  <!-- Header -->
+  <header class="header">
+    <div class="container row">
+      <a href="index.html" class="logo" aria-label="Vehigo Home">
+        <img src="./assets/images/vehigologo.png" alt="VehiGo logo" />
+        <span>VehiGo</span>
+      </a>
 
-    <!-- !HEADER -->
-    <header class="header" data-header>
-        <div class="container">
+      <nav id="nav">
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item"><a class="nav-link active" href="src/index.html">Home</a></li>
+        <li class="nav-item"><a class="nav-link" href="featured-car.html">Explore cars</a></li>
+        <li class="nav-item"><a class="nav-link" href="./src/pages/about.html">About us</a></li>
+        <li class="nav-item"><a class="nav-link" href="blog.html">Blog</a></li>
+        <li class="nav-item"><a class="nav-link" href="./src/pages/login.html">Login</a></li>
+      </ul>
+      </nav>
 
-            <div class="overlay" data-overlay></div>
-
-            <a href="index.html" class="logo">
-                <img src="./assets/images/vehigologo.png" alt="VehiGo logo">
-            </a>
-
-            <nav class="navbar" data-navbar>
-                <ul class="navbar-list">
-
-                    <li>
-                        <a href="src/index.html" class="navbar-link" data-nav-link>Home</a>
-                    </li>
-
-                    <li>
-                        <a href="featured-car.html" class="navbar-link" data-nav-link>Explore cars</a>
-                    </li>
-
-                    <li>
-                        <a href="./src/pages/about.html" class="navbar-link" data-nav-link>About us</a>
-                    </li>
-
-                    <li>
-                        <a href="blog.html" class="navbar-link" data-nav-link>Blog</a>
-                    </li>
-
-                </ul>
-            </nav>
-
-            <div class="header-actions">
-
-                <div class="header-contact">
-                    <a href="tel:1800100100" class="contact-link">1800-100-100</a>
-
-                    <span class="contact-time">Mon - Sat: 9:00 am - 6:00 pm</span>
-                </div>
-
-                <a href="#featured-car" class="btn" aria-labelledby="aria-label-txt" style="display: none;">
-                    <ion-icon name="car-outline"></ion-icon>
-
-                    <span id="aria-label-txt">Explore cars</span>
-                </a>
-
-                <a href="./src/pages/login.html" class="btn user-btn" aria-label="Profile">
-                    <ion-icon name="person-outline"></ion-icon>
-                </a>
-
-                <button class="nav-toggle-btn" data-nav-toggle-btn aria-label="Toggle Menu">
-                    <span class="one"></span>
-                    <span class="two"></span>
-                    <span class="three"></span>
-                </button>
-
-            </div>
-
-        </div>
-    </header>
-
-    <!-- !MAIN -->
-
-    <div class="car-slider">
-        <button class="car-slide-button prevbutton" onclick="prevSlide()">&#10094;</button>
-
-    <div class="car-slide-section" id="car-slide-section">
-
-    <div class="mainCar">
-        <div class="carPage1">
-            <img src="./assets/images/fortuner.jpg" alt="" class="carPageImage1">
-        </div>
-
-        <div class="carPage2">
-            <h1>Car Details</h1>
-            <hr>
-            <h3>Car Model : </h3>
-            <p>Toyota Fortuner</p>
-            <br>
-            <h3>Car Manufactured Year: </h3>
-            <p>2020</p>
-            <br>
-            <p>7-Seater</p>
-
-            <div class="carDet">
-
-                <img class="vert-align-mid" src="https://olawebcdn.com/images/v1/highlights/ic_value_for_money.svg">
-                Value For Money
-
-                <img class="vert-align-mid" style="margin-left: 15px;"
-                    src="https://olawebcdn.com/images/v1/highlights/ic_ac.svg"> AC
-
-                <img class="vert-align-mid" style="margin-left: 15px;"
-                    src="https://olawebcdn.com/images/v1/highlights/ic_regular_hatchback.svg"> Sedan
-                <dom-repeat as="hl" style="display: none;"><template is="dom-repeat"></template></dom-repeat>
-            </div>
-
-            <a href="#featured-car" class="btn" aria-labelledby="aria-label-txt">
-                <ion-icon name="car-outline"></ion-icon>
-
-                <span id="aria-label-txt">Rent Now</span>
-            </a>
-        </div>
+      <div class="header-actions">
+        <a href="tel:1800100100" class="btn ghost" aria-label="Call us">
+          <ion-icon name="call-outline"></ion-icon>
+          1800-100-100
+        </a>
+        <a href="./src/pages/login.html" class="btn" aria-label="Profile">
+          <ion-icon name="person-outline"></ion-icon>
+          Account
+        </a>
+        <button class="nav-toggle-btn" id="navToggle" aria-label="Toggle Menu" aria-expanded="false">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
     </div>
+  </header>
 
-    <div class="mainCar">
-        <div class="carPage1">
-            <img src="./assets/images//creta.jpeg" alt="" class="carPageImage1">
-        </div>
-
-        <div class="carPage2">
-            <h1>Car Details</h1>
-            <hr>
-            <h3>Car Model : </h3>
-            <p>Hyundai Creta</p>
-            <br>
-            <h3>Car Manufactured Year: </h3>
-            <p>2022</p>
-            <br>
-            <p>5-Seater</p>
-
-            <div class="carDet">
-
-                <img class="vert-align-mid" src="https://olawebcdn.com/images/v1/highlights/ic_value_for_money.svg">
-                Value For Money
-
-                <img class="vert-align-mid" style="margin-left: 15px;"
-                    src="https://olawebcdn.com/images/v1/highlights/ic_ac.svg"> AC
-
-                <img class="vert-align-mid" style="margin-left: 15px;"
-                    src="https://olawebcdn.com/images/v1/highlights/ic_regular_hatchback.svg"> Sedan
-                <dom-repeat as="hl" style="display: none;"><template is="dom-repeat"></template></dom-repeat>
-            </div>
-
-            <a href="#featured-car" class="btn" aria-labelledby="aria-label-txt">
-                <ion-icon name="car-outline"></ion-icon>
-
-                <span id="aria-label-txt">Rent Now</span>
-            </a>
-        </div>
-    </div>
-
-
-    <div class="mainCar">
-        <div class="carPage1">
-            <img src="./assets/images/nexon.jpg" alt="" class="carPageImage1">
-        </div>
-
-        <div class="carPage2">
-            <h1>Car Details</h1>
-            <hr>
-            <h3>Car Model : </h3>
-            <p>Tata Nexon</p>
-            <br>
-            <h3>Car Manufactured Year: </h3>
-            <p>2019</p>
-            <br>
-            <p>5-Seater</p>
-
-            <div class="carDet">
-
-                <img class="vert-align-mid" src="https://olawebcdn.com/images/v1/highlights/ic_value_for_money.svg">
-                Value For Money
-
-                <img class="vert-align-mid" style="margin-left: 15px;"
-                    src="https://olawebcdn.com/images/v1/highlights/ic_ac.svg"> AC
-
-                <img class="vert-align-mid" style="margin-left: 15px;"
-                    src="https://olawebcdn.com/images/v1/highlights/ic_regular_hatchback.svg"> Sedan
-                <dom-repeat as="hl" style="display: none;"><template is="dom-repeat"></template></dom-repeat>
-            </div>
-
-            <a href="#featured-car" class="btn" aria-labelledby="aria-label-txt">
-                <ion-icon name="car-outline"></ion-icon>
-
-                <span id="aria-label-txt">Rent Now</span>
-            </a>
-        </div>
-    </div>
-
-    <div class="mainCar">
-        <div class="carPage1">
-            <img src="./assets/images/swift desire.jpg" alt="" class="carPageImage1">
-        </div>
-
-        <div class="carPage2">
-            <h1>Car Details</h1>
-            <hr>
-            <h3>Car Model : </h3>
-            <p>Swift Desire</p>
-            <br>
-            <h3>Car Manufactured Year: </h3>
-            <p>2018</p>
-            <br>
-            <p>5-Seater</p>
-
-            <div class="carDet">
-
-                <img class="vert-align-mid" src="https://olawebcdn.com/images/v1/highlights/ic_value_for_money.svg">
-                Value For Money
-
-                <img class="vert-align-mid" style="margin-left: 15px;"
-                    src="https://olawebcdn.com/images/v1/highlights/ic_ac.svg"> AC
-
-                <img class="vert-align-mid" style="margin-left: 15px;"
-                    src="https://olawebcdn.com/images/v1/highlights/ic_regular_hatchback.svg"> Sedan
-                <dom-repeat as="hl" style="display: none;"><template is="dom-repeat"></template></dom-repeat>
-            </div>
-
-            <a href="#featured-car" class="btn" aria-labelledby="aria-label-txt">
-                <ion-icon name="car-outline"></ion-icon>
-
-                <span id="aria-label-txt">Rent Now</span>
-            </a>
-        </div>
-    </div>
-
-    <div class="mainCar">
-        <div class="carPage1">
-            <img src="./assets/images/innova.jpeg" alt="" class="carPageImage1">
-        </div>
-
-        <div class="carPage2">
-            <h1>Car Details</h1>
-            <hr>
-            <h3>Car Model : </h3>
-            <p>Toyota Innova Crsyta</p>
-            <br>
-            <h3>Car Manufactured Year: </h3>
-            <p>2021</p>
-            <br>
-            <p>7-Seater</p>
-
-            <div class="carDet">
-
-                <img class="vert-align-mid" src="https://olawebcdn.com/images/v1/highlights/ic_value_for_money.svg">
-                Value For Money
-
-                <img class="vert-align-mid" style="margin-left: 15px;"
-                    src="https://olawebcdn.com/images/v1/highlights/ic_ac.svg"> AC
-
-                <img class="vert-align-mid" style="margin-left: 15px;"
-                    src="https://olawebcdn.com/images/v1/highlights/ic_regular_hatchback.svg"> Sedan
-                <dom-repeat as="hl" style="display: none;"><template is="dom-repeat"></template></dom-repeat>
-            </div>
-
-            <a href="#featured-car" class="btn" aria-labelledby="aria-label-txt">
-                <ion-icon name="car-outline"></ion-icon>
-
-                <span id="aria-label-txt">Rent Now</span>
-            </a>
-        </div>
-    </div>
-
-
-    </div>
-    <button class="car-slide-button nextbutton" onclick="nextSlide()">&#10095;</button>
-    <div class="dots" id="dots"></div>
-    </div>
-
-    <!-- Slider script -->
-
-<script>
-
-
-let currentSlide = 0;
-const slides = document.querySelectorAll('.mainCar');
-const slider = document.getElementById('car-slide-section');
-const dotsContainer = document.getElementById('dots');
-
-function updateSlider(){
-  slider.style.transform = `translateX(-${currentSlide * 100}%)` ;
-  updateDots();
-}
-
-function nextSlide(){
-  if (currentSlide < slides.length - 1) {
-     currentSlide++;
-  }
-  else{
-    currentSlide = 0;
-  }
-  updateSlider();
-}
-
-function prevSlide(){
-  if (currentSlide > 0) {
-    currentSlide--;
-  }
-  else{
-    currentSlide = slides.length - 1;
-  }
-  updateSlider();
-}
-
-function createDots(){
-  slides.forEach((_, index) =>{
-    const dot = document.createElement('button');
-    dot.addEventListener('click', () => {
-      currentSlide = index;
-      updateSlider();
-    });
-     dotsContainer.appendChild(dot);
-  });
-}
-
-function updateDots(){
-  const dots = dotsContainer.querySelectorAll('button');
-  dots.forEach((dot,index) => {
-    dot.classList.toggle('active', index==currentSlide);
-  });
-}
-
-createDots();
-updateSlider()
-</script>
-
-    <!-- !REVIEWS -->
-
-    <section class="reviews" id="reviews">
-        <div class="contain container">
-            <h2>Reviews</h2>
-            <div class="outerdiv">
-                <div class=" innerdiv">
-                    <!-- div1 -->
-                    <div class="div1 eachdiv">
-                        <div class="userdetails">
-                            <div class="imgbox">
-                                <img src="https://raw.githubusercontent.com/RahulSahOfficial/testimonials_grid_section/5532c958b7d3c9b910a216b198fdd21c73112d84/images/image-daniel.jpg"
-                                    alt="">
-                            </div>
-                            <div class="detbox">
-                                <p class="name">Rahul Sharma</p>
-                                <p class="designation">Verified Customer</p>
-                            </div>
-                        </div>
-                        <div class="review">
-                            <h4>"I recently rented a car from Vehigo, and I couldn't be happier with the experience. The
-                                staff was
-                                incredibly friendly and helpful, guiding me through the rental process and answering all
-                                of my
-                                questions. "</h4>
-                            <p>“The car I rented was in excellent condition and drove smoothly throughout my entire
-                                trip. I highly
-                                recommend Vehigo to anyone in need of a reliable and hassle-free car rental service.”
-                            </p>
-                        </div>
-                    </div>
-                    <!-- div2 -->
-                    <div class="div2 eachdiv">
-                        <div class="userdetails">
-                            <div class="imgbox">
-                                <img src="https://raw.githubusercontent.com/RahulSahOfficial/testimonials_grid_section/5532c958b7d3c9b910a216b198fdd21c73112d84/images/image-jonathan.jpg"
-                                    alt="">
-                            </div>
-                            <div class="detbox">
-                                <p class="name">Alok Patel</p>
-                                <p class="designation">Verified Customer</p>
-                            </div>
-                        </div>
-                        <div class="review">
-                            <h4>Renting a car from Vehigo was a breeze! </h4>
-                            <p>“ The staff was friendly, the car was clean and well-maintained, and the whole process
-                                was quick
-                                and hassle-free. I'll definitely be renting from Vehigo again in the future. ”</p>
-                        </div>
-                    </div>
-                    <!-- div3 -->
-                    <div class="div3 eachdiv">
-                        <div class="userdetails">
-                            <div class="imgbox">
-                                <img src="https://raw.githubusercontent.com/RahulSahOfficial/testimonials_grid_section/5532c958b7d3c9b910a216b198fdd21c73112d84/images/image-kira.jpg"
-                                    alt="">
-                            </div>
-                            <div class="detbox">
-                                <p class="name dark">Aaru Gupta</p>
-                                <p class="designation dark">Verified Customer</p>
-                            </div>
-                        </div>
-                        <div class="review dark">
-                            <h4>Vehigo is my top choice for renting a car whenever I travel. </h4>
-                            <p>“ Their service is consistently outstanding, and I appreciate their attention to detail.
-                                The
-                                vehicles are always clean, and the rental process is quick and hassle-free.
-                                Vehigo goes above and beyond to ensure customer satisfaction, and their flexible pickup
-                                and drop-off
-                                options make it incredibly convenient. The efficiency and professionalism
-                                of their staff have saved me valuable time, enabling me to focus on my work without any
-                                worries
-                                about transportation. I highly recommend Vehigo for corporate travelers.
-                                I've recommended Vehigo to friends and family, and they have all been impressed with the
-                                quality of
-                                service. 100% recommend! ”</p>
-                        </div>
-                    </div>
-                    <!-- div4 -->
-                    <div class="div4 eachdiv">
-                        <div class="userdetails">
-                            <div class="imgbox">
-                                <img src="https://raw.githubusercontent.com/RahulSahOfficial/testimonials_grid_section/5532c958b7d3c9b910a216b198fdd21c73112d84/images/image-jeanette.jpg"
-                                    alt="">
-                            </div>
-                            <div class="detbox">
-                                <p class="name dark">Prateeksha Joshi</p>
-                                <p class="designation dark">Verified Customer</p>
-                            </div>
-                        </div>
-                        <div class="review dark">
-                            <h4>Overall a wonderful & rewarding experience</h4>
-                            <p>“ Thank you for the wonderful experience! The car we rented was spacious, comfortable,
-                                and
-                                fuel-efficient, making our journey enjoyable.
-                                The team at Vehigo was friendly and accommodating, making sure we had everything we
-                                needed. Highly
-                                Recommended! ”</p>
-                        </div>
-                    </div>
-                    <!-- div5 -->
-                    <div class="div5 eachdiv">
-                        <div class="userdetails">
-                            <div class="imgbox">
-                                <img src="https://raw.githubusercontent.com/RahulSahOfficial/testimonials_grid_section/5532c958b7d3c9b910a216b198fdd21c73112d84/images/image-patrick.jpg"
-                                    alt="">
-                            </div>
-                            <div class="detbox">
-                                <p class="name">Rohit Mehta</p>
-                                <p class="designation">Verified Customer</p>
-                            </div>
-                        </div>
-                        <div class="review">
-                            <h4>I have been a loyal customer of Vehigo for several years now, and they have consistently
-                                exceeded
-                                my expectations.</h4>
-                            <p>“ Their rental fleet is diverse, offering a wide range of vehicles to choose from,
-                                whether I need a
-                                compact car for a city trip or a spacious SUV for a family vacation.
-                                The prices are competitive, and the customer service is exceptional. Vehigo has become
-                                my go-to
-                                choice for all my car rental needs.”</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+  <main>
+    <section class="page-hero container">
+      <h1>Find the perfect ride, fast.</h1>
+      <p>Handpicked cars with upfront pricing, flexible rental plans, and 24×7 support.</p>
     </section>
 
-    <!-- !#FOOTER -->
-
-    <footer class="footer">
-        <div class="container">
-
-            <div class="footer-top">
-
-                <div class="footer-brand">
-                    <a href="#" class="logo">
-                        <img src="./assets/images/vehigologo.png" alt="VehiGo logo">
-                    </a>
-
-                    <p class="footer-text">
-                        Search for cheap rental cars in Madhaya Pradesh. We offers our
-                        customers an attractive and fun selection of vehicals as well as an opportunity to rent thier
-                        cars when not
-                        in use.
-                    </p>
+    <!-- Carousel -->
+    <section class="container carousel-wrap" aria-label="Featured cars slider">
+      <div class="carousel" id="carousel">
+        <div class="track" id="track">
+          <!-- Slide 1 -->
+          <article class="slide" data-name="Toyota Fortuner">
+            <figure class="car-media">
+              <img src="./assets/images/fortuner.jpg" alt="Toyota Fortuner, white, front three-quarter" />
+              <div class="media-badge">
+                <span class="badge">7-Seater</span>
+                <span class="badge">2020</span>
+              </div>
+            </figure>
+            <div class="car-panel">
+              <div class="car-title">
+                <h2>Toyota Fortuner</h2>
+                <span class="meta">SUV • Automatic</span>
+              </div>
+              <div class="features">
+                <div class="chip"><ion-icon name="cash-outline"></ion-icon> Value for money</div>
+                <div class="chip"><ion-icon name="snow-outline"></ion-icon> AC</div>
+                <div class="chip"><ion-icon name="car-sport-outline"></ion-icon> SUV</div>
+                <div class="chip"><ion-icon name="people-outline"></ion-icon> 7 Seats</div>
+                <div class="chip"><ion-icon name="speedometer-outline"></ion-icon> 18 km/l</div>
+                <div class="chip"><ion-icon name="shield-checkmark-outline"></ion-icon> ABS + Airbags</div>
+              </div>
+              <hr class="divider" />
+              <div class="cta-row">
+                <span class="price">₹3,999 / day</span>
+                <div class="actions">
+                  <a class="btn ghost" href="#details-fortuner">Details</a>
+                  <a class="btn primary" href="#rent">Rent now <ion-icon name="car-outline"></ion-icon></a>
                 </div>
-
-                <ul class="footer-list">
-
-                    <li>
-                        <p class="footer-list-title">Company</p>
-                    </li>
-
-                    <li>
-                        <a href="./src/pages/about.html" class="footer-link">About us</a>
-                    </li>
-
-                    <li>
-                        <a href="./src/pages/pricing.html" class="footer-link">Pricing plans</a>
-                    </li>
-
-                    <li>
-                        <a href="./blog.html" class="footer-link">Our blog</a>
-                    </li>
-
-                    <li>
-                        <a href="./ContactUs.html" class="footer-link">Contacts</a>
-                    </li>
-
-                </ul>
-
-                <ul class="footer-list">
-
-                    <li>
-                        <p class="footer-list-title">Support</p>
-                    </li>
-
-                    <li>
-                        <a href="./src/pages/help-center.html" class="footer-link">Help center</a>
-                    </li>
-
-                    <li>
-                        <a href="./src/pages/Askaques.html" class="footer-link">Ask a question</a>
-                    </li>
-
-                    <li>
-                        <a href="./privacypolicy.html" class="footer-link">Privacy policy</a>
-                    </li>
-
-                    <li>
-                        <a href="./tandc.html" class="footer-link">Terms & conditions</a>
-                    </li>
-
-                </ul>
-
-                <ul class="footer-list">
-
-                    <li>
-                        <p class="footer-list-title"> </p>
-                    </li>
-
-                </ul>
-
+              </div>
             </div>
+          </article>
 
-            <div class="footer-bottom">
-
-                <ul class="social-list">
-
-                    <li>
-                        <a href="#" class="social-link">
-                            <ion-icon name="logo-facebook"></ion-icon>
-                        </a>
-                    </li>
-
-                    <li>
-                        <a href="#" class="social-link">
-                            <ion-icon name="logo-instagram"></ion-icon>
-                        </a>
-                    </li>
-
-                    <li>
-                        <a href="#" class="social-link">
-                            <ion-icon name="logo-twitter"></ion-icon>
-                        </a>
-                    </li>
-
-                    <li>
-                        <a href="#" class="social-link">
-                            <ion-icon name="logo-linkedin"></ion-icon>
-                        </a>
-                    </li>
-
-
-                    <li>
-                        <a href="#" class="social-link">
-                            <ion-icon name="mail-outline"></ion-icon>
-                        </a>
-                    </li>
-
-                </ul>
-
-                <p class="copyright">
-                    &copy; <span id="copyright-year"></span> <a href="#">VehiGo</a> Contact us through
-                </p>
-
+          <!-- Slide 2 -->
+          <article class="slide" data-name="Hyundai Creta">
+            <figure class="car-media">
+              <img src="./assets/images/creta.jpeg" alt="Hyundai Creta, blue, profile" />
+              <div class="media-badge">
+                <span class="badge">5-Seater</span>
+                <span class="badge">2022</span>
+              </div>
+            </figure>
+            <div class="car-panel">
+              <div class="car-title">
+                <h2>Hyundai Creta</h2>
+                <span class="meta">Crossover • Manual</span>
+              </div>
+              <div class="features">
+                <div class="chip"><ion-icon name="cash-outline"></ion-icon> Great value</div>
+                <div class="chip"><ion-icon name="snow-outline"></ion-icon> AC</div>
+                <div class="chip"><ion-icon name="car-outline"></ion-icon> Crossover</div>
+                <div class="chip"><ion-icon name="people-outline"></ion-icon> 5 Seats</div>
+                <div class="chip"><ion-icon name="flash-outline"></ion-icon> LED DRLs</div>
+                <div class="chip"><ion-icon name="map-outline"></ion-icon> Android Auto</div>
+              </div>
+              <hr class="divider" />
+              <div class="cta-row">
+                <span class="price">₹2,499 / day</span>
+                <div class="actions">
+                  <a class="btn ghost" href="#details-creta">Details</a>
+                  <a class="btn primary" href="#rent">Rent now <ion-icon name="car-outline"></ion-icon></a>
+                </div>
+              </div>
             </div>
+          </article>
+
+          <!-- Slide 3 -->
+          <article class="slide" data-name="Tata Nexon">
+            <figure class="car-media">
+              <img src="./assets/images/nexon.jpg" alt="Tata Nexon, grey, side" />
+              <div class="media-badge">
+                <span class="badge">5-Seater</span>
+                <span class="badge">2019</span>
+              </div>
+            </figure>
+            <div class="car-panel">
+              <div class="car-title">
+                <h2>Tata Nexon</h2>
+                <span class="meta">Compact SUV • AMT</span>
+              </div>
+              <div class="features">
+                <div class="chip"><ion-icon name="cash-outline"></ion-icon> Budget friendly</div>
+                <div class="chip"><ion-icon name="snow-outline"></ion-icon> AC</div>
+                <div class="chip"><ion-icon name="car-sport-outline"></ion-icon> Compact SUV</div>
+                <div class="chip"><ion-icon name="people-outline"></ion-icon> 5 Seats</div>
+                <div class="chip"><ion-icon name="leaf-outline"></ion-icon> BS6</div>
+                <div class="chip"><ion-icon name="musical-notes-outline"></ion-icon> 6 Speakers</div>
+              </div>
+              <hr class="divider" />
+              <div class="cta-row">
+                <span class="price">₹2,199 / day</span>
+                <div class="actions">
+                  <a class="btn ghost" href="#details-nexon">Details</a>
+                  <a class="btn primary" href="#rent">Rent now <ion-icon name="car-outline"></ion-icon></a>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <!-- Slide 4 -->
+          <article class="slide" data-name="Swift Dzire">
+            <figure class="car-media">
+              <img src="./assets/images/swift desire.jpg" alt="Maruti Swift Dzire, red" />
+              <div class="media-badge">
+                <span class="badge">5-Seater</span>
+                <span class="badge">2018</span>
+              </div>
+            </figure>
+            <div class="car-panel">
+              <div class="car-title">
+                <h2>Maruti Swift Dzire</h2>
+                <span class="meta">Sedan • Manual</span>
+              </div>
+              <div class="features">
+                <div class="chip"><ion-icon name="cash-outline"></ion-icon> Low cost</div>
+                <div class="chip"><ion-icon name="snow-outline"></ion-icon> AC</div>
+                <div class="chip"><ion-icon name="car-outline"></ion-icon> Sedan</div>
+                <div class="chip"><ion-icon name="people-outline"></ion-icon> 5 Seats</div>
+                <div class="chip"><ion-icon name="podium-outline"></ion-icon> Bestseller</div>
+                <div class="chip"><ion-icon name="cloud-outline"></ion-icon> Good mileage</div>
+              </div>
+              <hr class="divider" />
+              <div class="cta-row">
+                <span class="price">₹1,799 / day</span>
+                <div class="actions">
+                  <a class="btn ghost" href="#details-dzire">Details</a>
+                  <a class="btn primary" href="#rent">Rent now <ion-icon name="car-outline"></ion-icon></a>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <!-- Slide 5 -->
+          <article class="slide" data-name="Toyota Innova Crysta">
+            <figure class="car-media">
+              <img src="./assets/images/innova.jpeg" alt="Toyota Innova Crysta, silver" />
+              <div class="media-badge">
+                <span class="badge">7-Seater</span>
+                <span class="badge">2021</span>
+              </div>
+            </figure>
+            <div class="car-panel">
+              <div class="car-title">
+                <h2>Toyota Innova Crysta</h2>
+                <span class="meta">MPV • Automatic</span>
+              </div>
+              <div class="features">
+                <div class="chip"><ion-icon name="cash-outline"></ion-icon> Great comfort</div>
+                <div class="chip"><ion-icon name="snow-outline"></ion-icon> AC</div>
+                <div class="chip"><ion-icon name="car-sport-outline"></ion-icon> MPV</div>
+                <div class="chip"><ion-icon name="people-outline"></ion-icon> 7 Seats</div>
+                <div class="chip"><ion-icon name="navigate-outline"></ion-icon> GPS</div>
+                <div class="chip"><ion-icon name="shield-checkmark-outline"></ion-icon> Safety pack</div>
+              </div>
+              <hr class="divider" />
+              <div class="cta-row">
+                <span class="price">₹3,499 / day</span>
+                <div class="actions">
+                  <a class="btn ghost" href="#details-innova">Details</a>
+                  <a class="btn primary" href="#rent">Rent now <ion-icon name="car-outline"></ion-icon></a>
+                </div>
+              </div>
+            </div>
+          </article>
 
         </div>
-    </footer>
-    
-</body>
-<script>
-  const yearEl = document.getElementById('copyright-year');
-  if(yearEl) yearEl.textContent = new Date().getFullYear();
-</script>
-<script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
-<script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+        <!-- Controls overlay -->
+        <div class="ctrl" aria-hidden="true">
+          <button class="prev" id="prev" aria-label="Previous slide"><ion-icon name="chevron-back"></ion-icon></button>
+          <button class="next" id="next" aria-label="Next slide"><ion-icon name="chevron-forward"></ion-icon></button>
+        </div>
+      </div>
+      <div class="dots" id="dots" aria-label="Slide pagination"></div>
+    </section>
 
+    <!-- Reviews -->
+    <section class="reviews container" id="reviews">
+      <div class="section-head">
+        <h3>What customers say</h3>
+        <a href="#" class="btn ghost">Read all</a>
+      </div>
+
+      <div class="grid">
+        <article class="review-card card">
+          <div class="review-head">
+            <div class="avatar"><img src="https://raw.githubusercontent.com/RahulSahOfficial/testimonials_grid_section/5532c958b7d3c9b910a216b198fdd21c73112d84/images/image-daniel.jpg" alt="Rahul Sharma" /></div>
+            <div class="who"><span class="name">Rahul Sharma</span><span class="tag">Verified Customer</span></div>
+          </div>
+          <h4>Hassle-free rental & friendly staff</h4>
+          <p>Car was in excellent condition and the pickup was quick. Highly recommend Vehigo for clean cars and smooth service.</p>
+        </article>
+
+        <article class="review-card card">
+          <div class="review-head">
+            <div class="avatar"><img src="https://raw.githubusercontent.com/RahulSahOfficial/testimonials_grid_section/5532c958b7d3c9b910a216b198fdd21c73112d84/images/image-jonathan.jpg" alt="Alok Patel" /></div>
+            <div class="who"><span class="name">Alok Patel</span><span class="tag">Verified Customer</span></div>
+          </div>
+          <h4>Smooth process, well-maintained cars</h4>
+          <p>Friendly staff and super clean Creta. Booking to return took minutes. Will rent again.</p>
+        </article>
+
+        <article class="review-card card">
+          <div class="review-head">
+            <div class="avatar"><img src="https://raw.githubusercontent.com/RahulSahOfficial/testimonials_grid_section/5532c958b7d3c9b910a216b198fdd21c73112d84/images/image-kira.jpg" alt="Aaru Gupta" /></div>
+            <div class="who"><span class="name">Aaru Gupta</span><span class="tag">Verified Customer</span></div>
+          </div>
+          <h4>Reliable for business travel</h4>
+          <p>Consistently great experience. Flexible pickups and spotless vehicles help me focus on work. 100% recommend!</p>
+        </article>
+
+        <article class="review-card card">
+          <div class="review-head">
+            <div class="avatar"><img src="https://raw.githubusercontent.com/RahulSahOfficial/testimonials_grid_section/5532c958b7d3c9b910a216b198fdd21c73112d84/images/image-jeanette.jpg" alt="Prateeksha Joshi" /></div>
+            <div class="who"><span class="name">Prateeksha Joshi</span><span class="tag">Verified Customer</span></div>
+          </div>
+          <h4>Spacious, comfy, fuel‑efficient</h4>
+          <p>Innova was perfect for our family trip. Smooth ride, great mileage, and helpful support.</p>
+        </article>
+
+        <article class="review-card card">
+          <div class="review-head">
+            <div class="avatar"><img src="https://raw.githubusercontent.com/RahulSahOfficial/testimonials_grid_section/5532c958b7d3c9b910a216b198fdd21c73112d84/images/image-patrick.jpg" alt="Rohit Mehta" /></div>
+            <div class="who"><span class="name">Rohit Mehta</span><span class="tag">Verified Customer</span></div>
+          </div>
+          <h4>Great variety and pricing</h4>
+          <p>From compact sedans to SUVs, there’s always a good option in budget. Support is quick and professional.</p>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <div class="foot">
+        <div>
+          <a href="#" class="logo" aria-label="Vehigo">
+            <img src="./assets/images/vehigologo.png" alt="VehiGo logo" />
+            <span>VehiGo</span>
+          </a>
+          <p style="margin-top:8px">Search for affordable rentals across Madhya Pradesh. Rent your vehicle with us when you’re not using it.</p>
+        </div>
+        <div>
+          <div class="f-title">Company</div>
+          <div class="f-links">
+            <a href="./src/pages/about.html">About us</a>
+            <a href="./src/pages/pricing.html">Pricing</a>
+            <a href="./blog.html">Blog</a>
+            <a href="./ContactUs.html">Contact</a>
+          </div>
+        </div>
+        <div>
+          <div class="f-title">Support</div>
+          <div class="f-links">
+            <a href="./src/pages/help-center.html">Help center</a>
+            <a href="./src/pages/Askaques.html">Ask a question</a>
+            <a href="./privacypolicy.html">Privacy policy</a>
+            <a href="./tandc.html">Terms & conditions</a>
+          </div>
+        </div>
+      </div>
+      <div class="foot-bottom">
+        <div>&copy; <span id="year"></span> VehiGo — All rights reserved.</div>
+        <div class="social">
+          <a href="#" aria-label="Facebook"><ion-icon name="logo-facebook"></ion-icon></a>
+          <a href="#" aria-label="Instagram"><ion-icon name="logo-instagram"></ion-icon></a>
+          <a href="#" aria-label="Twitter"><ion-icon name="logo-twitter"></ion-icon></a>
+          <a href="#" aria-label="LinkedIn"><ion-icon name="logo-linkedin"></ion-icon></a>
+          <a href="mailto:hello@vehigo.com" aria-label="Email"><ion-icon name="mail-outline"></ion-icon></a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+  <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+
+  <script>
+    // Mobile nav toggle
+    const nav = document.getElementById('nav');
+    const navToggle = document.getElementById('navToggle');
+    navToggle?.addEventListener('click', () => {
+      const open = nav.classList.toggle('open');
+      navToggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+    });
+
+    // Carousel logic
+    const track = document.getElementById('track');
+    const slides = Array.from(track.children);
+    const prevBtn = document.getElementById('prev');
+    const nextBtn = document.getElementById('next');
+    const dotsWrap = document.getElementById('dots');
+
+    let index = 0;
+    const go = (i) => {
+      index = (i + slides.length) % slides.length;
+      track.style.transform = `translateX(-${index * 100}%)`;
+      updateDots();
+      // Update document title for fun / light context
+      const name = slides[index].dataset.name;
+      document.title = `Vehigo — ${name}`;
+    };
+
+    const makeDot = (i) => {
+      const b = document.createElement('button');
+      b.className = 'dot';
+      b.type = 'button';
+      b.setAttribute('aria-label', `Go to slide ${i + 1}`);
+      b.addEventListener('click', () => go(i));
+      return b;
+    };
+
+    const updateDots = () => {
+      [...dotsWrap.children].forEach((d, i) => d.classList.toggle('active', i === index));
+    };
+
+    // Build dots once
+    slides.forEach((_, i) => dotsWrap.appendChild(makeDot(i)));
+    updateDots();
+
+    prevBtn.addEventListener('click', () => go(index - 1));
+    nextBtn.addEventListener('click', () => go(index + 1));
+
+    // Keyboard support
+    window.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowRight') go(index + 1);
+      if (e.key === 'ArrowLeft') go(index - 1);
+    });
+
+    // Swipe (touch) support
+    let startX = 0, dx = 0, dragging = false;
+    const onStart = (x) => { startX = x; dx = 0; dragging = true; };
+    const onMove = (x) => { if (!dragging) return; dx = x - startX; };
+    const onEnd = () => {
+      if (!dragging) return; dragging = false;
+      if (dx > 60) go(index - 1); else if (dx < -60) go(index + 1);
+      dx = 0;
+    };
+
+    track.addEventListener('touchstart', (e) => onStart(e.touches[0].clientX), { passive: true });
+    track.addEventListener('touchmove',  (e) => onMove(e.touches[0].clientX), { passive: true });
+    track.addEventListener('touchend', onEnd);
+
+    // Year in footer
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Start on first slide
+    go(0);
+  </script>
+</body>
 </html>
