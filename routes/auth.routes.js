@@ -19,3 +19,4 @@ authRouter.post("/forgot-password", forgotPasswordController); // email with tok
 authRouter.post("/reset-password/:token", resetPasswordController); // reset password
 
 module.exports = authRouter;
+21145
